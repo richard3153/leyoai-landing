@@ -1,6 +1,6 @@
 # AI 模型技术路线图
 
-> Nexify 垂直领域模型研发规划 v1.0
+> 杭州市上城区乐友信息服务工作室 垂直领域模型研发规划 v1.0
 > 最后更新：2026-04-06
 
 ---
@@ -94,7 +94,7 @@ pipeline_tag: text-generation
 # Model Name
 
 ## Model Description
-- **Developed by:** Nexify
+- **Developed by:** 杭州市上城区乐友信息服务工作室
 - **Model type:** Causal Language Model
 - **Language(s):** Chinese, English
 - **License:** Apache 2.0
@@ -420,5 +420,5 @@ Week 5: 发布准备
 
 ---
 
-> 文档维护：Nexify CTO
+> 文档维护：杭州市上城区乐友信息服务工作室 CTO
 > 版本：v1.0 | 2026-04-06

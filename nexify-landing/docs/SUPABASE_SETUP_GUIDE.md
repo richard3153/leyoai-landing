@@ -1,6 +1,6 @@
 # Supabase 部署指南
 
-本指南帮助你在 10 分钟内完成 Nexify Waitlist 系统的 Supabase 部署，成本 $0。
+本指南帮助你在 10 分钟内完成 杭州市上城区乐友信息服务工作室 Waitlist 系统的 Supabase 部署，成本 $0。
 
 ---
 

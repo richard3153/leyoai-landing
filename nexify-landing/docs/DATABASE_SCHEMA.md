@@ -1,4 +1,4 @@
-# Nexify Waitlist 数据库设计
+# 杭州市上城区乐友信息服务工作室 Waitlist 数据库设计
 
 ## 📊 表结构
 
@@ -20,7 +20,7 @@
 
 ```sql
 -- ============================================
--- Nexify Waitlist Database Schema
+-- 杭州市上城区乐友信息服务工作室 Waitlist Database Schema
 -- Version: 1.0
 -- Compatible: Supabase (PostgreSQL 15+)
 -- ============================================

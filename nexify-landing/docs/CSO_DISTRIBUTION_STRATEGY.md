@@ -1,4 +1,4 @@
-# Nexify 模型发布与分发策略
+# 杭州市上城区乐友信息服务工作室 模型发布与分发策略
 
 > 制定人：CSO（首席战略官）  
 > 版本：v1.0  
@@ -13,14 +13,14 @@
 
 #### 标题公式
 ```
-[Nexify]-[领域]-[模型规模]-[版本]
-示例：Nexify-Med-7B-v1.0
+[杭州市上城区乐友信息服务工作室]-[领域]-[模型规模]-[版本]
+示例：杭州市上城区乐友信息服务工作室-Med-7B-v1.0
 ```
 
 **标题优化原则**：
 | 要素 | 策略 | 示例 |
 |------|------|------|
-| 品牌前缀 | 固定使用Nexify，建立品牌认知 | Nexify-Med-7B |
+| 品牌前缀 | 固定使用杭州市上城区乐友信息服务工作室，建立品牌认知 | 杭州市上城区乐友信息服务工作室-Med-7B |
 | 领域标识 | 用英文缩写，2-4字符 | Med(医疗)/Law(法律)/Fin(金融) |
 | 规模标识 | 明确参数量，便于用户选择 | 7B/13B/70B |
 | 版本号 | 语义化版本控制 | v1.0/v1.1/v2.0 |
@@ -187,16 +187,16 @@ nexify-med-7b/
 | GPL-3.0 | ✅ | ✅ | ❌ | ✅ | 强制开源 |
 | Llama 2 License | ✅ | ✅ | ✅ | ✅ | 基于Llama需遵守 |
 
-#### Nexify 分层许可证体系
+#### 杭州市上城区乐友信息服务工作室 分层许可证体系
 
 ```
-L1: Nexify Core（开源层）- Apache 2.0
+L1: 杭州市上城区乐友信息服务工作室 Core（开源层）- Apache 2.0
     └─ 建立社区影响力
 
-L2: Nexify Pro（商用授权层）- 自定义协议
+L2: 杭州市上城区乐友信息服务工作室 Pro（商用授权层）- 自定义协议
     └─ 企业商用需购买授权
 
-L3: Nexify Enterprise（闭源定制层）- 定制协议
+L3: 杭州市上城区乐友信息服务工作室 Enterprise（闭源定制层）- 定制协议
     └─ 私有化部署、专属服务
 ```
 
@@ -234,7 +234,7 @@ L3: Nexify Enterprise（闭源定制层）- 定制协议
 #### 代码版权声明
 
 ```
-Copyright 2026 Nexify AI Inc.
+Copyright 2026 杭州市上城区乐友信息服务工作室 AI Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -281,7 +281,7 @@ Copyright (c) Meta Platforms, Inc. All Rights Reserved.
    - 是 → Apache 2.0
    - 否 → MIT/BSD
 
-**Nexify推荐**：
+**杭州市上城区乐友信息服务工作室推荐**：
 - 模型权重：Apache 2.0
 - 训练代码：Apache 2.0
 - 数据工具：MIT
@@ -305,7 +305,7 @@ Copyright (c) Meta Platforms, Inc. All Rights Reserved.
    - 建议启用数据加密传输
 
 4. **责任限制**
-   - Nexify不对使用损失承担责任
+   - 杭州市上城区乐友信息服务工作室不对使用损失承担责任
    - 包括但不限于医疗事故、数据泄露等
 
 ---
@@ -327,7 +327,7 @@ Copyright (c) Meta Platforms, Inc. All Rights Reserved.
 
 #### 竞品分析
 
-| 产品 | 优势 | 劣势 | Nexify差异化 |
+| 产品 | 优势 | 劣势 | 杭州市上城区乐友信息服务工作室差异化 |
 |------|------|------|-------------|
 | 医联MedGPT | 产品化程度高 | 不开源 | 开源+可定制 |
 | 华佗GPT | 中文医疗先驱 | 规模较小 | 更大规模+更好效果 |
@@ -516,5 +516,5 @@ Copyright (c) Meta Platforms, Inc. All Rights Reserved.
 
 ---
 
-*本文档为 Nexify CSO 战略文档，将随执行情况持续更新。*
+*本文档为 杭州市上城区乐友信息服务工作室 CSO 战略文档，将随执行情况持续更新。*
 *下次审查时间：首个模型发布后30天*

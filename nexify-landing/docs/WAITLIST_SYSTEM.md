@@ -1,6 +1,6 @@
 # Supabase Waitlist 实施文档
 
-> Nexify Landing Page Waitlist 系统技术方案 v1.0
+> 杭州市上城区乐友信息服务工作室 Landing Page Waitlist 系统技术方案 v1.0
 > 最后更新：2026-04-06
 
 ---
@@ -504,9 +504,9 @@ BEGIN
     url := 'https://api.resend.com/emails', -- 或其他邮件服务
     headers := '{"Authorization": "Bearer YOUR_API_KEY", "Content-Type": "application/json"}'::jsonb,
     body := json_build_object(
-      'from', 'Nexify <hello@nexify.ai>',
+      'from', '杭州市上城区乐友信息服务工作室 <hello@nexify.ai>',
       'to', user_email,
-      'subject', '欢迎加入 Nexify Waitlist!',
+      'subject', '欢迎加入 杭州市上城区乐友信息服务工作室 Waitlist!',
       'html', '<h1>Hi ' || COALESCE(user_name, '朋友') || '!</h1>
                <p>你的邀请码: <strong>' || referral_code || '</strong></p>'
     )::text
@@ -530,9 +530,9 @@ export async function sendWelcomeEmail(
   referralCode: string
 ) {
   await resend.emails.send({
-    from: 'Nexify <hello@nexify.ai>',
+    from: '杭州市上城区乐友信息服务工作室 <hello@nexify.ai>',
     to: email,
-    subject: '欢迎加入 Nexify Waitlist!',
+    subject: '欢迎加入 杭州市上城区乐友信息服务工作室 Waitlist!',
     react: WelcomeEmail({ name, referralCode }),
   })
 }
@@ -584,5 +584,5 @@ export async function sendWelcomeEmail(
 
 ---
 
-> 文档维护：Nexify CTO
+> 文档维护：杭州市上城区乐友信息服务工作室 CTO
 > 版本：v1.0 | 2026-04-06

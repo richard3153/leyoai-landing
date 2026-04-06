@@ -1,6 +1,6 @@
-# Nexify-Safety 发布传播计划
+# 杭州市上城区乐友信息服务工作室-Safety 发布传播计划
 
-> **Nexify 第一个垂直模型：AI 安全领域**  
+> **杭州市上城区乐友信息服务工作室 第一个垂直模型：AI 安全领域**  
 > 文档版本：v1.0 | 2026-04-06  
 > 作者：CMO
 
@@ -8,7 +8,7 @@
 
 ## 执行摘要
 
-**Nexify-Safety** 是 Nexify 首个垂直领域模型，专注于 AI 内容安全检测与防护。定位为开源、高性能、中文优先的 AI Safety 解决方案，目标成为 AI 安全领域的新标杆。
+**杭州市上城区乐友信息服务工作室-Safety** 是 杭州市上城区乐友信息服务工作室 首个垂直领域模型，专注于 AI 内容安全检测与防护。定位为开源、高性能、中文优先的 AI Safety 解决方案，目标成为 AI 安全领域的新标杆。
 
 **核心目标**：在 HuggingFace AI Safety 赛道建立品牌认知，首周下载量突破 500+，GitHub Stars 突破 100+。
 
@@ -63,7 +63,7 @@
 |------|------|
 | **优势** | 免费额度大（100K/day）、API 简单、11 类细粒度分类 |
 | **劣势** | 不开源、中文效果一般、无定制能力、数据出境问题 |
-| **Nexify 机会** | 开源替代、中文优化、本地部署、可定制 |
+| **杭州市上城区乐友信息服务工作室 机会** | 开源替代、中文优化、本地部署、可定制 |
 
 **2. Llama Guard 3**
 
@@ -71,7 +71,7 @@
 |------|------|
 | **优势** | 开源、支持多轮对话、工具调用检测、8B 参数量适中 |
 | **劣势** | 中文训练数据有限、英语场景优化、文档以英文为主 |
-| **Nexify 机会** | 中文场景深度优化、提供中文文档和示例、本地化部署指南 |
+| **杭州市上城区乐友信息服务工作室 机会** | 中文场景深度优化、提供中文文档和示例、本地化部署指南 |
 
 **3. Perspective API（Google Jigsaw）**
 
@@ -79,18 +79,18 @@
 |------|------|
 | **优势** | 成熟稳定、广泛使用、多语言支持 |
 | **劣势** | 不开源、API 依赖、中文检测效果欠佳、无企业级定制 |
-| **Nexify 机会** | 开源 + 私有部署 + 中文优化 |
+| **杭州市上城区乐友信息服务工作室 机会** | 开源 + 私有部署 + 中文优化 |
 
-### 1.3 Nexify-Safety 差异化定位
+### 1.3 杭州市上城区乐友信息服务工作室-Safety 差异化定位
 
 #### 定位声明
 
-> **Nexify-Safety：首个中文优先的开源 AI 安全模型**  
+> **杭州市上城区乐友信息服务工作室-Safety：首个中文优先的开源 AI 安全模型**  
 > 为中国企业和开发者提供开箱即用的 AI 内容安全解决方案
 
 #### 差异化优势矩阵
 
-| 维度 | OpenAI | Llama Guard | Nexify-Safety |
+| 维度 | OpenAI | Llama Guard | 杭州市上城区乐友信息服务工作室-Safety |
 |------|--------|-------------|---------------|
 | **开源** | ❌ | ✅ | ✅ |
 | **中文优先** | ⚠️ | ⚠️ | ✅ |
@@ -145,25 +145,25 @@
 
 - **现状**：依赖 OpenAI/Google API，按调用量付费，长期成本高
 - **担忧**：API 可能涨价、服务中断、数据隐私问题
-- **Nexify 方案**：开源免费，本地部署，成本可控
+- **杭州市上城区乐友信息服务工作室 方案**：开源免费，本地部署，成本可控
 
 #### 痛点 2：中文效果不佳
 
 - **现状**：主流安全模型英文训练为主，中文有害内容检测率低
 - **担忧**：中文场景误判率高，影响用户体验
-- **Nexify 方案**：中文数据优先训练，中文场景准确率领先
+- **杭州市上城区乐友信息服务工作室 方案**：中文数据优先训练，中文场景准确率领先
 
 #### 痛点 3：无法定制
 
 - **现状**：闭源 API 无法针对特定场景微调
 - **担忧**：行业特定有害内容无法有效检测
-- **Nexify 方案**：开源权重，支持 LoRA 微调，提供微调教程
+- **杭州市上城区乐友信息服务工作室 方案**：开源权重，支持 LoRA 微调，提供微调教程
 
 #### 痛点 4：数据合规风险
 
 - **现状**：使用海外 API 涉及数据出境问题
 - **担忧**：监管合规风险，数据泄露风险
-- **Nexify 方案**：本地部署，数据不出境，符合中国法规
+- **杭州市上城区乐友信息服务工作室 方案**：本地部署，数据不出境，符合中国法规
 
 ### 2.3 用户触达策略
 
@@ -206,7 +206,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Nexify-Safety                                          │
+│  杭州市上城区乐友信息服务工作室-Safety                                          │
 │  中文优先的开源 AI 内容安全模型                          │
 │  [Try in Spaces] [Download]                             │
 ├─────────────────────────────────────────────────────────┤
@@ -227,11 +227,11 @@
 
 #### 标题与标签优化
 
-**模型名称**：`Nexify/Safety-7B` / `Nexify/Safety-3B` / `Nexify/Safety-1.5B`
+**模型名称**：`杭州市上城区乐友信息服务工作室/Safety-7B` / `杭州市上城区乐友信息服务工作室/Safety-3B` / `杭州市上城区乐友信息服务工作室/Safety-1.5B`
 
 **标题格式**：
 ```
-Nexify-Safety: Open-Source Chinese-First AI Content Moderation Model
+杭州市上城区乐友信息服务工作室-Safety: Open-Source Chinese-First AI Content Moderation Model
 ```
 
 **标签（Tags）策略**：
@@ -257,7 +257,7 @@ library_name: transformers
 
 | 元素 | 内容要求 | 目的 |
 |------|----------|------|
-| **性能对比图表** | 横向对比 OpenAI Moderation、Llama Guard、Nexify-Safety | 一目了然展示优势 |
+| **性能对比图表** | 横向对比 OpenAI Moderation、Llama Guard、杭州市上城区乐友信息服务工作室-Safety | 一目了然展示优势 |
 | **Demo GIF** | 展示输入有害内容 → 输出检测结果 | 快速理解功能 |
 | **Quick Start** | 3-5 行代码即可运行 | 降低试用门槛 |
 | **Badge** | 下载量、License、Python 版本 | 建立信任 |
@@ -268,7 +268,7 @@ library_name: transformers
 #### README 结构
 
 ```markdown
-# Nexify-Safety
+# 杭州市上城区乐友信息服务工作室-Safety
 
 <p align="center">
   <img src="docs/assets/logo.png" width="200"/>
@@ -279,11 +279,11 @@ library_name: transformers
 </p>
 
 <p align="center">
-  <a href="https://huggingface.co/Nexify/Safety-7B">
+  <a href="https://huggingface.co/杭州市上城区乐友信息服务工作室/Safety-7B">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow"/>
   </a>
-  <a href="https://github.com/Nexify/Safety/stars">
-    <img src="https://img.shields.io/github/stars/Nexify/Safety?style=social"/>
+  <a href="https://github.com/杭州市上城区乐友信息服务工作室/Safety/stars">
+    <img src="https://img.shields.io/github/stars/杭州市上城区乐友信息服务工作室/Safety?style=social"/>
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
@@ -292,9 +292,9 @@ library_name: transformers
 
 ---
 
-## 🎯 为什么选择 Nexify-Safety？
+## 🎯 为什么选择 杭州市上城区乐友信息服务工作室-Safety？
 
-| 特性 | Nexify-Safety | OpenAI Moderation | Llama Guard |
+| 特性 | 杭州市上城区乐友信息服务工作室-Safety | OpenAI Moderation | Llama Guard |
 |------|--------------|-------------------|-------------|
 | 开源 | ✅ | ❌ | ✅ |
 | 中文优先 | ✅ | ⚠️ | ⚠️ |
@@ -309,7 +309,7 @@ library_name: transformers
 from transformers import pipeline
 
 # 加载模型
-moderation = pipeline("text-classification", model="Nexify/Safety-7B")
+moderation = pipeline("text-classification", model="杭州市上城区乐友信息服务工作室/Safety-7B")
 
 # 检测有害内容
 result = moderation("这是一个测试文本")
@@ -323,7 +323,7 @@ print(result)
 
 | 模型 | 中文准确率 | 英文准确率 | 推理速度 |
 |------|-----------|-----------|----------|
-| Nexify-Safety-7B | **96.2%** | 94.8% | 50ms |
+| 杭州市上城区乐友信息服务工作室-Safety-7B | **96.2%** | 94.8% | 50ms |
 | Llama Guard 3 | 82.3% | 95.1% | 45ms |
 | OpenAI Moderation | 79.5% | 94.2% | 100ms (API) |
 
@@ -361,11 +361,11 @@ Apache 2.0 - 商业友好，无使用限制
 
 \`\`\`bibtex
 @misc{nexify-safety-2026,
-  title={Nexify-Safety: An Open-Source Chinese-First AI Content Moderation Model},
-  author={Nexify Team},
+  title={杭州市上城区乐友信息服务工作室-Safety: An Open-Source Chinese-First AI Content Moderation Model},
+  author={杭州市上城区乐友信息服务工作室 Team},
   year={2026},
   publisher={HuggingFace},
-  url={https://huggingface.co/Nexify/Safety-7B}
+  url={https://huggingface.co/杭州市上城区乐友信息服务工作室/Safety-7B}
 }
 \`\`\`
 ```
@@ -376,9 +376,9 @@ Apache 2.0 - 商业友好，无使用限制
 
 | 内容类型 | 标题/主题 | 发布渠道 | 发布时间 |
 |----------|----------|----------|----------|
-| **技术博客 1** | 《AI 安全模型的诞生：我们如何训练 Nexify-Safety》 | 官网博客 + Medium | D-Day |
-| **技术博客 2** | 《Nexify-Safety vs OpenAI Moderation：一场中文安全检测的对决》 | 官网博客 | D+3 |
-| **技术博客 3** | 《从零开始：用 Nexify-Safety 构建内容审核系统》 | 官网博客 + DEV.to | D+7 |
+| **技术博客 1** | 《AI 安全模型的诞生：我们如何训练 杭州市上城区乐友信息服务工作室-Safety》 | 官网博客 + Medium | D-Day |
+| **技术博客 2** | 《杭州市上城区乐友信息服务工作室-Safety vs OpenAI Moderation：一场中文安全检测的对决》 | 官网博客 | D+3 |
+| **技术博客 3** | 《从零开始：用 杭州市上城区乐友信息服务工作室-Safety 构建内容审核系统》 | 官网博客 + DEV.to | D+7 |
 | **Twitter 线程** | 6-8 条推文展示模型能力、对比、Demo | Twitter/X | D-Day 09:00 |
 | **Demo 视频** | 60 秒展示核心功能 | YouTube + Twitter | D-Day |
 | **Demo GIF x5** | 不同场景的快速演示 | Twitter + README | D-Day |
@@ -393,7 +393,7 @@ Apache 2.0 - 商业友好，无使用限制
 HuggingFace 免费下载 ↓
 
 推文 2：
-Nexify-Safety 是首个专门为中文场景设计的开源内容安全模型
+杭州市上城区乐友信息服务工作室-Safety 是首个专门为中文场景设计的开源内容安全模型
 中文有害内容检测准确率 96.2%
 超越 OpenAI Moderation（79.5%）和 Llama Guard（82.3%）
 
@@ -417,8 +417,8 @@ Nexify-Safety 是首个专门为中文场景设计的开源内容安全模型
 [Demo GIF] 实时检测演示
 
 推文 8：
-🔗 HuggingFace: huggingface.co/Nexify/Safety-7B
-🔗 GitHub: github.com/Nexify/Safety
+🔗 HuggingFace: huggingface.co/杭州市上城区乐友信息服务工作室/Safety-7B
+🔗 GitHub: github.com/杭州市上城区乐友信息服务工作室/Safety
 Star ⭐ 支持！
 ```
 
@@ -488,10 +488,10 @@ Star ⭐ 支持！
 
 **发帖模板**：
 ```
-标题：[P] Nexify-Safety: Open-Source Chinese-First AI Content Moderation Model
+标题：[P] 杭州市上城区乐友信息服务工作室-Safety: Open-Source Chinese-First AI Content Moderation Model
 
 内容：
-We're excited to release Nexify-Safety, the first open-source AI safety model 
+We're excited to release 杭州市上城区乐友信息服务工作室-Safety, the first open-source AI safety model 
 optimized for Chinese content moderation.
 
 Key features:
@@ -513,7 +513,7 @@ Happy to answer questions!
 
 **标题格式**：
 ```
-Show HN: Nexify-Safety – Open-source AI safety model optimized for Chinese content
+Show HN: 杭州市上城区乐友信息服务工作室-Safety – Open-source AI safety model optimized for Chinese content
 ```
 
 **成功要素**：
@@ -710,7 +710,7 @@ D-7   D-3   D-1   D-Day  D+1   D+3   D+7
 2. 我们承认模型在 [场景] 存在局限性
 3. 我们已计划在下一版本中改进 [具体措施]
 
-Nexify-Safety 是一个持续迭代的项目，我们欢迎所有建设性反馈。
+杭州市上城区乐友信息服务工作室-Safety 是一个持续迭代的项目，我们欢迎所有建设性反馈。
 ```
 
 **Benchmark 数据错误回应模板**：
@@ -750,7 +750,7 @@ Nexify-Safety 是一个持续迭代的项目，我们欢迎所有建设性反馈
 
 ### 7.3 第二个模型预告
 
-在 Nexify-Safety 发布成功后（D+30），可启动第二个模型的预告，保持品牌热度：
+在 杭州市上城区乐友信息服务工作室-Safety 发布成功后（D+30），可启动第二个模型的预告，保持品牌热度：
 
 - 模型方向：根据 COMPANY.md 决定（法律/医疗/金融）
 - 预热策略：发布调研数据，征集社区意见
@@ -773,11 +773,11 @@ Nexify-Safety 是一个持续迭代的项目，我们欢迎所有建设性反馈
 **英文新闻稿框架**：
 
 ```
-Subject: Nexify-Safety: First Open-Source AI Safety Model Optimized for Chinese Content
+Subject: 杭州市上城区乐友信息服务工作室-Safety: First Open-Source AI Safety Model Optimized for Chinese Content
 
 Dear [Editor Name],
 
-I'm writing to share news about Nexify-Safety, the first open-source AI content 
+I'm writing to share news about 杭州市上城区乐友信息服务工作室-Safety, the first open-source AI content 
 moderation model specifically optimized for Chinese content - launching [DATE].
 
 Key highlights:
@@ -791,17 +791,17 @@ information or arrange an interview with our team.
 
 Best regards,
 [CMO Name]
-CMO, Nexify
+CMO, 杭州市上城区乐友信息服务工作室
 ```
 
 **中文新闻稿框架**：
 
 ```
-主题：Nexify-Safety 发布：首个中文优先的开源 AI 安全模型
+主题：杭州市上城区乐友信息服务工作室-Safety 发布：首个中文优先的开源 AI 安全模型
 
 尊敬的编辑：
 
-我们很高兴向您介绍 Nexify-Safety —— 首个专门为中文内容优化的开源 AI 安全模型。
+我们很高兴向您介绍 杭州市上城区乐友信息服务工作室-Safety —— 首个专门为中文内容优化的开源 AI 安全模型。
 
 核心亮点：
 - 中文有害内容检测准确率达 96.2%
@@ -813,12 +813,12 @@ CMO, Nexify
 
 此致，
 [CMO 姓名]
-Nexify 市场总监
+杭州市上城区乐友信息服务工作室 市场总监
 ```
 
 ### C. 性能对比数据表
 
-| 测试集 | Nexify-Safety | OpenAI Moderation | Llama Guard 3 |
+| 测试集 | 杭州市上城区乐友信息服务工作室-Safety | OpenAI Moderation | Llama Guard 3 |
 |--------|---------------|-------------------|---------------|
 | 中文有害内容检测 | **96.2%** | 79.5% | 82.3% |
 | 英文有害内容检测 | 94.8% | 94.2% | **95.1%** |
@@ -833,16 +833,16 @@ Nexify 市场总监
 
 | 模型版本 | 参数量 | 模型大小 | 推理速度 (A100) | 适用场景 |
 |----------|--------|----------|-----------------|----------|
-| Nexify-Safety-1.5B | 1.5B | ~3GB | ~15ms | 边缘设备、实时 API |
-| Nexify-Safety-3B | 3B | ~6GB | ~25ms | 生产部署、中等并发 |
-| Nexify-Safety-7B | 7B | ~14GB | ~50ms | 高精度场景、批量处理 |
+| 杭州市上城区乐友信息服务工作室-Safety-1.5B | 1.5B | ~3GB | ~15ms | 边缘设备、实时 API |
+| 杭州市上城区乐友信息服务工作室-Safety-3B | 3B | ~6GB | ~25ms | 生产部署、中等并发 |
+| 杭州市上城区乐友信息服务工作室-Safety-7B | 7B | ~14GB | ~50ms | 高精度场景、批量处理 |
 
 ---
 
-> 文档维护：Nexify CMO  
+> 文档维护：杭州市上城区乐友信息服务工作室 CMO  
 > 版本：v1.0 | 2026-04-06  
 > 下次更新：模型发布后复盘
 
 ---
 
-*Made with ❤️ by CMO · Nexify · 2026-04-06*
+*Made with ❤️ by CMO · 杭州市上城区乐友信息服务工作室 · 2026-04-06*

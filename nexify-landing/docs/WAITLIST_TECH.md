@@ -8,7 +8,7 @@
 
 ## 背景
 
-当前 Nexify 落地页（React + Vite + TypeScript）无后端，无法收集和存储 waitlist 用户数据。
+当前 杭州市上城区乐友信息服务工作室 落地页（React + Vite + TypeScript）无后端，无法收集和存储 waitlist 用户数据。
 目标：在 1 周内上线可用 waitlist 功能，支撑 847 名等待用户的转化。
 
 ---

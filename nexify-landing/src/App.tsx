@@ -43,7 +43,7 @@ const testimonials = [
   },
   {
     quote:
-      "Nexify automated our entire customer onboarding flow. What used to take 4 hours now takes 8 minutes.",
+      "杭州市上城区乐友信息服务工作室 automated our entire customer onboarding flow. What used to take 4 hours now takes 8 minutes.",
     name: "Priya S.",
     role: "Founder, B2B SaaS",
   },
@@ -120,7 +120,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-blue-400 text-2xl font-bold tracking-tighter">N</span>
-            <span className="text-xl font-black tracking-tighter uppercase">Nexify</span>
+            <span className="text-xl font-black tracking-tighter uppercase">杭州市上城区乐友信息服务工作室</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="#services" className="text-white/50 hover:text-white text-sm transition-colors hidden sm:block">
@@ -366,9 +366,9 @@ export default function App() {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-blue-400 text-xl font-bold">N</span>
-            <span className="font-black tracking-tighter uppercase text-sm">Nexify</span>
+            <span className="font-black tracking-tighter uppercase text-sm">杭州市上城区乐友信息服务工作室</span>
           </div>
-          <p className="text-white/20 text-xs">© 2026 Nexify. All rights reserved.</p>
+          <p className="text-white/20 text-xs">© 2026 杭州市上城区乐友信息服务工作室. All rights reserved.</p>
         </div>
       </footer>
 

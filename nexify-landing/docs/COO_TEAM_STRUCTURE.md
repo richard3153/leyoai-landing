@@ -3,7 +3,7 @@
 > 制定人：COO  
 > 版本：v1.0  
 > 日期：2026-04-06  
-> 适用范围：Nexify 运营团队
+> 适用范围：杭州市上城区乐友信息服务工作室 运营团队
 
 ---
 
@@ -165,7 +165,7 @@
 
 ```
 【评测完成汇报】
-- 模型：Nexify-Safety-7B
+- 模型：杭州市上城区乐友信息服务工作室-Safety-7B
 - 评测结果：通过/不通过
 - 核心指标：中文准确率 XX%，英文准确率 XX%
 - 边界问题：XX 个
@@ -255,7 +255,7 @@ COO 决策下一步
 
 ```
 启动 nexify-ops-qa
-任务：对 Nexify-Safety-7B 进行 SafetyBench 评测
+任务：对 杭州市上城区乐友信息服务工作室-Safety-7B 进行 SafetyBench 评测
 输入：模型 checkpoint 路径
 输出：评测报告
 时限：24h 内完成
@@ -265,7 +265,7 @@ COO 决策下一步
 
 ```
 启动 nexify-ops-release
-任务：HuggingFace 发布 Nexify-Safety-7B
+任务：HuggingFace 发布 杭州市上城区乐友信息服务工作室-Safety-7B
 输入：模型权重、Model Card、Demo
 输出：发布链接
 时限：D-Day 00:00 发布
