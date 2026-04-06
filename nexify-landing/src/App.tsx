@@ -4,54 +4,54 @@ import { supabase } from "./lib/supabase";
 const services = [
   {
     icon: "◈",
-    title: "Video Editing",
-    desc: "Short-form, long-form, AI captions, highlights — any style, any platform.",
+    title: "视频剪辑",
+    desc: "短视频、长视频、AI字幕、精彩片段——任何风格，任何平台。",
   },
   {
     icon: "◉",
-    title: "AI Automation",
-    desc: "Workflows, agents, integrations. If it can be automated, we automate it.",
+    title: "AI自动化",
+    desc: "工作流、智能体、集成。如果能自动化，我们就自动化。",
   },
   {
     icon: "◎",
-    title: "Creative Production",
-    desc: "Ads, content, presentations, visual assets. Production-quality output.",
+    title: "创意制作",
+    desc: "广告、内容、演示文稿、视觉素材。专业级输出。",
   },
   {
     icon: "◇",
-    title: "Research & Synthesis",
-    desc: "Deep dives, competitive analysis, data synthesis — any research task.",
+    title: "研究与整合",
+    desc: "深度调研、竞品分析、数据整合——任何研究任务。",
   },
   {
     icon: "◫",
-    title: "Software & Dev",
-    desc: "Build tools, scripts, apps, integrations. Ship from idea to product.",
+    title: "软件开发",
+    desc: "构建工具、脚本、应用、集成。从想法到产品。",
   },
   {
     icon: "◰",
-    title: "Everything Else",
-    desc: "If you can describe it, we can do it. No task too weird or too big.",
+    title: "其他一切",
+    desc: "如果你能描述，我们就能做。没有太奇怪或太大的任务。",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "I asked them to edit 50 YouTube shorts in a week. They delivered in 3 days. Unreal.",
+      "我让他们一周内剪辑50个YouTube短视频。他们3天就完成了。不可思议。",
     name: "Marcus T.",
-    role: "YouTube Creator, 2.4M subs",
+    role: "YouTube创作者，240万订阅",
   },
   {
     quote:
-      "杭州市上城区乐友信息服务工作室 automated our entire customer onboarding flow. What used to take 4 hours now takes 8 minutes.",
+      "杭州市上城区乐友信息服务工作室自动化了我们整个客户入职流程。原本需要4小时，现在只需8分钟。",
     name: "Priya S.",
-    role: "Founder, B2B SaaS",
+    role: "B2B SaaS创始人",
   },
   {
     quote:
-      "They turned a raw product demo into a cinematic launch video. Felt like having a whole studio on speed dial.",
+      "他们把原始产品演示变成了电影级发布视频。感觉就像随时待命的整个工作室。",
     name: "Jake W.",
-    role: "Indie Hacker",
+    role: "独立开发者",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function App() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) {
-      setError("Please enter a valid email address.");
+      setError("请输入有效的邮箱地址。");
       return;
     }
 
@@ -93,9 +93,9 @@ export default function App() {
       if (supabaseError) {
         // 检查是否是重复邮箱错误
         if (supabaseError.code === "23505") {
-          setError("This email is already on the waitlist!");
+          setError("此邮箱已在等待名单中！");
         } else {
-          setError("Something went wrong. Please try again.");
+          setError("出了点问题，请重试。");
           console.error("Supabase error:", supabaseError);
         }
         setLoading(false);
@@ -105,10 +105,10 @@ export default function App() {
       // 成功
       setReferralCode(data.referral_code);
       setSubmitted(true);
+
     } catch (err) {
-      setError("Network error. Please check your connection.");
-      console.error("Submit error:", err);
-    } finally {
+      console.error("Error:", err);
+      setError("出了点问题，请重试。");
       setLoading(false);
     }
   };
@@ -119,18 +119,18 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080808]/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-blue-400 text-2xl font-bold tracking-tighter">N</span>
-            <span className="text-xl font-black tracking-tighter uppercase">杭州市上城区乐友信息服务工作室</span>
+            <span className="text-blue-400 text-2xl font-bold tracking-tighter">乐</span>
+            <span className="text-xl font-black tracking-tighter">乐友信息</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="#services" className="text-white/50 hover:text-white text-sm transition-colors hidden sm:block">
-              Services
+              服务
             </a>
             <a href="#how" className="text-white/50 hover:text-white text-sm transition-colors hidden sm:block">
-              How It Works
+              工作流程
             </a>
             <a href="#waitlist" className="bg-blue-500 hover:bg-blue-400 text-black font-bold text-sm px-5 py-2 transition-colors">
-              Join Waitlist
+              加入等待名单
             </a>
           </div>
         </div>
@@ -142,36 +142,36 @@ export default function App() {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 mb-10">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-              <span className="text-white/60 text-xs tracking-wider uppercase">Launching Soon</span>
+              <span className="text-white/60 text-xs tracking-wider uppercase">即将上线</span>
             </div>
-            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.88] mb-8">
-              Anything<br />
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.88] mb-8">
+              万事皆可<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                Possible.
+                使命必达。
               </span>
             </h1>
             <p className="text-white/50 text-lg sm:text-xl leading-relaxed max-w-2xl mb-12">
-              One service. Any task. Video editing, AI automation, creative production, dev work — if you can describe it, we make it happen. No limits, no gatekeeping.
+              一个服务，任何任务。视频剪辑、AI自动化、创意制作、开发工作——如果你能描述，我们就能实现。无限可能，不设门槛。
             </p>
             <div className="flex flex-col sm:flex-row gap-4" id="waitlist">
               <a
                 href="#waitlist-form"
                 className="bg-white text-black font-black text-base px-8 py-4 hover:bg-blue-400 transition-colors text-center"
               >
-                Get Early Access ↓
+                抢先体验 ↓
               </a>
               <a
                 href="#services"
                 className="border border-white/20 text-white/70 font-bold text-base px-8 py-4 hover:border-white/50 hover:text-white transition-colors text-center"
               >
-                See What We Do
+                了解我们的服务
               </a>
             </div>
           </div>
 
           {/* Decorative grid */}
           <div className="mt-24 grid grid-cols-3 gap-px bg-white/5 border border-white/5">
-            {["500+ Tasks Completed", "Avg. 24h Delivery", "4.9 / 5 Rating"].map((stat, i) => (
+            {["500+ 任务完成", "平均24小时交付", "4.9 / 5 评分"].map((stat, i) => (
               <div key={i} className="bg-[#0d0d0d] p-8 text-center">
                 <div className="text-3xl font-black tracking-tight mb-1">
                   {["500+", "< 24h", "4.9"][i]}
@@ -188,12 +188,12 @@ export default function App() {
         <div className="flex gap-12 animate-marquee whitespace-nowrap">
           {[...Array(3)].map((_, i) => (
             <span key={i} className="flex gap-12 text-white/20 text-sm tracking-[0.3em] uppercase font-medium">
-              <span>Video Editing</span><span>×</span>
-              <span>AI Automation</span><span>×</span>
-              <span>Creative Production</span><span>×</span>
-              <span>Research</span><span>×</span>
-              <span>Software Dev</span><span>×</span>
-              <span>Everything Else</span><span>×</span>
+              <span>视频剪辑</span><span>×</span>
+              <span>AI自动化</span><span>×</span>
+              <span>创意制作</span><span>×</span>
+              <span>研究</span><span>×</span>
+              <span>软件开发</span><span>×</span>
+              <span>其他一切</span><span>×</span>
             </span>
           ))}
         </div>
@@ -203,9 +203,9 @@ export default function App() {
       <section id="services" className="py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-20">
-            <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-4">What We Do</p>
+            <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-4">我们的服务</p>
             <h2 className="text-5xl sm:text-6xl font-black tracking-tighter">
-              No task is<br />too big or too weird.
+              没有任务<br />太大或太奇怪。
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
@@ -227,27 +227,27 @@ export default function App() {
       <section id="how" className="py-32 px-6 bg-[#0d0d0d] border-y border-white/5">
         <div className="max-w-6xl mx-auto">
           <div className="mb-20">
-            <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-4">The Process</p>
+            <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-4">工作流程</p>
             <h2 className="text-5xl sm:text-6xl font-black tracking-tighter">
-              Three steps.<br />Zero friction.
+              三步搞定。<br />零阻力。
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 gap-px bg-white/5">
             {[
               {
                 num: "01",
-                title: "Describe Your Task",
-                desc: "Tell us what you need. Be as detailed or as loose as you want. No forms, no dropdowns — just talk.",
+                title: "描述你的任务",
+                desc: "告诉我们你需要什么。详细或粗略都可以。没有表单，没有下拉菜单——直接说。",
               },
               {
                 num: "02",
-                title: "We Match & Execute",
-                desc: "Our team and AI systems get to work. You'll get updates, previews, and direct communication throughout.",
+                title: "我们匹配并执行",
+                desc: "我们的团队和AI系统开始工作。你会收到更新、预览，全程直接沟通。",
               },
               {
                 num: "03",
-                title: "Review & Iterate",
-                desc: "We don't stop until it's right. Fast revisions, unlimited feedback cycles until you're 100% satisfied.",
+                title: "审阅并迭代",
+                desc: "直到满意为止。快速修改，无限反馈循环，直到你100%满意。",
               },
             ].map((step, i) => (
               <div key={i} className="bg-[#0d0d0d] p-10">
@@ -263,7 +263,7 @@ export default function App() {
       {/* Testimonials */}
       <section className="py-32 px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-12">Early Access Voices</p>
+          <p className="text-blue-400 text-xs tracking-[0.3em] uppercase font-medium mb-12">早期用户反馈</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div
@@ -288,13 +288,13 @@ export default function App() {
           <div className="max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 border border-blue-500/20 rounded-full px-4 py-1.5 mb-10">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-              <span className="text-blue-400 text-xs tracking-wider uppercase">Waitlist Open</span>
+              <span className="text-blue-400 text-xs tracking-wider uppercase">等待名单开放</span>
             </div>
             <h2 className="text-5xl sm:text-7xl font-black tracking-tighter mb-6">
-              Be first.<br />Do anything.
+              抢先体验。<br />无所不能。
             </h2>
             <p className="text-white/50 text-lg mb-12 max-w-xl mx-auto">
-              Join the waitlist and get priority access + 20% off your first task. No spam, ever. Unsubscribe anytime.
+              加入等待名单，抢先体验 + 首单8折优惠。绝不发送垃圾邮件，随时退订。
             </p>
 
             {!submitted ? (
@@ -317,7 +317,7 @@ export default function App() {
                   disabled={loading}
                   className="bg-blue-500 hover:bg-blue-400 text-black font-black text-sm px-8 py-4 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? "Joining..." : "Join Waitlist"}
+                  {loading ? "加入中..." : "加入等待名单"}
                 </button>
               </form>
             ) : (
@@ -327,12 +327,12 @@ export default function App() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-white font-bold">You're on the list! 🎉</p>
-                <p className="text-white/40 text-sm">We'll reach out when we open the doors.</p>
+                <p className="text-white font-bold">你已成功加入！🎉</p>
+                <p className="text-white/40 text-sm">开放时会联系你。</p>
                 
                 {referralCode && (
                   <div className="mt-4 p-4 bg-white/5 border border-blue-500/20 rounded-lg w-full max-w-md">
-                    <p className="text-white/60 text-xs mb-2">Your referral code:</p>
+                    <p className="text-white/60 text-xs mb-2">你的邀请码：</p>
                     <div className="flex items-center justify-between gap-3">
                       <code className="text-blue-400 font-mono font-bold text-lg">{referralCode}</code>
                       <button
@@ -342,10 +342,10 @@ export default function App() {
                         }}
                         className="text-white/40 hover:text-white text-xs px-3 py-1 border border-white/20 rounded hover:border-white/40 transition-colors"
                       >
-                        Copy Link
+                        复制链接
                       </button>
                     </div>
-                    <p className="text-white/30 text-xs mt-2">Share this link to earn rewards!</p>
+                    <p className="text-white/30 text-xs mt-2">分享此链接获得奖励！</p>
                   </div>
                 )}
               </div>
@@ -355,7 +355,7 @@ export default function App() {
               {Array.from({ length: 6 }, (_, i) => (
                 <span key={i} className="inline-block w-2 h-2 rounded-full bg-white/10 mr-2 mb-2 align-middle" />
               ))}
-              847 people already on the waitlist
+              已有847人加入等待名单
             </p>
           </div>
         </div>
@@ -365,10 +365,10 @@ export default function App() {
       <footer className="border-t border-white/5 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-blue-400 text-xl font-bold">N</span>
-            <span className="font-black tracking-tighter uppercase text-sm">杭州市上城区乐友信息服务工作室</span>
+            <span className="text-blue-400 text-xl font-bold">乐</span>
+            <span className="font-black tracking-tighter uppercase text-sm">乐友信息</span>
           </div>
-          <p className="text-white/20 text-xs">© 2026 杭州市上城区乐友信息服务工作室. All rights reserved.</p>
+          <p className="text-white/20 text-xs">© 2026 杭州市上城区乐友信息服务工作室。保留所有权利。</p>
         </div>
       </footer>
 
