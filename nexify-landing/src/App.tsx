@@ -19,6 +19,14 @@ const STATS = [
 
 const SERVICES = [
   {
+    icon: "🛡️",
+    title: "AI 安全助手",
+    desc: "中英双语安全问答，覆盖9大安全领域",
+    gradient: "from-green-500 to-teal-500",
+    badge: "新品",
+    link: "https://huggingface.co/spaces/FFZwai/nexify-safety-assistant",
+  },
+  {
     icon: "🎬",
     title: "视频剪辑",
     desc: "短视频、长视频、AI字幕，一站式制作",
@@ -47,12 +55,6 @@ const SERVICES = [
     title: "软件开发",
     desc: "应用开发、工具构建、API 集成",
     gradient: "from-indigo-500 to-purple-500",
-  },
-  {
-    icon: "✨",
-    title: "更多服务",
-    desc: "任何你能想到的任务，我们都能完成",
-    gradient: "from-rose-500 to-pink-500",
   },
 ];
 
@@ -206,10 +208,13 @@ function HeroSection() {
             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
           </a>
           <a
-            href="#services"
-            className="border border-white/20 text-white/80 font-medium text-base px-10 py-4 rounded-full hover:bg-white/5 hover:border-white/30 transition-all duration-300 flex items-center justify-center"
+            href="https://huggingface.co/spaces/FFZwai/nexify-safety-assistant"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group border border-purple-500/50 text-purple-400 font-bold text-base px-10 py-4 rounded-full hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            了解更多
+            🛡️ 在线演示
+            <span className="group-hover:translate-x-1 transition-transform duration-200">↗</span>
           </a>
         </div>
       </div>
@@ -258,20 +263,29 @@ function ServicesSection() {
         {/* 服务卡片网格 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SERVICES.map((s) => (
-            <div
+            <a
               key={s.title}
-              className="group bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+              href={s.link || "#services"}
+              target={s.link ? "_blank" : undefined}
+              rel={s.link ? "noopener noreferrer" : undefined}
+              className="group bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer relative"
             >
+              {s.badge && (
+                <span className="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  {s.badge}
+                </span>
+              )}
               <div
                 className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
               >
                 {s.icon}
               </div>
-              <h3 className="text-lg font-bold mb-2 group-hover:text-purple-300 transition-colors">
+              <h3 className="text-lg font-bold mb-2 group-hover:text-purple-300 transition-colors flex items-center gap-2">
                 {s.title}
+                {s.link && <span className="text-xs text-white/40 group-hover:translate-x-1 transition-transform">↗</span>}
               </h3>
               <p className="text-white/45 text-sm leading-relaxed">{s.desc}</p>
-            </div>
+            </a>
           ))}
         </div>
       </div>
