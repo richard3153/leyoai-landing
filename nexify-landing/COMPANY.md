@@ -1,10 +1,20 @@
-# 杭州市上城区乐友信息服务工作室 - 公司运营手册 v1.0
+# 杭州市上城区乐友信息服务工作室 - 公司运营手册 v2.0
 
 ## 公司概览
 - **公司名**: 杭州市上城区乐友信息服务工作室（个体工商户）
-- **使命**: Democratize AI — 让每个垂直领域都能拥有专业级AI模型
-- **定位**: AI垂直模型研发与发布平台
-- **愿景**: 成为全球最大的垂直AI模型 marketplace，覆盖100+行业领域
+- **品牌**: Nexify
+- **定位**: MaaS (Model as a Service) 平台
+- **使命**: 让 AI 模型服务每个人
+- **愿景**: 成为全球领先的垂直领域 AI 模型服务商
+
+## 四大产品线
+
+| 产品 | 名称 | 状态 | 说明 |
+|------|------|------|------|
+| 🛡️ Cyber Model | 网络安全模型 | ✅ 已上线 | 威胁检测、漏洞分析、安全合规 |
+| 🎬 Video Model | 视频生成模型 | 🔄 训练中 | 智能剪辑、特效生成 |
+| ⚙️ Flow Model | 流程自动化模型 | 📋 规划中 | 流程编排、任务调度 |
+| 📊 Analytics Model | 数据分析模型 | 📋 规划中 | 数据可视化、趋势预测 |
 
 ## 组织架构
 
@@ -13,39 +23,26 @@ CEO（你 / AI Agent）
 ├── COO (运营总监)
 ├── CFO (财务总监)
 ├── CTO (技术总监)
-│   ├── Tech Lead (技术负责人)
-│   └── Dev Agent x2 (开发工程师)
 ├── CPO (产品总监)
 ├── CMO (市场总监)
-│   └── Marketing Agent (市场执行)
-├── CSO (商务总监)
-│   └── Sales Agent (销售执行)
-└── HR & Ops (人力资源与运营)
+└── CSO (商务总监)
 ```
 
-## 核心决策（CEO 2026-04-05）
-1. **定价**: 免费试用 + 分级定价
-2. **接单**: 根据产能设置上限
-3. **技术栈**: Supabase（Waitlist + Auth + DB）
-4. **核心产品**: AI垂直领域模型研发 → HuggingFace + GitHub 发布 → 推广
-5. **第一个模型领域**: 🛡️ **AI 安全**（AI Safety）
+## 技术栈
+- **前端**: React + Vite + TypeScript + TailwindCSS
+- **部署**: Vercel + GitHub Actions
+- **模型**: Qwen2.5 + LoRA 微调
+- **数据库**: Supabase
+- **AI Space**: HuggingFace Spaces (Streamlit)
 
 ## 合规原则
 - 所有模型需确保训练数据版权合规
 - 发布前完成专利自查
 - 遵守 HuggingFace/GitHub 平台政策及当地法规
 
-## 决策原则
-1. 快速行动，小步迭代
-2. 用户反馈 > 假设
-3. 合规优先，发布前必须审查
-4. 透明度：所有决策需有记录
-
-## 当前项目
-- 乐友信息 落地页（已上线）
-- 等待名单系统搭建
-- 产品 MVP 开发
-
-## 关键指标
-- Waitlist: 847人（截至 2026-04-05）
-- 目标：1000人 waitlist 后开放公测
+## 关键链接
+- 官网: https://dist-sigma-woad.vercel.app/
+- GitHub: https://github.com/richard3153/nexify-landing
+- Cyber Model: https://huggingface.co/spaces/FFZwai/nexify-safety-assistant
+- 训练模型: https://huggingface.co/FFZwai/qwen2.5-1.5b-safety-lora
+- Supabase: https://drbeynfabvbydukjajrz.supabase.co
