@@ -23,7 +23,21 @@ const PRODUCTS = [
     badge: "已上线",
     badgeColor: "bg-green-500",
     features: ["威胁情报分析", "漏洞扫描检测", "合规自动审查", "应急响应建议"],
-    link: "https://huggingface.co/spaces/FFZwai/nexify-safety-assistant",
+    models: [
+      {
+        name: "AI 安全助手",
+        tag: "通用安全",
+        icon: "🔒",
+        link: "https://huggingface.co/spaces/FFZwai/ai-safety-chat",
+      },
+      {
+        name: "Nexify 安全问答助手",
+        tag: "垂直领域",
+        icon: "🛡️",
+        link: "https://huggingface.co/spaces/FFZwai/nexify-safety-assistant",
+      },
+    ],
+    link: null,
   },
   {
     id: "video",
@@ -283,7 +297,27 @@ export default function App() {
                       </div>
                     ))}
                   </div>
-                  {p.link ? (
+                  {/* 子模型列表 */}
+                  {p.models ? (
+                    <div className="space-y-2 mb-4">
+                      {p.models.map(m => (
+                        <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
+                          className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-indigo-50 transition-colors group">
+                          <span className="text-xl shrink-0">{m.icon}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">{m.name}</p>
+                            <p className="text-xs text-gray-400">{m.tag}</p>
+                          </div>
+                          <span className="text-indigo-500 text-xs font-bold shrink-0">体验 →</span>
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
+                  {p.models ? (
+                    <span className="inline-flex items-center gap-2 text-green-600 text-sm font-semibold">
+                      ✅ 已上线
+                    </span>
+                  ) : p.link ? (
                     <a href={p.link} target="_blank" rel="noreferrer"
                       className="inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm hover:gap-3 transition-all">
                       立即体验 →
