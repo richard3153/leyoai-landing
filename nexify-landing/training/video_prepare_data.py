@@ -18,7 +18,10 @@ from pathlib import Path
 from tqdm import tqdm
 
 # ── 配置 ──────────────────────────────────────────────
-OUTPUT_DIR = "./data"
+# 项目根目录（training/ 的上一级）
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "data")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "video_train.jsonl")

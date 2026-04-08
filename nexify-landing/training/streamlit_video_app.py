@@ -25,8 +25,11 @@ PRIMARY = "#6366F1"   # Nexify 紫
 ACCENT  = "#10B981"   # 绿色
 
 # ── 模型路径 ──────────────────────────────────────────
-BASE_MODEL = "Qwen/Qwen2-VL-2B-Instruct"  # 基础模型（HuggingFace）
-LOCAL_LORA = "./lora_adapter"              # LoRA adapter（训练完成后本地加载）
+BASE_MODEL = "Qwen/Qwen2-VL-2B-Instruct"   # 基础模型（HuggingFace）
+# LoRA adapter 路径（PROJECT_ROOT/output/video_model/lora_adapter）
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+LOCAL_LORA = os.path.join(PROJECT_ROOT, "output", "video_model", "lora_adapter")
 
 # ── Session 状态初始化 ─────────────────────────────────
 @st.cache_resource

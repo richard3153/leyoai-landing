@@ -14,9 +14,12 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 
 # ── 配置 ──────────────────────────────────────────────
-MODEL_DIR = "./models/Qwen2-VL-2B-Instruct"
-DATA_PATH = "./data/video_train.jsonl"
-OUTPUT_DIR = "./output/video_model"
+# 项目根目录（training/ 的上一级）
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+MODEL_DIR = os.path.join(PROJECT_ROOT, "models", "Qwen2-VL-2B-Instruct")
+DATA_PATH = os.path.join(PROJECT_ROOT, "data", "video_train.jsonl")
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output", "video_model")
 LORA_R = 16
 LORA_ALPHA = 32
 LORA_DROPOUT = 0.05

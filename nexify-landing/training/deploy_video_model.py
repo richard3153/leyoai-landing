@@ -24,9 +24,12 @@ os.environ["HF_TOKEN"] = HF_TOKEN
 
 REPO_ID = "FFZwai/nexify-video-safety-lora"
 SPACE_ID = "FFZwai/nexify-video-safety-assistant"
-MODEL_DIR = "./models/Qwen2-VL-2B-Instruct"
-LORA_DIR = "./output/video_model/lora_adapter"
-DATA_FILE = "./data/video_train.jsonl"
+# 项目根目录（training/ 的上一级）
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+MODEL_DIR = os.path.join(PROJECT_ROOT, "models", "Qwen2-VL-2B-Instruct")
+LORA_DIR = os.path.join(PROJECT_ROOT, "output", "video_model", "lora_adapter")
+DATA_FILE = os.path.join(PROJECT_ROOT, "data", "video_train.jsonl")
 
 def run_cmd(cmd, desc=""):
     print(f"\n{'='*55}")

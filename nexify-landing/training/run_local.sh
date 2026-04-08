@@ -7,6 +7,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$SCRIPT_DIR"
 
 echo "============================================"
@@ -14,7 +15,7 @@ echo "  🎬 Nexify Video Model - 本地运行"
 echo "============================================"
 
 # 检查模型文件
-MODEL_DIR="./models/Qwen2-VL-2B-Instruct"
+MODEL_DIR="${PROJECT_DIR}/models/Qwen2-VL-2B-Instruct"
 if [ ! -d "$MODEL_DIR" ]; then
     echo "❌ 模型文件不存在: $MODEL_DIR"
     echo "   请先运行模型下载"
@@ -22,7 +23,7 @@ if [ ! -d "$MODEL_DIR" ]; then
 fi
 
 # 检查 LoRA adapter
-LORA_DIR="./output/video_model/lora_adapter"
+LORA_DIR="${PROJECT_DIR}/output/video_model/lora_adapter"
 if [ -d "$LORA_DIR" ]; then
     echo "✅ 发现 LoRA adapter: $LORA_DIR"
     echo "   加载微调版模型"
