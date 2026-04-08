@@ -35,3 +35,28 @@ dist-ssr
 
 # Vercel
 .vercel
+
+# 模型文件（太大，不进 Git）
+models/
+output/
+*.safetensors
+*.bin
+!src/**/*.safetensors
+
+# 数据
+data/
+*.jsonl
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Mac
+.DS_Store
+
+# 内存/Token 文件
+memory/
+MEMORY.md
+
