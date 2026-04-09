@@ -33,6 +33,22 @@ const BRAND_NAME = "Nexify";
 const BRAND_TAGLINE = "Model as a Service";
 
 // ============================================================
+// 图片资源 (使用 Unsplash 和免费图库)
+// ============================================================
+const IMAGES = {
+  hero: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80", // AI 神经网络
+  cyber: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80", // 网络安全
+  video: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80", // 视频制作
+  flow: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 数据流程
+  analytics: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 数据分析
+  case1: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", // 金融
+  case2: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80", // 短视频
+  case3: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80", // 电商
+  tutorial: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80", // 学习
+  cta: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80", // 科技背景
+};
+
+// ============================================================
 // 4大产品线
 // ============================================================
 const PRODUCTS: Product[] = [
@@ -42,6 +58,7 @@ const PRODUCTS: Product[] = [
     nameCn: "网络安全模型",
     desc: "智能威胁检测、漏洞分析、安全合规检查",
     icon: "🛡️",
+    image: IMAGES.cyber,
     color: "from-emerald-500 to-teal-600",
     badge: "已上线",
     badgeColor: "bg-emerald-500",
@@ -57,6 +74,7 @@ const PRODUCTS: Product[] = [
     nameCn: "视频内容模型",
     desc: "视频安全分析、内容理解、智能审核",
     icon: "🎬",
+    image: IMAGES.video,
     color: "from-violet-500 to-purple-600",
     badge: "已上线",
     badgeColor: "bg-violet-500",
@@ -72,6 +90,7 @@ const PRODUCTS: Product[] = [
     nameCn: "流程自动化模型",
     desc: "业务流程理解、任务自动化执行",
     icon: "⚙️",
+    image: IMAGES.flow,
     color: "from-blue-500 to-cyan-600",
     badge: "开发中",
     badgeColor: "bg-blue-500",
@@ -83,6 +102,7 @@ const PRODUCTS: Product[] = [
     nameCn: "数据分析模型",
     desc: "深度数据分析、趋势预测、洞察报告",
     icon: "📊",
+    image: IMAGES.analytics,
     color: "from-orange-500 to-amber-600",
     badge: "规划中",
     badgeColor: "bg-slate-400",
@@ -95,24 +115,27 @@ const PRODUCTS: Product[] = [
 // ============================================================
 const CASES = [
   {
-    title: "网络安全威胁检测",
+    title: "金融安全威胁检测",
     industry: "金融科技",
     icon: "🏦",
-    desc: "某银行使用 Cyber Model 实现威胁情报自动分析，安全响应时间缩短 80%",
+    image: IMAGES.case1,
+    desc: "某银行使用 Cyber Model 实现威胁情报自动分析，安全响应时间缩短 80%，准确率达 95%",
     metrics: [{ label: "响应时间", value: "-80%" }, { label: "准确率", value: "95%" }],
   },
   {
     title: "视频内容安全审核",
     industry: "短视频平台",
     icon: "📱",
-    desc: "某短视频平台使用 Video Model 进行内容安全审核，日均处理 10 万+视频",
+    image: IMAGES.case2,
+    desc: "某短视频平台使用 Video Model 进行内容安全审核，日均处理 10 万+视频，误判率低于 2%",
     metrics: [{ label: "日处理量", value: "10万+" }, { label: "误判率", value: "<2%" }],
   },
   {
     title: "业务流程自动化",
     industry: "电商",
     icon: "🛒",
-    desc: "某电商平台使用 Flow Model 实现订单处理自动化，人工干预减少 60%",
+    image: IMAGES.case3,
+    desc: "某电商平台使用 Flow Model 实现订单处理自动化，人工干预减少 60%，效率提升 150%",
     metrics: [{ label: "效率提升", value: "+150%" }, { label: "成本降低", value: "-40%" }],
   },
 ];
@@ -127,6 +150,7 @@ const TUTORIALS = [
     time: "5 min",
     level: "入门",
     icon: "🚀",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80",
   },
   {
     title: "本地部署模型指南",
@@ -134,6 +158,7 @@ const TUTORIALS = [
     time: "15 min",
     level: "进阶",
     icon: "💻",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80",
   },
   {
     title: "API 集成最佳实践",
@@ -141,6 +166,7 @@ const TUTORIALS = [
     time: "10 min",
     level: "进阶",
     icon: "🔌",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80",
   },
   {
     title: "自定义模型微调",
@@ -148,6 +174,7 @@ const TUTORIALS = [
     time: "30 min",
     level: "高级",
     icon: "🎯",
+    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&q=80",
   },
 ];
 
@@ -247,6 +274,7 @@ function WaitlistForm() {
 export default function App() {
   const [mounted, setMounted] = useState(false);
   const [activeCase, setActiveCase] = useState(0);
+  const [activeProduct, setActiveProduct] = useState<string | null>(null);
   
   useEffect(() => { setMounted(true); }, []);
 
@@ -284,11 +312,20 @@ export default function App() {
 
       {/* ── Hero 区域 ── */}
       <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-        {/* 背景效果 */}
+        {/* 背景图片 */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950" />
+          <img 
+            src={IMAGES.hero} 
+            alt="AI Background" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/80 to-slate-950" />
+        </div>
+
+        {/* 装饰光晕 */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/30 rounded-full blur-3xl" />
         </div>
 
         {/* 内容 */}
@@ -349,22 +386,35 @@ export default function App() {
             <p className="text-slate-400 text-lg">深耕垂直领域，打造专业级 AI 模型</p>
           </div>
 
-          {/* 产品网格 - 2x2 布局 */}
+          {/* 产品网格 - 2x2 布局 + 图片 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {PRODUCTS.map((p, idx) => (
+            {PRODUCTS.map((p) => (
               <div key={p.id}
-                className={`group relative bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-3xl border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-500 ${idx < 2 ? 'lg:aspect-[1.5/1]' : ''}`}>
+                className="group relative bg-slate-900/50 rounded-3xl border border-white/5 overflow-hidden hover:border-white/20 transition-all duration-500"
+                onMouseEnter={() => setActiveProduct(p.id)}
+                onMouseLeave={() => setActiveProduct(null)}>
                 
-                {/* 产品头部 */}
+                {/* 产品图片背景 */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={p.image} 
+                    alt={p.name}
+                    className={`w-full h-full object-cover transition-all duration-700 ${activeProduct === p.id ? 'opacity-40 scale-105' : 'opacity-20'}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/40" />
+                </div>
+                
+                {/* 顶部渐变条 */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.color}`} />
                 
-                <div className="p-8">
+                {/* 内容 */}
+                <div className="relative p-8">
                   {/* 图标和状态 */}
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center text-3xl shadow-lg">
+                    <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-3xl">
                       {p.icon}
                     </div>
-                    <span className={`${p.badgeColor}/20 text-xs font-bold px-3 py-1.5 rounded-full ${p.badgeColor.replace('bg-', 'text-')}`}>
+                    <span className={`${p.badgeColor}/20 text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${p.badgeColor.replace('bg-', 'text-')}`}>
                       {p.badge}
                     </span>
                   </div>
@@ -376,8 +426,8 @@ export default function App() {
 
                   {/* 特性标签 */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {p.features.slice(0, 3).map(f => (
-                      <span key={f} className="text-xs bg-white/5 text-slate-300 px-3 py-1.5 rounded-lg">
+                    {p.features.map(f => (
+                      <span key={f} className="text-xs bg-white/10 backdrop-blur-sm text-slate-300 px-3 py-1.5 rounded-lg">
                         {f}
                       </span>
                     ))}
@@ -388,7 +438,7 @@ export default function App() {
                     <div className="space-y-2">
                       {p.models.map(m => (
                         <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
-                          className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group/item">
+                          className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all group/item">
                           <span className="text-xl">{m.icon}</span>
                           <div className="flex-1">
                             <p className="font-semibold text-sm group-hover/item:text-indigo-400 transition-colors">{m.name}</p>
@@ -419,12 +469,13 @@ export default function App() {
       <section className="py-16 px-6 border-y border-white/5 bg-slate-900/50">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { label: "模型数量", value: "4+", suffix: "" },
-            { label: "服务领域", value: "9+", suffix: "" },
-            { label: "训练数据", value: "5K+", suffix: "" },
-            { label: "日均调用", value: "10K+", suffix: "" },
+            { label: "模型数量", value: "4+", icon: "🤖" },
+            { label: "服务领域", value: "9+", icon: "🎯" },
+            { label: "训练数据", value: "5K+", icon: "📊" },
+            { label: "日均调用", value: "10K+", icon: "⚡" },
           ].map(s => (
-            <div key={s.label}>
+            <div key={s.label} className="group">
+              <div className="text-3xl mb-2">{s.icon}</div>
               <div className="text-4xl font-black bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
                 {s.value}
               </div>
@@ -442,17 +493,17 @@ export default function App() {
             <p className="text-slate-400 text-lg">真实场景，真实价值</p>
           </div>
 
-          {/* 案例切换 */}
-          <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+          {/* 案例切换 - 横向卡片 */}
+          <div className="flex flex-col lg:flex-row gap-8">
             {/* 案例列表 */}
             <div className="lg:w-1/3 space-y-4">
               {CASES.map((c, idx) => (
                 <button key={c.title}
                   onClick={() => setActiveCase(idx)}
-                  className={`w-full text-left p-6 rounded-2xl border transition-all ${
+                  className={`w-full text-left p-5 rounded-2xl border transition-all ${
                     activeCase === idx 
-                      ? 'bg-white/5 border-indigo-500/50' 
-                      : 'bg-transparent border-white/5 hover:border-white/10'
+                      ? 'bg-indigo-600/20 border-indigo-500/50' 
+                      : 'bg-slate-900/50 border-white/5 hover:border-white/10'
                   }`}>
                   <div className="flex items-center gap-4">
                     <span className="text-3xl">{c.icon}</span>
@@ -466,24 +517,35 @@ export default function App() {
             </div>
 
             {/* 案例详情 */}
-            <div className="lg:flex-1 bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-3xl border border-white/5 p-8 lg:p-12">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-5xl">{CASES[activeCase].icon}</span>
-                <div>
-                  <h3 className="text-2xl font-bold">{CASES[activeCase].title}</h3>
-                  <p className="text-slate-400">{CASES[activeCase].industry}</p>
-                </div>
-              </div>
-              <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                {CASES[activeCase].desc}
-              </p>
-              <div className="flex gap-8">
-                {CASES[activeCase].metrics.map(m => (
-                  <div key={m.label}>
-                    <div className="text-3xl font-black text-indigo-400">{m.value}</div>
-                    <div className="text-sm text-slate-500 mt-1">{m.label}</div>
+            <div className="lg:flex-1 relative rounded-3xl overflow-hidden">
+              {/* 背景图片 */}
+              <img 
+                src={CASES[activeCase].image} 
+                alt={CASES[activeCase].title}
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70" />
+              
+              {/* 内容 */}
+              <div className="relative p-8 lg:p-12">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-5xl">{CASES[activeCase].icon}</span>
+                  <div>
+                    <h3 className="text-2xl font-bold">{CASES[activeCase].title}</h3>
+                    <p className="text-slate-400">{CASES[activeCase].industry}</p>
                   </div>
-                ))}
+                </div>
+                <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                  {CASES[activeCase].desc}
+                </p>
+                <div className="flex gap-8">
+                  {CASES[activeCase].metrics.map(m => (
+                    <div key={m.label} className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+                      <div className="text-3xl font-black text-indigo-400">{m.value}</div>
+                      <div className="text-sm text-slate-500 mt-1">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -501,25 +563,37 @@ export default function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TUTORIALS.map((t, idx) => (
               <div key={t.title}
-                className="group bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-2xl border border-white/5 p-6 hover:border-indigo-500/30 transition-all cursor-pointer">
-                {/* 序号 */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-4xl font-black text-slate-700">{String(idx + 1).padStart(2, '0')}</span>
-                  <span className="text-2xl">{t.icon}</span>
+                className="group relative rounded-2xl border border-white/5 overflow-hidden hover:border-indigo-500/30 transition-all cursor-pointer">
+                
+                {/* 图片背景 */}
+                <div className="h-32 relative overflow-hidden">
+                  <img 
+                    src={t.image} 
+                    alt={t.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
+                  {/* 序号 */}
+                  <div className="absolute top-3 left-3 text-3xl font-black text-white/20">
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
                 </div>
+                
                 {/* 内容 */}
-                <h3 className="font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
-                  {t.title}
-                </h3>
-                <p className="text-sm text-slate-500 mb-4">{t.desc}</p>
-                {/* 标签 */}
-                <div className="flex items-center gap-3">
-                  <span className="text-xs bg-white/5 text-slate-400 px-2 py-1 rounded">{t.time}</span>
-                  <span className={`text-xs px-2 py-1 rounded ${
-                    t.level === '入门' ? 'bg-emerald-500/20 text-emerald-400' :
-                    t.level === '进阶' ? 'bg-blue-500/20 text-blue-400' :
-                    'bg-orange-500/20 text-orange-400'
-                  }`}>{t.level}</span>
+                <div className="p-5 bg-slate-900">
+                  <h3 className="font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                    {t.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 mb-4">{t.desc}</p>
+                  {/* 标签 */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs bg-white/5 text-slate-400 px-2 py-1 rounded">{t.time}</span>
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      t.level === '入门' ? 'bg-emerald-500/20 text-emerald-400' :
+                      t.level === '进阶' ? 'bg-blue-500/20 text-blue-400' :
+                      'bg-orange-500/20 text-orange-400'
+                    }`}>{t.level}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -588,8 +662,18 @@ export default function App() {
       </section>
 
       {/* ── CTA 区域 ── */}
-      <section id="waitlist" className="py-24 px-6 bg-gradient-to-br from-indigo-600 to-violet-700 relative overflow-hidden">
-        {/* 背景装饰 */}
+      <section id="waitlist" className="py-24 px-6 relative overflow-hidden">
+        {/* 背景图片 */}
+        <div className="absolute inset-0">
+          <img 
+            src={IMAGES.cta} 
+            alt="Technology" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 via-violet-900/80 to-purple-900/90" />
+        </div>
+
+        {/* 装饰 */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
