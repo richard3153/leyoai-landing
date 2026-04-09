@@ -2,6 +2,30 @@ import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 
 // ============================================================
+// 类型定义
+// ============================================================
+interface ProductModel {
+  name: string;
+  tag: string;
+  icon: string;
+  link: string;
+}
+
+interface Product {
+  id: string;
+  name: string;
+  nameCn: string;
+  desc: string;
+  icon: string;
+  color: string;
+  badge: string;
+  badgeColor: string;
+  features: string[];
+  models?: ProductModel[];
+  link?: string;
+}
+
+// ============================================================
 // Nexify MaaS 平台 - 杭州市上城区乐友信息服务工作室
 // ============================================================
 
@@ -12,7 +36,7 @@ const BRAND_TAGLINE = "Model as a Service — 让 AI 模型服务每个人";
 // ============================================================
 // 4大产品线
 // ============================================================
-const PRODUCTS = [
+const PRODUCTS: Product[] = [
   {
     id: "cyber",
     name: "Cyber Model",
@@ -37,7 +61,7 @@ const PRODUCTS = [
         link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2",
       },
     ],
-    link: null,
+    link: undefined,
   },
   {
     id: "video",
@@ -69,7 +93,7 @@ const PRODUCTS = [
     badge: "规划中",
     badgeColor: "bg-slate-500",
     features: ["流程编排", "任务调度", "跨系统协同", "智能决策"],
-    link: null,
+    link: undefined,
   },
   {
     id: "analytics",
@@ -81,7 +105,7 @@ const PRODUCTS = [
     badge: "规划中",
     badgeColor: "bg-slate-500",
     features: ["数据可视化", "趋势预测", "异常检测", "报告生成"],
-    link: null,
+    link: undefined,
   },
 ];
 
