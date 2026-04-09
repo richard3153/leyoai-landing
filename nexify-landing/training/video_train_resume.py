@@ -53,7 +53,7 @@ def load_processor():
 
 def load_model(device, dtype):
     from transformers import Qwen2VLForConditionalGeneration
-    from peft import PeftModel, LoraConfig
+    from peft import PeftModel
 
     print_section("🧠 从 checkpoint-240 加载模型")
 
@@ -61,20 +61,19 @@ def load_model(device, dtype):
     base_model = Qwen2VLForConditionalGeneration.from_pretrained(
         MODEL_DIR, torch_dtype=dtype, trust_remote_code=True, local_files_only=True
     )
-    # 冻结 Vision Encoder
-    for p in base_model.model.visual.parameters():
+
+    print("  加载 LoRA adapter（可训练模式）...")
+    model = PeftModel.from_pretrained(base_model, CKPT_DIR, is_trainable=True)
+
+    # 冻结 Vision Encoder: PeftModel → base_model → Qwen2VLModel → visual
+    for p in model.model.model.visual.parameters():
         p.requires_grad = False
 
-    print("  加载 LoRA adapter...")
-    lora_model = PeftModel.from_pretrained(base_model, CKPT_DIR)
-
-    print("  合并 LoRA 权重（用于继续训练）...")
-    model = lora_model.merge_and_unload()
     model = model.to(device)
     model.train()
     print_params(model)
     print(f"  设备: {device} ({dtype})")
-    print(f"✅ 模型已从 checkpoint-240 加载并合并")
+    print(f"✅ 模型已从 checkpoint-240 加载，LoRA 可训练")
     return model
 
 class SimpleDataset:

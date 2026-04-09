@@ -83,8 +83,34 @@ def load_model(device, torch_dtype):
     print(f"  参数量: {total_params:.2f}B")
 
     # 冻结 Vision Encoder（节省显存，我们只做文本微调）
-    for param in model.model.visual.parameters():
-        param.requires_grad = False
+    # 安全遍历：逐层检查，避免 AttributeError
+    def freeze_visual_encoder(model):
+        try:
+            # 尝试多种路径
+            if hasattr(model, 'base_model') and hasattr(model.base_model, 'model'):
+                base = model.base_model.model
+                if hasattr(base, 'visual'):
+                    for p in base.visual.parameters():
+                        p.requires_grad = False
+                    print(f"  ✅ 冻结 Vision Encoder (path: base_model.model.visual)")
+                    return
+            if hasattr(model, 'model') and hasattr(model.model, 'visual'):
+                for p in model.model.visual.parameters():
+                    p.requires_grad = False
+                print(f"  ✅ 冻结 Vision Encoder (path: model.model.visual)")
+                return
+            # 遍历寻找 visual
+            for name, module in model.named_modules():
+                if 'visual' in name.lower():
+                    for p in module.parameters():
+                        p.requires_grad = False
+                    print(f"  ✅ 冻结 Vision Encoder (found: {name})")
+                    return
+            print(f"  ⚠️ 未找到 Vision Encoder，跳过冻结")
+        except Exception as e:
+            print(f"  ⚠️ 冻结 Vision Encoder 失败: {e}")
+
+    freeze_visual_encoder(model)
     print(f"  Vision Encoder 已冻结（节省显存）")
 
     # Gradient Checkpointing

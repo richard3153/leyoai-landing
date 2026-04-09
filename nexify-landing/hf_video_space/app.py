@@ -1,6 +1,7 @@
 """
 Nexify Video Safety Assistant - Gradio 5 App
 HuggingFace Spaces 部署专用
+训练完成: 2 epochs, 750 steps, loss 0.52
 """
 import gradio as gr
 import torch

@@ -26,12 +26,11 @@ interface Product {
 }
 
 // ============================================================
-// Nexify MaaS 平台 - 杭州市上城区乐友信息服务工作室
+// Nexify MaaS 平台
 // ============================================================
-
-const COMPANY_NAME = "杭州市上城区乐友信息服务工作室（个体工商户）";
+const COMPANY_NAME = "杭州市上城区乐友信息服务工作室";
 const BRAND_NAME = "Nexify";
-const BRAND_TAGLINE = "Model as a Service — 让 AI 模型服务每个人";
+const BRAND_TAGLINE = "Model as a Service";
 
 // ============================================================
 // 4大产品线
@@ -41,45 +40,29 @@ const PRODUCTS: Product[] = [
     id: "cyber",
     name: "Cyber Model",
     nameCn: "网络安全模型",
-    desc: "智能威胁检测、漏洞分析、安全合规检查，保障数字资产安全",
+    desc: "智能威胁检测、漏洞分析、安全合规检查",
     icon: "🛡️",
-    color: "from-green-500 to-emerald-600",
+    color: "from-emerald-500 to-teal-600",
     badge: "已上线",
-    badgeColor: "bg-green-500",
+    badgeColor: "bg-emerald-500",
     features: ["威胁情报分析", "漏洞扫描检测", "合规自动审查", "应急响应建议"],
     models: [
-      {
-        name: "AI 安全助手",
-        tag: "通用安全",
-        icon: "🔒",
-        link: "https://huggingface.co/spaces/FFZwai/ai-safety-chat",
-      },
-      {
-        name: "Nexify 安全问答助手",
-        tag: "垂直领域",
-        icon: "🛡️",
-        link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2",
-      },
+      { name: "AI 安全助手", tag: "通用安全", icon: "🔒", link: "https://huggingface.co/spaces/FFZwai/ai-safety-chat" },
+      { name: "安全问答助手", tag: "垂直领域", icon: "🛡️", link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2" },
     ],
-    link: undefined,
   },
   {
     id: "video",
     name: "Video Model",
-    nameCn: "视频生成模型",
-    desc: "AI 驱动的视频创作、剪辑、特效自动化，让创意无限",
+    nameCn: "视频内容模型",
+    desc: "视频安全分析、内容理解、智能审核",
     icon: "🎬",
-    color: "from-purple-500 to-violet-600",
+    color: "from-violet-500 to-purple-600",
     badge: "已上线",
-    badgeColor: "bg-green-500",
-    features: ["智能剪辑", "特效生成", "字幕自动", "风格迁移"],
+    badgeColor: "bg-violet-500",
+    features: ["智能剪辑", "内容审核", "安全分析", "字幕生成"],
     models: [
-      {
-        name: "视频安全问答助手",
-        tag: "垂直领域",
-        icon: "🎬",
-        link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2",
-      },
+      { name: "视频安全助手", tag: "垂直领域", icon: "🎬", link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2" },
     ],
     link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2",
   },
@@ -87,40 +70,85 @@ const PRODUCTS: Product[] = [
     id: "flow",
     name: "Flow Model",
     nameCn: "流程自动化模型",
-    desc: "理解业务流程，自动化执行复杂任务，提升企业效率",
+    desc: "业务流程理解、任务自动化执行",
     icon: "⚙️",
     color: "from-blue-500 to-cyan-600",
-    badge: "规划中",
-    badgeColor: "bg-slate-500",
+    badge: "开发中",
+    badgeColor: "bg-blue-500",
     features: ["流程编排", "任务调度", "跨系统协同", "智能决策"],
-    link: undefined,
   },
   {
     id: "analytics",
     name: "Analytics Model",
     nameCn: "数据分析模型",
-    desc: "深度数据分析、趋势预测、洞察报告，数据驱动决策",
+    desc: "深度数据分析、趋势预测、洞察报告",
     icon: "📊",
-    color: "from-orange-500 to-red-500",
+    color: "from-orange-500 to-amber-600",
     badge: "规划中",
-    badgeColor: "bg-slate-500",
+    badgeColor: "bg-slate-400",
     features: ["数据可视化", "趋势预测", "异常检测", "报告生成"],
-    link: undefined,
   },
 ];
 
-const STATS = [
-  { label: "模型数量", value: "4+" },
-  { label: "服务领域", value: "9+" },
-  { label: "训练数据", value: "5000+" },
-  { label: "服务客户", value: "100+" },
+// ============================================================
+// 案例展示
+// ============================================================
+const CASES = [
+  {
+    title: "网络安全威胁检测",
+    industry: "金融科技",
+    icon: "🏦",
+    desc: "某银行使用 Cyber Model 实现威胁情报自动分析，安全响应时间缩短 80%",
+    metrics: [{ label: "响应时间", value: "-80%" }, { label: "准确率", value: "95%" }],
+  },
+  {
+    title: "视频内容安全审核",
+    industry: "短视频平台",
+    icon: "📱",
+    desc: "某短视频平台使用 Video Model 进行内容安全审核，日均处理 10 万+视频",
+    metrics: [{ label: "日处理量", value: "10万+" }, { label: "误判率", value: "<2%" }],
+  },
+  {
+    title: "业务流程自动化",
+    industry: "电商",
+    icon: "🛒",
+    desc: "某电商平台使用 Flow Model 实现订单处理自动化，人工干预减少 60%",
+    metrics: [{ label: "效率提升", value: "+150%" }, { label: "成本降低", value: "-40%" }],
+  },
 ];
 
-const NAV_ITEMS = [
-  { label: "模型", href: "#products" },
-  { label: "文档", href: "#docs" },
-  { label: "定价", href: "#pricing" },
-  { label: "关于", href: "#about" },
+// ============================================================
+// 使用教程
+// ============================================================
+const TUTORIALS = [
+  {
+    title: "5 分钟上手安全助手",
+    desc: "快速体验 AI 安全问答，了解模型能力边界",
+    time: "5 min",
+    level: "入门",
+    icon: "🚀",
+  },
+  {
+    title: "本地部署模型指南",
+    desc: "在本地环境部署 Nexify 模型，保护数据隐私",
+    time: "15 min",
+    level: "进阶",
+    icon: "💻",
+  },
+  {
+    title: "API 集成最佳实践",
+    desc: "将 Nexify 集成到你的应用中，实现智能化升级",
+    time: "10 min",
+    level: "进阶",
+    icon: "🔌",
+  },
+  {
+    title: "自定义模型微调",
+    desc: "基于 LoRA 技术微调专属模型，适配业务场景",
+    time: "30 min",
+    level: "高级",
+    icon: "🎯",
+  },
 ];
 
 // ============================================================
@@ -130,9 +158,9 @@ const PRICING_PLANS = [
   {
     name: "免费版",
     price: "¥0",
-    period: "永久",
-    desc: "适合个人探索和学习",
-    features: ["基础模型访问", "100次/日调用", "社区支持", "公开模型"],
+    period: "永久免费",
+    desc: "适合个人学习和探索",
+    features: ["基础模型访问", "100 次/日调用", "社区支持", "公开模型权重"],
     cta: "免费开始",
     highlight: false,
   },
@@ -140,20 +168,30 @@ const PRICING_PLANS = [
     name: "专业版",
     price: "¥199",
     period: "/月",
-    desc: "适合开发者和创作者",
-    features: ["全部模型访问", "无限调用", "优先推理", "邮件支持", "私有部署选项"],
-    cta: "立即升级",
+    desc: "适合开发者和小团队",
+    features: ["全部模型访问", "无限次调用", "优先推理队列", "邮件技术支持", "私有部署选项"],
+    cta: "立即订阅",
     highlight: true,
   },
   {
     name: "企业版",
-    price: "¥1999",
-    period: "/月",
-    desc: "适合企业和团队",
-    features: ["专业版全部功能", "专属模型定制", "SLA保障", "7×24支持", "私有化部署"],
+    price: "定制",
+    period: "联系我们",
+    desc: "适合大型企业和机构",
+    features: ["专业版全部功能", "专属模型定制训练", "SLA 99.9% 保障", "专属技术支持", "私有化部署"],
     cta: "联系销售",
     highlight: false,
   },
+];
+
+// ============================================================
+// 导航项
+// ============================================================
+const NAV_ITEMS = [
+  { label: "产品", href: "#products" },
+  { label: "案例", href: "#cases" },
+  { label: "教程", href: "#tutorials" },
+  { label: "定价", href: "#pricing" },
 ];
 
 // ============================================================
@@ -178,27 +216,27 @@ function WaitlistForm() {
   };
 
   if (done) return (
-    <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
-      <div className="text-4xl mb-3">🎉</div>
-      <h3 className="text-xl font-bold text-green-700 mb-2">注册成功！</h3>
-      <p className="text-green-600 text-sm">我们会在产品上线时第一时间通知你</p>
+    <div className="text-center">
+      <div className="text-5xl mb-4">🎉</div>
+      <h3 className="text-xl font-bold text-white mb-2">注册成功！</h3>
+      <p className="text-white/70 text-sm">我们会第一时间通知你产品更新</p>
     </div>
   );
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+    <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
       <input
-        type="email" placeholder="输入邮箱获取内测资格" value={email}
+        type="email" placeholder="输入邮箱地址" value={email}
         onChange={e => setEmail(e.target.value)} disabled={loading}
-        className="flex-1 px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+        className="flex-1 px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all"
       />
       <button
         type="submit" disabled={loading}
-        className="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors text-sm whitespace-nowrap disabled:opacity-50"
+        className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-colors disabled:opacity-50"
       >
         {loading ? "提交中..." : "获取内测"}
       </button>
-      {err && <p className="text-red-500 text-sm mt-1 text-center w-full">{err}</p>}
+      {err && <p className="text-red-300 text-sm text-center w-full">{err}</p>}
     </form>
   );
 }
@@ -208,156 +246,167 @@ function WaitlistForm() {
 // ============================================================
 export default function App() {
   const [mounted, setMounted] = useState(false);
+  const [activeCase, setActiveCase] = useState(0);
+  
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className="min-h-screen bg-slate-950 text-white font-sans antialiased">
 
-      {/* ── 顶部导航 ── */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-8">
-          {/* Logo区 */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-black text-sm shadow-sm">
+      {/* ── 导航栏 ── */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center font-black text-sm shadow-lg shadow-indigo-500/25">
               N
             </div>
-            <div>
-              <span className="font-bold text-base">{BRAND_NAME}</span>
-              <span className="hidden sm:inline text-gray-400 text-xs ml-1.5">MaaS</span>
-            </div>
+            <span className="font-bold text-lg">{BRAND_NAME}</span>
           </div>
 
           {/* 导航 */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-8">
             {NAV_ITEMS.map(item => (
               <a key={item.href} href={item.href}
-                className="text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">
+                className="text-sm text-slate-400 hover:text-white transition-colors">
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* 右侧操作 */}
-          <div className="flex items-center gap-3">
-            <a href="#waitlist"
-              className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors">
-              申请内测
-            </a>
-          </div>
+          {/* CTA */}
+          <a href="#waitlist"
+            className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">
+            申请内测
+          </a>
         </div>
       </header>
 
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 pt-20 pb-24">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-purple-200 rounded-full blur-3xl" />
+      {/* ── Hero 区域 ── */}
+      <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        {/* 背景效果 */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950" />
         </div>
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <div className={`inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-            {BRAND_TAGLINE}
-          </div>
-          <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              {BRAND_NAME}
-            </span>
-            <span className="text-gray-900 block mt-2 text-3xl sm:text-4xl lg:text-5xl">
-              AI 模型即服务平台
-            </span>
-          </h1>
-          <p className={`text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            {COMPANY_NAME} 旗下品牌。专注 Cyber、Video、Flow、Analytics 四大垂直领域 AI 模型研发与服务，让 AI 技术真正赋能千行百业。
-          </p>
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <a href="#products" className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-200 text-base">
-              探索模型
-            </a>
-            <a href="#waitlist" className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-700 font-semibold rounded-xl border border-gray-200 transition-all text-base">
-              申请内测
-            </a>
-          </div>
-        </div>
-      </section>
 
-      {/* ── 统计数据 ── */}
-      <section className="bg-white border-y border-gray-100 py-10">
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-          {STATS.map(s => (
-            <div key={s.label}>
-              <div className="text-3xl font-black text-indigo-600">{s.value}</div>
-              <div className="text-gray-400 text-sm mt-1">{s.label}</div>
+        {/* 内容 */}
+        <div className="relative max-w-5xl mx-auto px-6 text-center">
+          <div className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            {/* 标签 */}
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-sm text-slate-300">{BRAND_TAGLINE}</span>
             </div>
-          ))}
+
+            {/* 标题 */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6">
+              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                AI 模型
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+                即服务平台
+              </span>
+            </h1>
+
+            {/* 描述 */}
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+              专注垂直领域 AI 模型研发。Cyber、Video、Flow、Analytics 四大产品线，
+              <br className="hidden sm:block" />
+              让 AI 技术真正赋能业务场景。
+            </p>
+
+            {/* 按钮 */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#products"
+                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors shadow-xl">
+                探索模型
+              </a>
+              <a href="#tutorials"
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
+                查看教程
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 向下滚动提示 */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center pt-2">
+            <div className="w-1 h-2 bg-white/40 rounded-full" />
+          </div>
         </div>
       </section>
 
-      {/* ── 四大产品线 ── */}
-      <section id="products" className="py-24 px-6 bg-gray-50">
+      {/* ── 产品展示区 ── */}
+      <section id="products" className="py-24 px-6 relative">
         <div className="max-w-7xl mx-auto">
+          {/* 标题 */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-4">四大垂直模型矩阵</h2>
-            <p className="text-gray-500 text-base max-w-xl mx-auto">深耕垂直领域，打造专业级 AI 模型，服务企业真实场景</p>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">四大产品矩阵</h2>
+            <p className="text-slate-400 text-lg">深耕垂直领域，打造专业级 AI 模型</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {PRODUCTS.map(p => (
-              <div key={p.id}
-                className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 group">
 
+          {/* 产品网格 - 2x2 布局 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {PRODUCTS.map((p, idx) => (
+              <div key={p.id}
+                className={`group relative bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-3xl border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-500 ${idx < 2 ? 'lg:aspect-[1.5/1]' : ''}`}>
+                
                 {/* 产品头部 */}
-                <div className={`bg-gradient-to-r ${p.color} p-6 text-white`}>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-3xl backdrop-blur-sm">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.color}`} />
+                
+                <div className="p-8">
+                  {/* 图标和状态 */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center text-3xl shadow-lg">
                       {p.icon}
                     </div>
-                    <span className={`${p.badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+                    <span className={`${p.badgeColor}/20 text-xs font-bold px-3 py-1.5 rounded-full ${p.badgeColor.replace('bg-', 'text-')}`}>
                       {p.badge}
                     </span>
                   </div>
-                  <h3 className="text-xl font-black mb-1">{p.name}</h3>
-                  <p className="text-white/80 text-sm font-medium">{p.nameCn}</p>
-                </div>
 
-                {/* 产品详情 */}
-                <div className="p-6">
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{p.desc}</p>
-                  <div className="grid grid-cols-2 gap-2 mb-5">
-                    {p.features.map(f => (
-                      <div key={f} className="flex items-center gap-2 text-xs text-gray-600">
-                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
+                  {/* 标题 */}
+                  <h3 className="text-2xl font-bold mb-1">{p.name}</h3>
+                  <p className="text-slate-500 text-sm mb-4">{p.nameCn}</p>
+                  <p className="text-slate-400 leading-relaxed mb-6">{p.desc}</p>
+
+                  {/* 特性标签 */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {p.features.slice(0, 3).map(f => (
+                      <span key={f} className="text-xs bg-white/5 text-slate-300 px-3 py-1.5 rounded-lg">
                         {f}
-                      </div>
+                      </span>
                     ))}
                   </div>
-                  {/* 子模型列表 */}
-                  {p.models ? (
-                    <div className="space-y-2 mb-4">
+
+                  {/* 模型入口 */}
+                  {p.models && p.models.length > 0 && (
+                    <div className="space-y-2">
                       {p.models.map(m => (
                         <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
-                          className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-indigo-50 transition-colors group">
-                          <span className="text-xl shrink-0">{m.icon}</span>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">{m.name}</p>
-                            <p className="text-xs text-gray-400">{m.tag}</p>
+                          className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group/item">
+                          <span className="text-xl">{m.icon}</span>
+                          <div className="flex-1">
+                            <p className="font-semibold text-sm group-hover/item:text-indigo-400 transition-colors">{m.name}</p>
+                            <p className="text-xs text-slate-500">{m.tag}</p>
                           </div>
-                          <span className="text-indigo-500 text-xs font-bold shrink-0">体验 →</span>
+                          <span className="text-indigo-400 text-sm font-medium opacity-0 group-hover/item:opacity-100 transition-opacity">
+                            体验 →
+                          </span>
                         </a>
                       ))}
                     </div>
-                  ) : null}
-                  {p.models ? (
-                    <span className="inline-flex items-center gap-2 text-green-600 text-sm font-semibold">
-                      ✅ 已上线
-                    </span>
-                  ) : p.link ? (
-                    <a href={p.link} target="_blank" rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm hover:gap-3 transition-all">
-                      立即体验 →
-                    </a>
-                  ) : (
-                    <span className="inline-flex items-center gap-2 text-gray-400 text-sm">
-                      🔒 即将上线
-                    </span>
+                  )}
+
+                  {/* 未上线提示 */}
+                  {!p.models && !p.link && (
+                    <div className="text-slate-500 text-sm flex items-center gap-2">
+                      <span>🔒</span> 敬请期待
+                    </div>
                   )}
                 </div>
               </div>
@@ -366,24 +415,112 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── 为什么选择 Nexify ── */}
-      <section className="py-24 px-6 bg-white">
+      {/* ── 数据统计 ── */}
+      <section className="py-16 px-6 border-y border-white/5 bg-slate-900/50">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { label: "模型数量", value: "4+", suffix: "" },
+            { label: "服务领域", value: "9+", suffix: "" },
+            { label: "训练数据", value: "5K+", suffix: "" },
+            { label: "日均调用", value: "10K+", suffix: "" },
+          ].map(s => (
+            <div key={s.label}>
+              <div className="text-4xl font-black bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+                {s.value}
+              </div>
+              <div className="text-slate-500 text-sm mt-1">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 案例展示 ── */}
+      <section id="cases" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">客户案例</h2>
+            <p className="text-slate-400 text-lg">真实场景，真实价值</p>
+          </div>
+
+          {/* 案例切换 */}
+          <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+            {/* 案例列表 */}
+            <div className="lg:w-1/3 space-y-4">
+              {CASES.map((c, idx) => (
+                <button key={c.title}
+                  onClick={() => setActiveCase(idx)}
+                  className={`w-full text-left p-6 rounded-2xl border transition-all ${
+                    activeCase === idx 
+                      ? 'bg-white/5 border-indigo-500/50' 
+                      : 'bg-transparent border-white/5 hover:border-white/10'
+                  }`}>
+                  <div className="flex items-center gap-4">
+                    <span className="text-3xl">{c.icon}</span>
+                    <div>
+                      <p className="font-bold text-white">{c.title}</p>
+                      <p className="text-sm text-slate-500">{c.industry}</p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* 案例详情 */}
+            <div className="lg:flex-1 bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-3xl border border-white/5 p-8 lg:p-12">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-5xl">{CASES[activeCase].icon}</span>
+                <div>
+                  <h3 className="text-2xl font-bold">{CASES[activeCase].title}</h3>
+                  <p className="text-slate-400">{CASES[activeCase].industry}</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                {CASES[activeCase].desc}
+              </p>
+              <div className="flex gap-8">
+                {CASES[activeCase].metrics.map(m => (
+                  <div key={m.label}>
+                    <div className="text-3xl font-black text-indigo-400">{m.value}</div>
+                    <div className="text-sm text-slate-500 mt-1">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 教程区 ── */}
+      <section id="tutorials" className="py-24 px-6 bg-slate-900/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-4">为什么选择 Nexify</h2>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">快速开始</h2>
+            <p className="text-slate-400 text-lg">从入门到精通，一步步掌握 Nexify</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              { icon: "🎯", title: "垂直领域深度优化", desc: "不追求通用，专注细分领域。Cyber Model 专注安全、Video Model 专注创作，每个模型都是领域专家。" },
-              { icon: "🚀", title: "极速部署，开箱即用", desc: "基于 Qwen/LLaMA 等顶级开源基座，LoRA 微调技术，30分钟即可上线专属模型。" },
-              { icon: "💰", title: "零成本起步", desc: "使用 Colab 免费 GPU 训练、Kaggle 免费算力、Vercel 免费部署，零成本验证模型效果。" },
-            ].map(item => (
-              <div key={item.title} className="text-center">
-                <div className="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
-                  {item.icon}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {TUTORIALS.map((t, idx) => (
+              <div key={t.title}
+                className="group bg-gradient-to-br from-slate-900 to-slate-800/50 rounded-2xl border border-white/5 p-6 hover:border-indigo-500/30 transition-all cursor-pointer">
+                {/* 序号 */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-4xl font-black text-slate-700">{String(idx + 1).padStart(2, '0')}</span>
+                  <span className="text-2xl">{t.icon}</span>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-3 text-lg">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                {/* 内容 */}
+                <h3 className="font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                  {t.title}
+                </h3>
+                <p className="text-sm text-slate-500 mb-4">{t.desc}</p>
+                {/* 标签 */}
+                <div className="flex items-center gap-3">
+                  <span className="text-xs bg-white/5 text-slate-400 px-2 py-1 rounded">{t.time}</span>
+                  <span className={`text-xs px-2 py-1 rounded ${
+                    t.level === '入门' ? 'bg-emerald-500/20 text-emerald-400' :
+                    t.level === '进阶' ? 'bg-blue-500/20 text-blue-400' :
+                    'bg-orange-500/20 text-orange-400'
+                  }`}>{t.level}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -391,36 +528,57 @@ export default function App() {
       </section>
 
       {/* ── 定价 ── */}
-      <section id="pricing" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+      <section id="pricing" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-4">简单透明的定价</h2>
-            <p className="text-gray-500 text-base">无隐藏费用，按需付费</p>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">简单透明的定价</h2>
+            <p className="text-slate-400 text-lg">无隐藏费用，按需选择</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PRICING_PLANS.map(plan => (
               <div key={plan.name}
-                className={`rounded-2xl border-2 p-8 transition-all ${plan.highlight ? "border-indigo-600 bg-indigo-50 shadow-xl shadow-indigo-100" : "border-gray-100 bg-white"}`}>
+                className={`relative rounded-3xl border p-8 ${
+                  plan.highlight 
+                    ? 'bg-gradient-to-br from-indigo-600/20 to-violet-600/20 border-indigo-500/50' 
+                    : 'bg-slate-900/50 border-white/5'
+                }`}>
+                {/* 推荐标签 */}
                 {plan.highlight && (
-                  <div className="text-center mb-4">
-                    <span className="inline-block bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">最受欢迎</span>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-full">
+                      最受欢迎
+                    </span>
                   </div>
                 )}
-                <h3 className="font-bold text-gray-900 text-lg mb-1">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-4xl font-black text-gray-900">{plan.price}</span>
-                  <span className="text-gray-400 text-sm">{plan.period}</span>
+
+                {/* 价格 */}
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-4xl font-black">{plan.price}</span>
+                    <span className="text-slate-500 text-sm">{plan.period}</span>
+                  </div>
+                  <p className="text-slate-500 text-sm mt-2">{plan.desc}</p>
                 </div>
-                <p className="text-gray-500 text-sm mb-6">{plan.desc}</p>
+
+                {/* 功能列表 */}
                 <ul className="space-y-3 mb-8">
                   {plan.features.map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-gray-600">
-                      <span className="text-indigo-500 font-bold">✓</span> {f}
+                    <li key={f} className="flex items-center gap-3 text-sm">
+                      <span className="text-indigo-400">✓</span>
+                      <span className="text-slate-300">{f}</span>
                     </li>
                   ))}
                 </ul>
+
+                {/* 按钮 */}
                 <a href="#waitlist"
-                  className={`block text-center py-3.5 rounded-xl font-semibold text-sm transition-colors ${plan.highlight ? "bg-indigo-600 hover:bg-indigo-700 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-700"}`}>
+                  className={`block text-center py-3.5 rounded-xl font-semibold transition-colors ${
+                    plan.highlight 
+                      ? 'bg-indigo-600 hover:bg-indigo-500 text-white' 
+                      : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
+                  }`}>
                   {plan.cta}
                 </a>
               </div>
@@ -429,68 +587,66 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── 等待名单 ── */}
-      <section id="waitlist" className="py-24 px-6 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-black mb-4">抢先体验 Nexify</h2>
-          <p className="text-indigo-100 text-base mb-10">填写邮箱，获取内测资格。我们会优先通知你每个模型的最新进展。</p>
+      {/* ── CTA 区域 ── */}
+      <section id="waitlist" className="py-24 px-6 bg-gradient-to-br from-indigo-600 to-violet-700 relative overflow-hidden">
+        {/* 背景装饰 */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-2xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-black mb-4">开始使用 Nexify</h2>
+          <p className="text-white/80 text-lg mb-10">
+            注册获取内测资格，第一时间体验最新模型能力
+          </p>
           <WaitlistForm />
         </div>
       </section>
 
-      {/* ── 文档区 ── */}
-      <section id="docs" className="py-16 px-6 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">快速开始</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { title: "Cyber Model 使用指南", icon: "📖", time: "5 分钟" },
-              { title: "本地模型训练教程", icon: "🖥️", time: "10 分钟" },
-              { title: "HuggingFace Space 部署", icon: "🚀", time: "5 分钟" },
-              { title: "API 调用文档", icon: "🔌", time: "3 分钟" },
-            ].map(doc => (
-              <div key={doc.title}
-                className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-indigo-200 hover:bg-indigo-50 transition-all cursor-pointer group">
-                <span className="text-2xl">{doc.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-800 text-sm group-hover:text-indigo-700 transition-colors truncate">{doc.title}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{doc.time}</p>
-                </div>
-                <span className="text-gray-300 group-hover:text-indigo-400 transition-colors">→</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── 页脚 ── */}
-      <footer id="about" className="bg-gray-900 text-gray-400 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-10 mb-12">
-            <div className="sm:col-span-2">
+      <footer className="bg-slate-950 border-t border-white/5 py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            {/* 品牌 */}
+            <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-sm">N</div>
-                <span className="font-bold text-white text-base">{BRAND_NAME}</span>
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center font-black text-sm">
+                  N
+                </div>
+                <span className="font-bold text-lg">{BRAND_NAME}</span>
               </div>
-              <p className="text-sm leading-relaxed max-w-xs">{COMPANY_NAME} 旗下 AI 模型服务品牌，专注垂直领域模型研发与商业化。</p>
+              <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+                {COMPANY_NAME} 旗下品牌。专注垂直领域 AI 模型研发与商业化，让 AI 技术真正赋能千行百业。
+              </p>
             </div>
+
+            {/* 产品 */}
             <div>
               <h4 className="font-bold text-white text-sm mb-4">产品</h4>
-              <ul className="space-y-2.5 text-sm">
-                {PRODUCTS.map(p => <li key={p.id}><span className="text-gray-500">{p.icon}</span> {p.nameCn}</li>)}
+              <ul className="space-y-3 text-sm text-slate-500">
+                {PRODUCTS.map(p => (
+                  <li key={p.id} className="hover:text-white transition-colors cursor-pointer">
+                    {p.icon} {p.nameCn}
+                  </li>
+                ))}
               </ul>
             </div>
+
+            {/* 公司 */}
             <div>
               <h4 className="font-bold text-white text-sm mb-4">公司</h4>
-              <ul className="space-y-2.5 text-sm">
+              <ul className="space-y-3 text-sm text-slate-500">
                 <li className="hover:text-white transition-colors cursor-pointer">关于我们</li>
                 <li className="hover:text-white transition-colors cursor-pointer">加入团队</li>
-                <li className="hover:text-white transition-colors cursor-pointer">联系方式</li>
+                <li className="hover:text-white transition-colors cursor-pointer">联系我们</li>
                 <li className="hover:text-white transition-colors cursor-pointer">隐私政策</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+
+          {/* 底部 */}
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
             <span>© 2026 {COMPANY_NAME}</span>
             <span>{BRAND_NAME} — 让 AI 模型服务每个人</span>
           </div>
