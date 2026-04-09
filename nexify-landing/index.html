@@ -2,52 +2,24 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   
   <!-- SEO 基础 -->
-  <title>Nexify - AI 模型即服务平台 | 网络安全·视频分析·流程自动化</title>
-  <meta name="description" content="Nexify 是专业的 AI 模型即服务平台，提供网络安全模型(Cyber Model)、视频内容模型(Video Model)、流程自动化模型(Flow Model)、数据分析模型(Analytics Model)。开箱即用，支持私有化部署，帮助企业快速实现 AI 升级。">
-  <meta name="keywords" content="AI模型, MaaS, 模型即服务, 网络安全AI, 视频分析AI, 流程自动化, 数据分析, 大模型, LoRA微调, 私有化部署">
+  <title>Nexify - AI 模型即服务平台</title>
+  <meta name="description" content="Nexify 专注垂直领域 AI 模型研发。Cyber、Video、Flow、Analytics 四大产品线，让 AI 技术真正赋能业务场景。">
+  <meta name="keywords" content="AI模型, MaaS, 模型即服务, 网络安全AI, 视频分析AI, 流程自动化">
   <meta name="author" content="杭州市上城区乐友信息服务工作室">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph / 社交分享 -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nexify.ai/">
-  <meta property="og:title" content="Nexify - AI 模型即服务平台">
-  <meta property="og:description" content="专注垂直领域 AI 模型研发，四大产品矩阵覆盖网络安全、视频内容、流程自动化、数据分析。">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nexify - AI 模型即服务平台">
-  <meta name="twitter:description" content="专注垂直领域 AI 模型研发，让 AI 技术真正赋能业务场景。">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://nexify.ai/">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' rx='15' width='100' height='100'/><text x='50' y='68' font-size='55' font-weight='bold' text-anchor='middle' fill='white'>N</text></svg>">
   
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-          colors: {
-            brand: {
-              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
-              400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
-              800: '#3730a3', 900: '#312e81',
-            }
-          }
+          fontFamily: { sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'] }
         }
       }
     }
@@ -55,31 +27,6 @@
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Nexify",
-    "url": "https://nexify.ai",
-    "logo": "https://nexify.ai/logo.png",
-    "description": "AI 模型即服务平台，专注垂直领域 AI 模型研发",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "杭州市上城区",
-      "addressCountry": "CN"
-    },
-    "sameAs": [
-      "https://github.com/richard3153/nexify-landing",
-      "https://huggingface.co/FFZwai"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service"
-    }
-  }
-  </script>
   
   <style>
     html { scroll-behavior: smooth; }
@@ -94,217 +41,247 @@
     .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
     .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     
+    /* 移动端菜单 */
+    .mobile-menu { display: none; }
+    .mobile-menu.active { display: flex; }
+    
     /* FAQ 手风琴 */
     .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
     .faq-item.active .faq-content { max-height: 500px; }
     .faq-item.active .faq-icon { transform: rotate(180deg); }
     .faq-icon { transition: transform 0.3s ease; }
+    
+    /* 移动端优化 */
+    @media (max-width: 640px) {
+      .hero-bg-img { opacity: 0.15 !important; }
+      .card-hover:hover { transform: none; }
+    }
   </style>
 </head>
 
 <body class="font-sans antialiased bg-white text-gray-900">
 
   <!-- 导航栏 -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 nav-blur border-b border-gray-100">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 nav-blur border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-14 sm:h-16">
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-            <span class="text-white font-bold text-sm">N</span>
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+            <span class="text-white font-bold text-xs sm:text-sm">N</span>
           </div>
-          <span class="font-bold text-xl text-gray-900">Nexify</span>
+          <span class="font-bold text-lg sm:text-xl text-gray-900">Nexify</span>
         </a>
-        <div class="hidden md:flex items-center gap-8">
+        
+        <!-- 桌面端导航 -->
+        <div class="hidden md:flex items-center gap-6 lg:gap-8">
           <a href="#products" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">产品</a>
           <a href="#solutions" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">解决方案</a>
           <a href="#cases" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">案例</a>
           <a href="#pricing" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">定价</a>
           <a href="#faq" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">FAQ</a>
-          <a href="#about" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">关于</a>
         </div>
-        <div class="flex items-center gap-3">
+        
+        <!-- 右侧按钮 -->
+        <div class="flex items-center gap-2 sm:gap-3">
           <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">登录</a>
-          <a href="#contact" class="inline-flex px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">免费试用</a>
+          <a href="#contact" class="inline-flex px-4 sm:px-5 py-2 sm:py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors">免费试用</a>
+          
+          <!-- 移动端菜单按钮 -->
+          <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
         </div>
+      </div>
+      
+      <!-- 移动端菜单 -->
+      <div id="mobile-menu" class="mobile-menu md:hidden flex-col gap-2 pb-4 border-t border-gray-100 mt-2 pt-4">
+        <a href="#products" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">产品</a>
+        <a href="#solutions" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">解决方案</a>
+        <a href="#cases" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">案例</a>
+        <a href="#pricing" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">定价</a>
+        <a href="#faq" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">FAQ</a>
+        <a href="#about" class="py-2 text-gray-600 hover:text-gray-900 text-sm font-medium">关于</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero 区域 -->
-  <section class="relative pt-16 overflow-hidden">
+  <section class="relative pt-14 sm:pt-16 overflow-hidden">
     <div class="absolute inset-0 hero-gradient opacity-10"></div>
-    <div class="absolute top-20 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-20 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-16 sm:pb-32">
       <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 mb-8">
-          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-          <span class="text-sm text-indigo-700 font-medium">Model as a Service</span>
+        <!-- 标签 -->
+        <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 mb-6 sm:mb-8">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="text-xs sm:text-sm text-indigo-700 font-medium">Model as a Service</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-6">
+        <!-- 主标题 -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 sm:mb-6">
           AI 模型<br class="sm:hidden"><span class="text-gradient">即服务平台</span>
         </h1>
 
-        <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-          专注垂直领域 AI 模型研发与部署。四大产品矩阵覆盖网络安全、视频内容、流程自动化、数据分析，让 AI 技术真正赋能业务场景。
+        <!-- 副标题 -->
+        <p class="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto px-2">
+          专注垂直领域 AI 模型研发。四大产品矩阵覆盖网络安全、视频内容、流程自动化、数据分析。
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#products" class="inline-flex items-center justify-center px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors shadow-xl">
+        <!-- CTA 按钮 -->
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+          <a href="#products" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors shadow-xl">
             <span>探索产品</span>
-            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 ml-2"></i>
           </a>
-          <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold rounded-xl transition-colors">
-            <i data-lucide="play-circle" class="w-5 h-5 mr-2"></i>
-            <span>观看演示</span>
+          <a href="#contact" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold rounded-xl transition-colors">
+            <i data-lucide="play-circle" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
+            <span>免费试用</span>
           </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-20 pt-10 border-t border-gray-100">
-          <div class="text-center"><div class="text-3xl sm:text-4xl font-black text-gray-900">4+</div><div class="text-sm text-gray-500 mt-1">模型产品</div></div>
-          <div class="text-center"><div class="text-3xl sm:text-4xl font-black text-gray-900">50K+</div><div class="text-sm text-gray-500 mt-1">API 调用/日</div></div>
-          <div class="text-center"><div class="text-3xl sm:text-4xl font-black text-gray-900">99.9%</div><div class="text-sm text-gray-500 mt-1">服务可用性</div></div>
-          <div class="text-center"><div class="text-3xl sm:text-4xl font-black text-gray-900">10+</div><div class="text-sm text-gray-500 mt-1">行业客户</div></div>
+        <!-- 数据统计 -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-12 sm:mt-20 pt-8 sm:pt-10 border-t border-gray-100">
+          <div class="text-center"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">4+</div><div class="text-xs sm:text-sm text-gray-500 mt-1">模型产品</div></div>
+          <div class="text-center"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">50K+</div><div class="text-xs sm:text-sm text-gray-500 mt-1">API调用/日</div></div>
+          <div class="text-center"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">99.9%</div><div class="text-xs sm:text-sm text-gray-500 mt-1">可用性</div></div>
+          <div class="text-center"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">10+</div><div class="text-xs sm:text-sm text-gray-500 mt-1">行业客户</div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 产品区域 -->
-  <section id="products" class="py-24 bg-gray-50">
+  <section id="products" class="py-12 sm:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4">四大产品矩阵</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">深耕垂直领域，打造专业级 AI 模型，覆盖企业核心业务场景</p>
+      <div class="text-center mb-8 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">四大产品矩阵</h2>
+        <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">深耕垂直领域，打造专业级 AI 模型</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
         <!-- Cyber Model -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-48 bg-gradient-to-br from-emerald-400 to-teal-500 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Cyber Security AI Model" class="w-full h-full object-cover opacity-60" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-36 sm:h-48 bg-gradient-to-br from-emerald-400 to-teal-500 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=60" alt="Cyber Security" class="hero-bg-img w-full h-full object-cover opacity-60" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-6 flex items-center gap-3">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl shadow-lg">🛡️</div>
+            <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 flex items-center gap-2 sm:gap-3">
+              <div class="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl flex items-center justify-center text-2xl sm:text-3xl shadow-lg">🛡️</div>
               <div>
-                <h3 class="text-xl font-bold text-white">Cyber Model</h3>
-                <p class="text-white/80 text-sm">网络安全模型</p>
+                <h3 class="text-lg sm:text-xl font-bold text-white">Cyber Model</h3>
+                <p class="text-white/80 text-xs sm:text-sm">网络安全模型</p>
               </div>
             </div>
           </div>
-          <div class="p-6">
-            <p class="text-gray-600 mb-4">智能威胁检测、漏洞分析、安全合规检查，为企业网络安全保驾护航。基于海量安全数据训练，支持实时威胁情报分析。</p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">威胁情报</span>
-              <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">漏洞扫描</span>
-              <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">合规审查</span>
-              <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">应急响应</span>
+          <div class="p-4 sm:p-6">
+            <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">智能威胁检测、漏洞分析、安全合规检查，为企业网络安全保驾护航。</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+              <span class="px-2 sm:px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">威胁情报</span>
+              <span class="px-2 sm:px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">漏洞扫描</span>
+              <span class="px-2 sm:px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">合规审查</span>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                <span class="text-sm text-gray-500">已上线</span>
+                <span class="text-xs sm:text-sm text-gray-500">已上线</span>
               </div>
-              <a href="https://huggingface.co/spaces/FFZwai/ai-safety-chat" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-700 text-sm font-semibold flex items-center gap-1">
-                立即体验 <i data-lucide="external-link" class="w-4 h-4"></i>
+              <a href="https://huggingface.co/spaces/FFZwai/ai-safety-chat" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-700 text-xs sm:text-sm font-semibold flex items-center gap-1">
+                体验 <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4"></i>
               </a>
             </div>
           </div>
         </article>
 
         <!-- Video Model -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-48 bg-gradient-to-br from-violet-400 to-purple-500 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80" alt="Video Content AI Model" class="w-full h-full object-cover opacity-60" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-36 sm:h-48 bg-gradient-to-br from-violet-400 to-purple-500 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&q=60" alt="Video Content" class="hero-bg-img w-full h-full object-cover opacity-60" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-6 flex items-center gap-3">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl shadow-lg">🎬</div>
+            <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 flex items-center gap-2 sm:gap-3">
+              <div class="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl flex items-center justify-center text-2xl sm:text-3xl shadow-lg">🎬</div>
               <div>
-                <h3 class="text-xl font-bold text-white">Video Model</h3>
-                <p class="text-white/80 text-sm">视频内容模型</p>
+                <h3 class="text-lg sm:text-xl font-bold text-white">Video Model</h3>
+                <p class="text-white/80 text-xs sm:text-sm">视频内容模型</p>
               </div>
             </div>
           </div>
-          <div class="p-6">
-            <p class="text-gray-600 mb-4">视频安全分析、内容理解、智能审核，助力视频平台内容治理。支持多模态输入，可处理图像、文本、视频混合场景。</p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">智能剪辑</span>
-              <span class="px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">内容审核</span>
-              <span class="px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">安全分析</span>
-              <span class="px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">字幕生成</span>
+          <div class="p-4 sm:p-6">
+            <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">视频安全分析、内容理解、智能审核，助力视频平台内容治理。</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+              <span class="px-2 sm:px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">智能剪辑</span>
+              <span class="px-2 sm:px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">内容审核</span>
+              <span class="px-2 sm:px-3 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-full">安全分析</span>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                <span class="text-sm text-gray-500">已上线</span>
+                <span class="text-xs sm:text-sm text-gray-500">已上线</span>
               </div>
-              <a href="https://huggingface.co/spaces/FFZwai/nexify-safety-v2" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-700 text-sm font-semibold flex items-center gap-1">
-                立即体验 <i data-lucide="external-link" class="w-4 h-4"></i>
+              <a href="https://huggingface.co/spaces/FFZwai/nexify-safety-v2" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-700 text-xs sm:text-sm font-semibold flex items-center gap-1">
+                体验 <i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4"></i>
               </a>
             </div>
           </div>
         </article>
 
         <!-- Flow Model -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-500 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Workflow Automation AI Model" class="w-full h-full object-cover opacity-60" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-36 sm:h-48 bg-gradient-to-br from-blue-400 to-cyan-500 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=60" alt="Workflow" class="hero-bg-img w-full h-full object-cover opacity-60" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-6 flex items-center gap-3">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl shadow-lg">⚙️</div>
+            <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 flex items-center gap-2 sm:gap-3">
+              <div class="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl flex items-center justify-center text-2xl sm:text-3xl shadow-lg">⚙️</div>
               <div>
-                <h3 class="text-xl font-bold text-white">Flow Model</h3>
-                <p class="text-white/80 text-sm">流程自动化模型</p>
+                <h3 class="text-lg sm:text-xl font-bold text-white">Flow Model</h3>
+                <p class="text-white/80 text-xs sm:text-sm">流程自动化模型</p>
               </div>
             </div>
           </div>
-          <div class="p-6">
-            <p class="text-gray-600 mb-4">业务流程理解、任务自动化执行，提升企业运营效率。支持跨系统协同，可与现有业务系统无缝对接。</p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">流程编排</span>
-              <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">任务调度</span>
-              <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">智能决策</span>
-              <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">RPA 集成</span>
+          <div class="p-4 sm:p-6">
+            <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">业务流程理解、任务自动化执行，提升企业运营效率。</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+              <span class="px-2 sm:px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">流程编排</span>
+              <span class="px-2 sm:px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">任务调度</span>
+              <span class="px-2 sm:px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">智能决策</span>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                <span class="text-sm text-gray-500">开发中</span>
+                <span class="text-xs sm:text-sm text-gray-500">开发中</span>
               </div>
-              <span class="text-gray-400 text-sm">敬请期待</span>
+              <span class="text-gray-400 text-xs sm:text-sm">敬请期待</span>
             </div>
           </div>
         </article>
 
         <!-- Analytics Model -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-48 bg-gradient-to-br from-orange-400 to-amber-500 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Data Analytics AI Model" class="w-full h-full object-cover opacity-60" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-36 sm:h-48 bg-gradient-to-br from-orange-400 to-amber-500 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=60" alt="Analytics" class="hero-bg-img w-full h-full object-cover opacity-60" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-6 flex items-center gap-3">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl shadow-lg">📊</div>
+            <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 flex items-center gap-2 sm:gap-3">
+              <div class="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl flex items-center justify-center text-2xl sm:text-3xl shadow-lg">📊</div>
               <div>
-                <h3 class="text-xl font-bold text-white">Analytics Model</h3>
-                <p class="text-white/80 text-sm">数据分析模型</p>
+                <h3 class="text-lg sm:text-xl font-bold text-white">Analytics Model</h3>
+                <p class="text-white/80 text-xs sm:text-sm">数据分析模型</p>
               </div>
             </div>
           </div>
-          <div class="p-6">
-            <p class="text-gray-600 mb-4">深度数据分析、趋势预测、洞察报告，数据驱动决策。支持多维度数据分析，自动生成可视化报告。</p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">数据可视化</span>
-              <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">趋势预测</span>
-              <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">异常检测</span>
-              <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">报告生成</span>
+          <div class="p-4 sm:p-6">
+            <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">深度数据分析、趋势预测、洞察报告，数据驱动决策。</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+              <span class="px-2 sm:px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">数据可视化</span>
+              <span class="px-2 sm:px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">趋势预测</span>
+              <span class="px-2 sm:px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full">异常检测</span>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-gray-400"></span>
-                <span class="text-sm text-gray-500">规划中</span>
+                <span class="text-xs sm:text-sm text-gray-500">规划中</span>
               </div>
-              <span class="text-gray-400 text-sm">敬请期待</span>
+              <span class="text-gray-400 text-xs sm:text-sm">敬请期待</span>
             </div>
           </div>
         </article>
@@ -313,65 +290,56 @@
   </section>
 
   <!-- 解决方案 -->
-  <section id="solutions" class="py-24">
+  <section id="solutions" class="py-12 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-6">为企业量身定制的 AI 解决方案</h2>
-          <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-            我们深入理解各行业业务场景，提供从模型选型、定制训练到部署运维的全链路服务。无论是初创团队还是大型企业，都能找到适合的 AI 升级路径。
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4 sm:mb-6">为企业量身定制的 AI 解决方案</h2>
+          <p class="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
+            我们深入理解各行业业务场景，提供从模型选型、定制训练到部署运维的全链路服务。
           </p>
           
-          <div class="space-y-4">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="zap" class="w-5 h-5 text-indigo-600"></i>
+          <div class="space-y-3 sm:space-y-4">
+            <div class="flex items-start gap-3 sm:gap-4">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="zap" class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600"></i>
               </div>
               <div>
-                <h3 class="font-semibold text-gray-900 mb-1">开箱即用</h3>
-                <p class="text-gray-500 text-sm">预训练模型直接调用，无需 AI 背景，5 分钟接入业务</p>
+                <h3 class="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">开箱即用</h3>
+                <p class="text-gray-500 text-xs sm:text-sm">5 分钟接入业务，无需 AI 背景</p>
               </div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="settings" class="w-5 h-5 text-indigo-600"></i>
+            <div class="flex items-start gap-3 sm:gap-4">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="settings" class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600"></i>
               </div>
               <div>
-                <h3 class="font-semibold text-gray-900 mb-1">深度定制</h3>
-                <p class="text-gray-500 text-sm">基于 LoRA 技术微调专属模型，精准匹配业务需求</p>
+                <h3 class="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">深度定制</h3>
+                <p class="text-gray-500 text-xs sm:text-sm">基于 LoRA 微调专属模型</p>
               </div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+            <div class="flex items-start gap-3 sm:gap-4">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600"></i>
               </div>
               <div>
-                <h3 class="font-semibold text-gray-900 mb-1">安全合规</h3>
-                <p class="text-gray-500 text-sm">支持私有化部署，数据不出域，满足行业合规要求</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="headphones" class="w-5 h-5 text-indigo-600"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 mb-1">全程支持</h3>
-                <p class="text-gray-500 text-sm">从需求分析到上线运维，专业技术团队全程陪伴</p>
+                <h3 class="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">安全合规</h3>
+                <p class="text-gray-500 text-xs sm:text-sm">支持私有化部署，数据不出域</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="relative">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="AI 团队协作" class="rounded-2xl shadow-2xl" loading="lazy">
-          <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=60" alt="Team" class="rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl" loading="lazy">
+          <div class="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white rounded-lg sm:rounded-xl shadow-xl p-3 sm:p-4">
+            <div class="flex items-center gap-2 sm:gap-3">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-100 flex items-center justify-center">
+                <i data-lucide="trending-up" class="w-5 h-5 sm:w-6 sm:h-6 text-green-600"></i>
               </div>
               <div>
-                <div class="text-2xl font-black text-gray-900">150%</div>
-                <div class="text-sm text-gray-500">平均效率提升</div>
+                <div class="text-xl sm:text-2xl font-black text-gray-900">150%</div>
+                <div class="text-xs sm:text-sm text-gray-500">效率提升</div>
               </div>
             </div>
           </div>
@@ -381,67 +349,67 @@
   </section>
 
   <!-- 客户案例 -->
-  <section id="cases" class="py-24 bg-gray-50">
+  <section id="cases" class="py-12 sm:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4">客户案例</h2>
-        <p class="text-gray-600 text-lg">真实场景，真实价值</p>
+      <div class="text-center mb-8 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">客户案例</h2>
+        <p class="text-gray-600 text-base sm:text-lg">真实场景，真实价值</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
         <!-- 案例 1 -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-40 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80" alt="金融科技案例" class="w-full h-full object-cover" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-28 sm:h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=60" alt="Finance" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">金融科技</span>
+            <div class="absolute bottom-2 sm:bottom-4 left-3 sm:left-4">
+              <span class="px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">金融科技</span>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-gray-900 mb-2">某城商行威胁检测系统</h3>
-            <p class="text-gray-600 text-sm mb-4">使用 Cyber Model 实现威胁情报自动分析，安全响应时间缩短 80%，准确率达 95%。</p>
-            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">-80%</div><div class="text-xs text-gray-500">响应时间</div></div>
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">95%</div><div class="text-xs text-gray-500">准确率</div></div>
+          <div class="p-4 sm:p-6">
+            <h3 class="font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">某城商行威胁检测</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">使用 Cyber Model 实现威胁情报自动分析，响应时间缩短 80%。</p>
+            <div class="flex items-center gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-gray-100">
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">-80%</div><div class="text-xs text-gray-500">响应时间</div></div>
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">95%</div><div class="text-xs text-gray-500">准确率</div></div>
             </div>
           </div>
         </article>
 
         <!-- 案例 2 -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-40 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" alt="短视频平台案例" class="w-full h-full object-cover" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div class="h-28 sm:h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=60" alt="Video" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">短视频平台</span>
+            <div class="absolute bottom-2 sm:bottom-4 left-3 sm:left-4">
+              <span class="px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">短视频</span>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-gray-900 mb-2">某短视频平台内容审核</h3>
-            <p class="text-gray-600 text-sm mb-4">使用 Video Model 进行内容安全审核，日均处理 10 万+视频，误判率低于 2%。</p>
-            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">10万+</div><div class="text-xs text-gray-500">日处理量</div></div>
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">&lt;2%</div><div class="text-xs text-gray-500">误判率</div></div>
+          <div class="p-4 sm:p-6">
+            <h3 class="font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">短视频内容审核</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">使用 Video Model 审核，日均处理 10 万+视频，误判率 &lt;2%。</p>
+            <div class="flex items-center gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-gray-100">
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">10万+</div><div class="text-xs text-gray-500">日处理</div></div>
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">&lt;2%</div><div class="text-xs text-gray-500">误判率</div></div>
             </div>
           </div>
         </article>
 
         <!-- 案例 3 -->
-        <article class="card-hover bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          <div class="h-40 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="电商案例" class="w-full h-full object-cover" loading="lazy">
+        <article class="card-hover bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden shadow-sm sm:col-span-2 lg:col-span-1">
+          <div class="h-28 sm:h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=60" alt="E-commerce" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">电商</span>
+            <div class="absolute bottom-2 sm:bottom-4 left-3 sm:left-4">
+              <span class="px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">电商</span>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-lg text-gray-900 mb-2">某电商平台流程自动化</h3>
-            <p class="text-gray-600 text-sm mb-4">使用 Flow Model 实现订单处理自动化，人工干预减少 60%，效率提升 150%。</p>
-            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">+150%</div><div class="text-xs text-gray-500">效率提升</div></div>
-              <div class="text-center"><div class="text-xl font-bold text-indigo-600">-40%</div><div class="text-xs text-gray-500">成本降低</div></div>
+          <div class="p-4 sm:p-6">
+            <h3 class="font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">电商流程自动化</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">使用 Flow Model 实现订单处理自动化，效率提升 150%。</p>
+            <div class="flex items-center gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-gray-100">
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">+150%</div><div class="text-xs text-gray-500">效率</div></div>
+              <div class="text-center"><div class="text-lg sm:text-xl font-bold text-indigo-600">-40%</div><div class="text-xs text-gray-500">成本</div></div>
             </div>
           </div>
         </article>
@@ -450,139 +418,121 @@
   </section>
 
   <!-- 定价 -->
-  <section id="pricing" class="py-24">
+  <section id="pricing" class="py-12 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4">简单透明的定价</h2>
-        <p class="text-gray-600 text-lg">无隐藏费用，按需选择</p>
+      <div class="text-center mb-8 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">简单透明的定价</h2>
+        <p class="text-gray-600 text-base sm:text-lg">无隐藏费用，按需选择</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 max-w-5xl mx-auto">
         <!-- 免费版 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8">
-          <div class="text-center mb-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">免费版</h3>
+        <div class="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-6 sm:p-8">
+          <div class="text-center mb-4 sm:mb-6">
+            <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">免费版</h3>
             <div class="flex items-baseline justify-center gap-1">
-              <span class="text-4xl font-black text-gray-900">¥0</span>
-              <span class="text-gray-500 text-sm">永久免费</span>
+              <span class="text-3xl sm:text-4xl font-black text-gray-900">¥0</span>
+              <span class="text-gray-500 text-xs sm:text-sm">永久免费</span>
             </div>
-            <p class="text-gray-500 text-sm mt-2">适合个人学习和探索</p>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2">适合个人学习</p>
           </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>基础模型访问</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>100 次/日调用</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>社区支持</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>公开模型权重</li>
+          <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-xs sm:text-sm">
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>基础模型访问</li>
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>100 次/日调用</li>
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>社区支持</li>
           </ul>
-          <a href="#contact" class="block text-center py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors">免费开始</a>
+          <a href="#contact" class="block text-center py-2.5 sm:py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg sm:rounded-xl transition-colors text-sm">免费开始</a>
         </div>
 
         <!-- 专业版 -->
-        <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-8 text-white relative shadow-xl">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span class="bg-white text-indigo-600 text-xs font-bold px-4 py-1 rounded-full shadow-lg">最受欢迎</span>
+        <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white relative shadow-xl sm:shadow-2xl">
+          <div class="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-white text-indigo-600 text-xs font-bold px-3 sm:px-4 py-1 rounded-full shadow-lg">最受欢迎</span>
           </div>
-          <div class="text-center mb-6">
-            <h3 class="text-lg font-bold mb-2">专业版</h3>
+          <div class="text-center mb-4 sm:mb-6">
+            <h3 class="text-base sm:text-lg font-bold mb-2">专业版</h3>
             <div class="flex items-baseline justify-center gap-1">
-              <span class="text-4xl font-black">¥199</span>
-              <span class="text-white/70 text-sm">/月</span>
+              <span class="text-3xl sm:text-4xl font-black">¥199</span>
+              <span class="text-white/70 text-xs sm:text-sm">/月</span>
             </div>
-            <p class="text-white/70 text-sm mt-2">适合开发者和小团队</p>
+            <p class="text-white/70 text-xs sm:text-sm mt-2">适合开发者和小团队</p>
           </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-green-300"></i>全部模型访问</li>
-            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-green-300"></i>无限次调用</li>
-            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-green-300"></i>优先推理队列</li>
-            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-green-300"></i>邮件技术支持</li>
-            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-green-300"></i>私有部署选项</li>
+          <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-xs sm:text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-300"></i>全部模型访问</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-300"></i>无限次调用</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-300"></i>优先推理队列</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-300"></i>技术支持</li>
           </ul>
-          <a href="#contact" class="block text-center py-3 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors">立即订阅</a>
+          <a href="#contact" class="block text-center py-2.5 sm:py-3 bg-white text-indigo-600 font-semibold rounded-lg sm:rounded-xl hover:bg-gray-100 transition-colors text-sm">立即订阅</a>
         </div>
 
         <!-- 企业版 -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-8">
-          <div class="text-center mb-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">企业版</h3>
+        <div class="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-6 sm:p-8 sm:col-span-2 lg:col-span-1">
+          <div class="text-center mb-4 sm:mb-6">
+            <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">企业版</h3>
             <div class="flex items-baseline justify-center gap-1">
-              <span class="text-4xl font-black text-gray-900">定制</span>
+              <span class="text-3xl sm:text-4xl font-black text-gray-900">定制</span>
             </div>
-            <p class="text-gray-500 text-sm mt-2">适合大型企业和机构</p>
+            <p class="text-gray-500 text-xs sm:text-sm mt-2">适合大型企业</p>
           </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>专业版全部功能</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>专属模型定制训练</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>SLA 99.9% 保障</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>专属技术支持</li>
-            <li class="flex items-center gap-3 text-sm text-gray-600"><i data-lucide="check" class="w-4 h-4 text-green-500"></i>私有化部署</li>
+          <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-xs sm:text-sm">
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>专业版全部功能</li>
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>专属模型定制</li>
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>SLA 99.9%</li>
+            <li class="flex items-center gap-2 text-gray-600"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500"></i>私有化部署</li>
           </ul>
-          <a href="#contact" class="block text-center py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors">联系销售</a>
+          <a href="#contact" class="block text-center py-2.5 sm:py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg sm:rounded-xl transition-colors text-sm">联系销售</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-24 bg-gray-50">
+  <section id="faq" class="py-12 sm:py-24 bg-gray-50">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4">常见问题</h2>
-        <p class="text-gray-600 text-lg">关于 Nexify 的一切</p>
+      <div class="text-center mb-8 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">常见问题</h2>
+        <p class="text-gray-600 text-base sm:text-lg">关于 Nexify 的一切</p>
       </div>
 
-      <div class="space-y-4">
-        <!-- FAQ 1 -->
-        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
-          <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-            <span class="font-semibold text-gray-900">Nexify 的模型可以私有化部署吗？</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon"></i>
+      <div class="space-y-3 sm:space-y-4">
+        <div class="faq-item bg-white rounded-lg sm:rounded-xl border border-gray-100 overflow-hidden">
+          <button class="faq-toggle w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-gray-900 text-sm sm:text-base">可以私有化部署吗？</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 faq-icon"></i>
           </button>
-          <div class="faq-content px-6 pb-4">
-            <p class="text-gray-600 text-sm leading-relaxed">是的，专业版和企业版都支持私有化部署。企业版还提供专属模型定制训练服务，可根据您的业务数据进行微调，确保模型完全适配您的场景。私有化部署支持本地服务器、私有云等多种环境。</p>
+          <div class="faq-content px-4 sm:px-6 pb-3 sm:pb-4">
+            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">是的，专业版和企业版都支持私有化部署。企业版还提供专属模型定制训练服务。</p>
           </div>
         </div>
 
-        <!-- FAQ 2 -->
-        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
-          <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-            <span class="font-semibold text-gray-900">如何选择适合的模型？</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon"></i>
+        <div class="faq-item bg-white rounded-lg sm:rounded-xl border border-gray-100 overflow-hidden">
+          <button class="faq-toggle w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-gray-900 text-sm sm:text-base">如何选择适合的模型？</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 faq-icon"></i>
           </button>
-          <div class="faq-content px-6 pb-4">
-            <p class="text-gray-600 text-sm leading-relaxed">Cyber Model 适用于网络安全、威胁检测、合规审查等场景；Video Model 适用于视频内容审核、智能剪辑、安全分析等场景；Flow Model 适用于业务流程自动化、任务调度等场景；Analytics Model 适用于数据分析、趋势预测等场景。您也可以联系我们进行需求评估。</p>
+          <div class="faq-content px-4 sm:px-6 pb-3 sm:pb-4">
+            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">Cyber Model 适用于网络安全场景；Video Model 适用于视频内容分析；Flow Model 适用于流程自动化；Analytics Model 适用于数据分析。</p>
           </div>
         </div>
 
-        <!-- FAQ 3 -->
-        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
-          <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-            <span class="font-semibold text-gray-900">免费版有限制吗？</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon"></i>
+        <div class="faq-item bg-white rounded-lg sm:rounded-xl border border-gray-100 overflow-hidden">
+          <button class="faq-toggle w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-gray-900 text-sm sm:text-base">免费版有限制吗？</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 faq-icon"></i>
           </button>
-          <div class="faq-content px-6 pb-4">
-            <p class="text-gray-600 text-sm leading-relaxed">免费版每日可调用 100 次 API，可访问所有基础模型。适合个人学习、原型验证和小规模测试使用。如需更高配额或商业用途，请升级到专业版或企业版。</p>
+          <div class="faq-content px-4 sm:px-6 pb-3 sm:pb-4">
+            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">免费版每日可调用 100 次 API，可访问所有基础模型。适合个人学习和原型验证。</p>
           </div>
         </div>
 
-        <!-- FAQ 4 -->
-        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
-          <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-            <span class="font-semibold text-gray-900">API 接入需要多长时间？</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon"></i>
+        <div class="faq-item bg-white rounded-lg sm:rounded-xl border border-gray-100 overflow-hidden">
+          <button class="faq-toggle w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <span class="font-semibold text-gray-900 text-sm sm:text-base">数据安全如何保障？</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 faq-icon"></i>
           </button>
-          <div class="faq-content px-6 pb-4">
-            <p class="text-gray-600 text-sm leading-relaxed">大多数情况下 5 分钟即可完成接入。我们提供详细的 API 文档和示例代码，支持 Python、JavaScript、Java 等多种语言。如有问题，社区版可在社区论坛获取帮助，专业版和企业版可享受专属技术支持。</p>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
-          <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-            <span class="font-semibold text-gray-900">数据安全如何保障？</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon"></i>
-          </button>
-          <div class="faq-content px-6 pb-4">
-            <p class="text-gray-600 text-sm leading-relaxed">我们采用行业标准的加密传输和存储，数据不会被用于模型训练。企业版支持完全私有化部署，数据不出域，满足金融、医疗等行业的合规要求。我们已通过多项安全认证。</p>
+          <div class="faq-content px-4 sm:px-6 pb-3 sm:pb-4">
+            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">我们采用行业标准的加密传输和存储，数据不会被用于模型训练。企业版支持完全私有化部署。</p>
           </div>
         </div>
       </div>
@@ -590,50 +540,50 @@
   </section>
 
   <!-- 关于我们 -->
-  <section id="about" class="py-24 bg-gray-900 text-white">
+  <section id="about" class="py-12 sm:py-24 bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black mb-6">关于 Nexify</h2>
-          <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-6">关于 Nexify</h2>
+          <p class="text-gray-300 text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed">
             Nexify 是杭州市上城区乐友信息服务工作室旗下品牌，专注于垂直领域 AI 模型的研发与商业化落地。
           </p>
-          <p class="text-gray-400 mb-8 leading-relaxed">
-            我们相信 AI 技术应该服务于具体的业务场景，而非停留在概念层面。通过深度理解行业需求，我们打造真正能解决问题的 AI 模型，帮助企业实现智能化升级。
+          <p class="text-gray-400 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+            我们相信 AI 技术应该服务于具体的业务场景。通过深度理解行业需求，我们打造真正能解决问题的 AI 模型。
           </p>
-          <div class="flex items-center gap-6">
-            <div><div class="text-3xl font-black text-white">2024</div><div class="text-gray-500 text-sm">成立于杭州</div></div>
-            <div class="w-px h-12 bg-gray-700"></div>
-            <div><div class="text-3xl font-black text-white">4+</div><div class="text-gray-500 text-sm">产品线</div></div>
-            <div class="w-px h-12 bg-gray-700"></div>
-            <div><div class="text-3xl font-black text-white">开源</div><div class="text-gray-500 text-sm">技术理念</div></div>
+          <div class="flex items-center gap-4 sm:gap-6">
+            <div><div class="text-2xl sm:text-3xl font-black text-white">2024</div><div class="text-gray-500 text-xs sm:text-sm">成立于杭州</div></div>
+            <div class="w-px h-8 sm:h-12 bg-gray-700"></div>
+            <div><div class="text-2xl sm:text-3xl font-black text-white">4+</div><div class="text-gray-500 text-xs sm:text-sm">产品线</div></div>
+            <div class="w-px h-8 sm:h-12 bg-gray-700"></div>
+            <div><div class="text-2xl sm:text-3xl font-black text-white">开源</div><div class="text-gray-500 text-xs sm:text-sm">技术理念</div></div>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-gray-800 rounded-2xl p-6"><i data-lucide="target" class="w-8 h-8 text-indigo-400 mb-4"></i><h3 class="font-bold mb-2">使命</h3><p class="text-gray-400 text-sm">让 AI 模型服务每个人</p></div>
-          <div class="bg-gray-800 rounded-2xl p-6"><i data-lucide="eye" class="w-8 h-8 text-indigo-400 mb-4"></i><h3 class="font-bold mb-2">愿景</h3><p class="text-gray-400 text-sm">成为最懂业务的 AI 平台</p></div>
-          <div class="bg-gray-800 rounded-2xl p-6"><i data-lucide="heart" class="w-8 h-8 text-indigo-400 mb-4"></i><h3 class="font-bold mb-2">价值观</h3><p class="text-gray-400 text-sm">用户第一，技术向善</p></div>
-          <div class="bg-gray-800 rounded-2xl p-6"><i data-lucide="rocket" class="w-8 h-8 text-indigo-400 mb-4"></i><h3 class="font-bold mb-2">文化</h3><p class="text-gray-400 text-sm">开放、创新、务实</p></div>
+        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+          <div class="bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6"><i data-lucide="target" class="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400 mb-2 sm:mb-4"></i><h3 class="font-bold text-sm sm:text-base mb-1 sm:mb-2">使命</h3><p class="text-gray-400 text-xs sm:text-sm">让 AI 服务每个人</p></div>
+          <div class="bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6"><i data-lucide="eye" class="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400 mb-2 sm:mb-4"></i><h3 class="font-bold text-sm sm:text-base mb-1 sm:mb-2">愿景</h3><p class="text-gray-400 text-xs sm:text-sm">最懂业务的 AI 平台</p></div>
+          <div class="bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6"><i data-lucide="heart" class="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400 mb-2 sm:mb-4"></i><h3 class="font-bold text-sm sm:text-base mb-1 sm:mb-2">价值观</h3><p class="text-gray-400 text-xs sm:text-sm">用户第一，技术向善</p></div>
+          <div class="bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6"><i data-lucide="rocket" class="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400 mb-2 sm:mb-4"></i><h3 class="font-bold text-sm sm:text-base mb-1 sm:mb-2">文化</h3><p class="text-gray-400 text-xs sm:text-sm">开放、创新、务实</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 联系我们 -->
-  <section id="contact" class="py-24">
+  <section id="contact" class="py-12 sm:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 sm:p-12 text-center text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 text-center text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-white/10 rounded-full blur-3xl"></div>
         
         <div class="relative">
-          <h2 class="text-3xl sm:text-4xl font-black mb-4">开始使用 Nexify</h2>
-          <p class="text-white/80 text-lg mb-8 max-w-lg mx-auto">注册获取内测资格，第一时间体验最新模型能力</p>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4">开始使用 Nexify</h2>
+          <p class="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-lg mx-auto">注册获取内测资格，第一时间体验最新模型能力</p>
           
           <form id="waitlist-form" class="max-w-md mx-auto">
             <div class="flex flex-col sm:flex-row gap-3">
-              <input type="email" id="email-input" placeholder="输入邮箱地址" required class="flex-1 px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/40">
-              <button type="submit" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-xl hover:bg-gray-100 transition-colors">获取内测</button>
+              <input type="email" id="email-input" placeholder="输入邮箱地址" required class="flex-1 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/40 text-sm">
+              <button type="submit" class="px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 font-bold rounded-lg sm:rounded-xl hover:bg-gray-100 transition-colors text-sm">获取内测</button>
             </div>
             <p id="form-message" class="text-sm mt-3 hidden"></p>
           </form>
@@ -643,38 +593,36 @@
   </section>
 
   <!-- 页脚 -->
-  <footer class="bg-gray-950 text-white py-16">
+  <footer class="bg-gray-950 text-white py-10 sm:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-        <div class="md:col-span-2">
-          <a href="#" class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <span class="text-white font-bold text-sm">N</span>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 mb-8 sm:mb-12">
+        <div class="col-span-2">
+          <a href="#" class="flex items-center gap-2 mb-3 sm:mb-4">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <span class="text-white font-bold text-xs sm:text-sm">N</span>
             </div>
-            <span class="font-bold text-xl">Nexify</span>
+            <span class="font-bold text-lg sm:text-xl">Nexify</span>
           </a>
-          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">杭州市上城区乐友信息服务工作室旗下品牌。专注垂直领域 AI 模型研发与商业化，让 AI 技术真正赋能千行百业。</p>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm">杭州市上城区乐友信息服务工作室旗下品牌。专注垂直领域 AI 模型研发与商业化。</p>
         </div>
         <div>
-          <h4 class="font-bold text-sm mb-4">产品</h4>
-          <ul class="space-y-3 text-sm text-gray-400">
+          <h4 class="font-bold text-xs sm:text-sm mb-3 sm:mb-4">产品</h4>
+          <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
             <li><a href="#products" class="hover:text-white transition-colors">Cyber Model</a></li>
             <li><a href="#products" class="hover:text-white transition-colors">Video Model</a></li>
             <li><a href="#products" class="hover:text-white transition-colors">Flow Model</a></li>
-            <li><a href="#products" class="hover:text-white transition-colors">Analytics Model</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-sm mb-4">公司</h4>
-          <ul class="space-y-3 text-sm text-gray-400">
+          <h4 class="font-bold text-xs sm:text-sm mb-3 sm:mb-4">公司</h4>
+          <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
             <li><a href="#about" class="hover:text-white transition-colors">关于我们</a></li>
             <li><a href="#faq" class="hover:text-white transition-colors">常见问题</a></li>
             <li><a href="#contact" class="hover:text-white transition-colors">联系我们</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">隐私政策</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <div class="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-gray-500">
         <span>© 2026 杭州市上城区乐友信息服务工作室</span>
         <span>Nexify — 让 AI 模型服务每个人</span>
       </div>
@@ -683,19 +631,30 @@
 
   <!-- JavaScript -->
   <script>
-    // 初始化 Lucide 图标
+    // 初始化图标
     lucide.createIcons();
+
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // 点击菜单项后关闭
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
 
     // FAQ 手风琴
     document.querySelectorAll('.faq-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
         const isActive = item.classList.contains('active');
-        
-        // 关闭所有其他
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        
-        // 切换当前
         if (!isActive) item.classList.add('active');
       });
     });
@@ -726,12 +685,12 @@
         });
 
         if (response.ok) {
-          showMessage('🎉 注册成功！我们会第一时间通知您', 'success');
+          showMessage('🎉 注册成功！', 'success');
           emailInput.value = '';
         } else if (response.status === 409) {
           showMessage('此邮箱已注册', 'error');
         } else {
-          showMessage('提交失败，请稍后重试', 'error');
+          showMessage('提交失败，请重试', 'error');
         }
       } catch (err) {
         showMessage('网络异常，请重试', 'error');
