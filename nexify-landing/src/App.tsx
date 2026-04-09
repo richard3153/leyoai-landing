@@ -17,6 +17,7 @@ interface Product {
   nameCn: string;
   desc: string;
   icon: string;
+  image?: string;
   color: string;
   badge: string;
   badgeColor: string;
