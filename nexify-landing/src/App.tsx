@@ -66,7 +66,7 @@ const PRODUCTS: Product[] = [
     features: ["威胁情报分析", "漏洞扫描检测", "合规自动审查", "应急响应建议"],
     models: [
       { name: "AI 安全助手", tag: "通用安全", icon: "🔒", link: "https://huggingface.co/spaces/FFZwai/ai-safety-chat" },
-      { name: "安全问答助手", tag: "垂直领域", icon: "🛡️", link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2" },
+      { name: "🛡️ Cyber 安全助手", tag: "垂直领域", icon: "🛡️", link: "https://huggingface.co/spaces/FFZwai/nexify-cyber-assistant" },
     ],
   },
   {
@@ -81,9 +81,9 @@ const PRODUCTS: Product[] = [
     badgeColor: "bg-violet-500",
     features: ["智能剪辑", "内容审核", "安全分析", "字幕生成"],
     models: [
-      { name: "视频安全助手", tag: "垂直领域", icon: "🎬", link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2" },
+      { name: "🎬 视频安全助手", tag: "视频内容分析", icon: "🎬", link: "https://huggingface.co/spaces/FFZwai/nexify-video-safety-v2" },
     ],
-    link: "https://huggingface.co/spaces/FFZwai/nexify-safety-v2",
+    link: "https://huggingface.co/spaces/FFZwai/nexify-video-safety-v2",
   },
   {
     id: "flow",
@@ -93,9 +93,12 @@ const PRODUCTS: Product[] = [
     icon: "⚙️",
     image: IMAGES.flow,
     color: "from-blue-500 to-cyan-600",
-    badge: "开发中",
+    badge: "已上线",
     badgeColor: "bg-blue-500",
     features: ["流程编排", "任务调度", "跨系统协同", "智能决策"],
+    models: [
+      { name: "⚙️ Flow 自动化助手", tag: "流程自动化", icon: "⚙️", link: "https://huggingface.co/spaces/FFZwai/nexify-flow-assistant" },
+    ],
   },
   {
     id: "analytics",
@@ -105,9 +108,12 @@ const PRODUCTS: Product[] = [
     icon: "📊",
     image: IMAGES.analytics,
     color: "from-orange-500 to-amber-600",
-    badge: "规划中",
-    badgeColor: "bg-slate-400",
+    badge: "已上线",
+    badgeColor: "bg-orange-500",
     features: ["数据可视化", "趋势预测", "异常检测", "报告生成"],
+    models: [
+      { name: "📊 Analytics 分析助手", tag: "数据分析", icon: "📊", link: "https://huggingface.co/spaces/FFZwai/nexify-analytics-assistant" },
+    ],
   },
 ];
 
