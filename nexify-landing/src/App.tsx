@@ -27,10 +27,10 @@ interface Product {
 }
 
 // ============================================================
-// Nexify MaaS 平台
+// LeyoAI MaaS 平台
 // ============================================================
 const COMPANY_NAME = "杭州市上城区乐友信息服务工作室";
-const BRAND_NAME = "Nexify";
+const BRAND_NAME = "LeyoAI";
 const BRAND_TAGLINE = "Model as a Service";
 
 // ============================================================
@@ -72,15 +72,15 @@ const PRODUCTS: Product[] = [
     id: "video",
     name: "Video Model",
     nameCn: "视频内容模型",
-    desc: "基于 Qwen2-VL 多模态架构，当前运行 CPU-basic（GPU 升级后质量将显著提升）",
+    desc: "基于 Qwen2.5-1.5B + LoRA 微调，专精视频/图像安全审核与内容合规分类",
     icon: "🎬",
     image: IMAGES.video,
     color: "from-violet-500 to-purple-600",
-    badge: "🔧 训练中",
+    badge: "✅ 已验证",
     badgeColor: "bg-violet-500",
     features: ["图像安全审核", "场景风险识别", "内容合规分类", "隐私泄露检测"],
     models: [
-      { name: "🎬 视频安全助手", tag: "多模态初版", icon: "🎬", link: "https://huggingface.co/spaces/FFZwai/nexify-video-safety-v2" },
+      { name: "🎬 视频安全助手", tag: "垂直领域", icon: "🎬", link: "https://huggingface.co/spaces/FFZwai/nexify-video-safety-v2" },
     ],
     link: "https://huggingface.co/spaces/FFZwai/nexify-video-safety-v2",
   },
@@ -160,7 +160,7 @@ const TUTORIALS = [
   },
   {
     title: "本地部署模型指南",
-    desc: "在本地环境部署 Nexify 模型，保护数据隐私",
+    desc: "在本地环境部署 LeyoAI 模型，保护数据隐私",
     time: "15 min",
     level: "进阶",
     icon: "💻",
@@ -168,7 +168,7 @@ const TUTORIALS = [
   },
   {
     title: "API 集成最佳实践",
-    desc: "将 Nexify 集成到你的应用中，实现智能化升级",
+    desc: "将 LeyoAI 集成到你的应用中，实现智能化升级",
     time: "10 min",
     level: "进阶",
     icon: "🔌",
@@ -563,7 +563,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black mb-4">快速开始</h2>
-            <p className="text-slate-400 text-lg">从入门到精通，一步步掌握 Nexify</p>
+            <p className="text-slate-400 text-lg">从入门到精通，一步步掌握 LeyoAI</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -686,7 +686,7 @@ export default function App() {
         </div>
 
         <div className="relative max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-black mb-4">开始使用 Nexify</h2>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4">开始使用 LeyoAI</h2>
           <p className="text-white/80 text-lg mb-10">
             注册获取内测资格，第一时间体验最新模型能力
           </p>

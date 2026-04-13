@@ -1,12 +1,11 @@
 # USER.md - About Your Human
 
-_Learn about the person you're helping. Update this as you go._
-
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+- **Name:** （老板）
+- **What to call them:** 老板
+- **Company:** 杭州市上城区乐友信息服务工作室（个体工商户）
+- **Brand:** LeyoAI
+- **Timezone:** Asia/Shanghai (GMT+8)
+- **Notes:** Nexify 已更名 LeyoAI，避免与香港 Nexify Limited 和乐友孕婴童品牌冲突
 
 ## Context
 
