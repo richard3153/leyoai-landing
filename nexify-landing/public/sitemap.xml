@@ -6,23 +6,18 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://huggingface.co/spaces/FFZwai/leyoai-cyber-assistant</loc>
+    <loc>https://leyoai.vercel.app/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://huggingface.co/spaces/FFZwai/leyoai-video-safety</loc>
+    <loc>https://leyoai.vercel.app/terms.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://huggingface.co/spaces/FFZwai/leyoai-flow-assistant</loc>
+    <loc>https://leyoai.vercel.app/privacy.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://huggingface.co/spaces/FFZwai/leyoai-analytics-assistant</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

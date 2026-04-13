@@ -30,3 +30,8 @@
 - adapter_config.json 中 base_model_name_or_path 必须用 HF 标准 ID（如 Qwen/Qwen2.5-1.5B-Instruct），不能用本地路径
 - HF Space 重命名用 `HfApi.move_repo(from_id, to_id, repo_type='space')`，无需重建环境
 - Vercel 项目重命名用 REST API `PATCH /v9/projects/{id}`，token 在 `~/Library/Application Support/com.vercel.cli/auth.json`
+
+## 用户身份与偏好
+
+- {"add"：[],"update":[{"old_pattern":"Video Model →
+- ✅ 已上线 → HF Space：FFZwai/leyoai-video-safety","new_fact":"Video Model → ✅ 已上线 → HF Space: FFZwai/leyoai-video-safety，运行状态: RUNNING, cpu-basic","section":"产品线状态（2026-04-13）"}],"remove":[]}
