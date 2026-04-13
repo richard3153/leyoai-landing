@@ -41,8 +41,8 @@ CEO（你 / AI Agent）
 - 遵守 HuggingFace/GitHub 平台政策及当地法规
 
 ## 关键链接
-- 官网: https://dist-sigma-woad.vercel.app/
-- GitHub: https://github.com/richard3153/nexify-landing
-- Cyber Model: https://huggingface.co/spaces/FFZwai/nexify-safety-assistant
+- 官网: https://leyoai.vercel.app/
+- GitHub: https://github.com/richard3153/leyoai-landing
+- Cyber Model: https://huggingface.co/spaces/FFZwai/leyoai-cyber-assistant
 - 训练模型: https://huggingface.co/FFZwai/qwen2.5-1.5b-safety-lora
 - Supabase: https://drbeynfabvbydukjajrz.supabase.co
