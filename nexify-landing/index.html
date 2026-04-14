@@ -64,7 +64,7 @@
   </script>
   
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/xuanchen.wu@hotmail.com/dist/umd/lucide.min.js"></script>
   
   <style>
     /* 基础 */
@@ -125,139 +125,77 @@
     
     /* FAQ */
     .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .faq-item.active .faq-content { max-height: 500px; }
-    .faq-item.active .faq-icon { transform: rotate(180deg); }
-    .faq-icon { transition: transform 0.3s ease; }
-    
-    /* 图片懒加载占位 */
-    .img-placeholder {
-      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    
-    /* 按钮点击反馈 */
-    .btn-press { transition: transform 0.1s ease; }
-    .btn-press:active { transform: scale(0.97); }
-    
-    /* 滚动条样式 */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
-    
-    /* 鸿蒙/华为浏览器兼容 */
-    @supports not (backdrop-filter: blur(12px)) {
-      .nav-blur { background: rgba(255, 255, 255, 0.98); }
-    }
-    
-    /* 减少动画 (用户偏好) */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
-</head>
+        <div class="bg-gray-50 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-8 sm:mb-10">
+              <h2 class="text-2xl sm:text-3xl font-black mb-3">常见问题</h2>
+              <p class="text-gray-500 text-base sm:text-lg">快速解答你关心的问题</p>
+            </div>
+            <div class="space-y-3 sm:space-y-4">
 
-<body class="font-sans antialiased bg-white text-gray-900">
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">leyoAI 和通用大模型有什么区别？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">通用大模型（如 ChatGPT）训练数据广泛，但在垂直领域深度不足。leyoAI 专注特定领域（如网络安全、视频内容审核），训练数据更精准，回答更专业，幻觉率更低。</p>
+                </div>
+              </div>
 
-  <!-- 导航栏 -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 nav-blur border-b border-gray-100 safe-area-top">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-14 sm:h-16">
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-2 btn-press">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs sm:text-sm">N</span>
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">数据会被保存吗？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">仅用于模型推理，无持久化存储。详细说明请查阅 <a href="/privacy.html" class="text-indigo-600 hover:underline">隐私政策</a>。</p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">为什么回答有时候比较慢？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">免费版运行在 CPU 上，推理约需 10-30 秒。升级 <a href="/pricing.html" class="text-indigo-600 hover:underline">Pro 版（¥65/月）</a>可获得 GPU 加速，速度提升 10 倍。</p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">可以商用吗？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">免费版仅供个人学习研究。Pro 及 Enterprise 版支持商业使用，详见 <a href="/pricing.html" class="text-indigo-600 hover:underline">定价方案</a> 和 <a href="/terms.html" class="text-indigo-600 hover:underline">使用条款</a>。</p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">如何升级到 Pro 版？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">发送邮件至 <a href="mailto:xuanchen.wu@hotmail.com" class="text-indigo-600 hover:underline">xuanchen.wu@hotmail.com</a>，我们将在 24 小时内回复支付方式。</p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  <span class="font-semibold text-sm sm:text-base text-gray-900">支持 API 接入吗？</span>
+                  <svg class="faq-icon w-4 h-4 text-gray-400 flex-shrink-0 ml-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-content px-5 pb-4">
+                  <p class="text-gray-600 text-sm leading-relaxed">Pro 版提供 API 接入，Enterprise 版支持深度定制和私有部署。<a href="/pricing.html" class="text-indigo-600 hover:underline">查看定价详情</a></p>
+                </div>
+              </div>
+
+            </div>
           </div>
-          <span class="font-bold text-lg sm:text-xl text-gray-900">LeyoAI</span>
-        </a>
-        
-        <!-- 桌面端导航 -->
-        <div class="hidden md:flex items-center gap-6 lg:gap-8">
-          <a href="#products" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">产品</a>
-          <a href="#solutions" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">解决方案</a>
-          <a href="#cases" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">案例</a>
-          <a href="#pricing" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">定价</a>
-          <a href="#faq" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">FAQ</a>
         </div>
-        
-        <!-- 右侧按钮 -->
-        <div class="flex items-center gap-2 sm:gap-3">
-          <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors btn-press">登录</a>
-          <a href="#contact" class="inline-flex px-4 sm:px-5 py-2 sm:py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors btn-press">免费试用</a>
-          
-          <!-- 移动端菜单按钮 -->
-          <button id="menu-toggle" class="md:hidden p-2 -mr-2 text-gray-600 hover:text-gray-900 btn-press" aria-label="菜单">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
-      </div>
-      
-      <!-- 移动端菜单 -->
-      <div id="mobile-menu" class="mobile-menu md:hidden flex-col gap-1 pb-4 border-t border-gray-100 mt-2 pt-4">
-        <a href="#products" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">产品</a>
-        <a href="#solutions" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">解决方案</a>
-        <a href="#cases" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">案例</a>
-        <a href="#pricing" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">定价</a>
-        <a href="#faq" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">FAQ</a>
-        <a href="/about.html" class="py-2.5 px-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">关于我们</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero 区域 -->
-  <section class="relative pt-14 sm:pt-16 overflow-hidden">
-    <div class="absolute inset-0 hero-gradient opacity-10"></div>
-    <div class="absolute top-20 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-20 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-16 sm:pb-32">
-      <div class="text-center max-w-4xl mx-auto">
-        <!-- 标签 -->
-        <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 mb-6 sm:mb-8">
-          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse"></span>
-          <span class="text-xs sm:text-sm text-indigo-700 font-medium">Model as a Service</span>
-        </div>
-
-        <!-- 主标题 -->
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-tight mb-4 sm:mb-6">
-          AI 模型<br class="sm:hidden"><span class="text-gradient">即服务平台</span>
-        </h1>
-
-        <!-- 副标题 -->
-        <p class="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto px-2">
-          Cyber · Video · Flow · Analytics 四款垂直模型已验证上线，Qwen2.5-1.5B + LoRA 微调，专注垂直领域，让 AI 真正赋能业务。
-        </p>
-
-        <!-- CTA 按钮 -->
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-          <a href="#products" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors shadow-lg btn-press">
-            <span>探索产品</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 ml-2"></i>
-          </a>
-          <a href="#contact" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold rounded-xl transition-colors btn-press">
-            <i data-lucide="play-circle" class="w-4 h-4 sm:w-5 sm:h-5 mr-2"></i>
-            <span>免费试用</span>
-          </a>
-        </div>
-
-        <!-- 数据统计 -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-12 sm:mt-20 pt-8 sm:pt-10 border-t border-gray-100">
-          <div class="text-center p-2"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">3</div><div class="text-xs sm:text-sm text-gray-500 mt-1">已上线模型</div></div>
-          <div class="text-center p-2"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">50K+</div><div class="text-xs sm:text-sm text-gray-500 mt-1">API调用/日</div></div>
-          <div class="text-center p-2"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">99.9%</div><div class="text-xs sm:text-sm text-gray-500 mt-1">可用性</div></div>
-          <div class="text-center p-2"><div class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">10+</div><div class="text-xs sm:text-sm text-gray-500 mt-1">行业客户</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- 产品区域 -->
   <section id="products" class="py-12 sm:py-24 bg-gray-50">
@@ -838,5 +776,22 @@
       message.classList.remove('hidden');
     }
   </script>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(item) {
+  var btn = item.querySelector('.faq-toggle');
+  var content = item.querySelector('.faq-content');
+  if (!content) return;
+  btn.addEventListener('click', function() {
+    var isOpen = !content.style.display || content.style.display !== 'none';
+    document.querySelectorAll('.faq-content').forEach(function(c){c.style.display='none';});
+    document.querySelectorAll('.faq-icon').forEach(function(ic){ic.style.transform='rotate(0deg)';});
+    if (!isOpen) {
+      content.style.display='block';
+      btn.querySelector('.faq-icon').style.transform='rotate(180deg)';
+    }
+  });
+  content.style.display='none';
+});
+</script>
 </body>
 </html>
