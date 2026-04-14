@@ -727,10 +727,11 @@ export default function App() {
             <div>
               <h4 className="font-bold text-white text-sm mb-4">公司</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li className="hover:text-white transition-colors cursor-pointer">关于我们</li>
-                <li className="hover:text-white transition-colors cursor-pointer">加入团队</li>
-                <li className="hover:text-white transition-colors cursor-pointer">联系我们</li>
-                <li className="hover:text-white transition-colors cursor-pointer">隐私政策</li>
+                <li><a href="/about.html" className="hover:text-white transition-colors">关于我们</a></li>
+                <li><a href="/about.html#join" className="hover:text-white transition-colors">加入团队</a></li>
+                <li><a href="mailto:xuanchen.wu@hotmail.com" className="hover:text-white transition-colors">联系我们</a></li>
+                <li><a href="/privacy.html" className="hover:text-white transition-colors">隐私政策</a></li>
+                <li><a href="/terms.html" className="hover:text-white transition-colors">使用条款</a></li>
               </ul>
             </div>
           </div>
