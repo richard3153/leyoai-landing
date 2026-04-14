@@ -5,3 +5,20 @@ dist
 README.md
 .env
 .env.local
+
+# Vercel ignores .gitignore by default, so add explicit exclusions
+.venv
+venv
+*.venv
+models/
+training/
+docs/
+hf_space/
+hf_verify/
+hf_video_space/
+local_train.py
+train.log
+node_modules/.cache
+.DS_Store
+*.log
+output/
