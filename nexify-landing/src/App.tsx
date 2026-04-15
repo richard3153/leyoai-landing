@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "./lib/supabase";
+import { useAuth } from "./components/AuthProvider";
 
 // ============================================================
 // 类型定义
@@ -275,12 +277,13 @@ function WaitlistForm() {
 }
 
 // ============================================================
-// 主组件
+// 主组件（首页）
 // ============================================================
-export default function App() {
+function LandingPage() {
   const [mounted, setMounted] = useState(false);
   const [activeCase, setActiveCase] = useState(0);
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const { user } = useAuth();
   
   useEffect(() => { setMounted(true); }, []);
 
@@ -308,11 +311,27 @@ export default function App() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <a href="#waitlist"
-            className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">
-            申请内测
-          </a>
+          {/* CTA - 根据登录状态显示 */}
+          {user ? (
+            <Link to="/dashboard"
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25 flex items-center gap-2">
+              <div className="w-6 h-6 rounded-full bg-indigo-400/30 flex items-center justify-center text-xs font-bold">
+                {user.email?.[0]?.toUpperCase() ?? 'U'}
+              </div>
+              控制台
+            </Link>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link to="/login"
+                className="px-4 py-2.5 text-slate-400 hover:text-white text-sm font-medium transition-colors">
+                登录
+              </Link>
+              <Link to="/signup"
+                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">
+                免费注册
+              </Link>
+            </div>
+          )}
         </div>
       </header>
 
@@ -744,5 +763,34 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+// ============================================================
+// 路由配置
+// ============================================================
+import { Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { DashboardLayout } from "./components/DashboardLayout";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import Dashboard from "./pages/Dashboard";
+import DashboardKeys from "./pages/DashboardKeys";
+import DashboardPlans from "./pages/DashboardPlans";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+        <Route index element={<Dashboard />} />
+        <Route path="keys" element={<DashboardKeys />} />
+        <Route path="plans" element={<DashboardPlans />} />
+      </Route>
+    </Routes>
   );
 }
