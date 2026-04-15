@@ -1,12 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#4f46e5"/>
       <stop offset="100%" style="stop-color:#7c3aed"/>
     </linearGradient>
+    <linearGradient id="lPath" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <text x="600" y="280" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="white" text-anchor="middle">LeyoAI</text>
-  <text x="600" y="380" font-family="Arial, sans-serif" font-size="36" fill="rgba(255,255,255,0.8)" text-anchor="middle">垂直领域 AI 模型服务平台</text>
-  <text x="600" y="450" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.6)" text-anchor="middle">Cyber · Video · Flow · Analytics</text>
+  <!-- Decorative dots pattern -->
+  <circle cx="100" cy="100" r="60" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="1100" cy="530" r="80" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="900" cy="150" r="40" fill="rgba(255,255,255,0.04)"/>
+  <!-- Logo icon mark (left of title) -->
+  <rect x="100" y="220" width="80" height="80" rx="18" fill="rgba(255,255,255,0.15)"/>
+  <path d="M122 240 L122 280 Q122 288 130 288 L158 288" stroke="url(#lPath)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="155" cy="245" r="5" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="165" cy="260" r="4" fill="rgba(255,255,255,0.65)"/>
+  <circle cx="148" cy="263" r="3" fill="rgba(255,255,255,0.55)"/>
+  <!-- Title text -->
+  <text x="210" y="285" font-family="'Inter', Arial, sans-serif" font-size="100" font-weight="bold" fill="white">LeyoAI</text>
+  <!-- Subtitle -->
+  <text x="210" y="360" font-family="'Inter', Arial, sans-serif" font-size="36" fill="rgba(255,255,255,0.8)">垂直领域 AI 模型即服务平台</text>
+  <!-- Product line tags -->
+  <text x="210" y="430" font-family="'Inter', Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.6)">Cyber · Video · Flow · Analytics</text>
 </svg>
