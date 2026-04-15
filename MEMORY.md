@@ -35,3 +35,11 @@
 
 - {"add"：[],"update":[{"old_pattern":"Video Model →
 - ✅ 已上线 → HF Space：FFZwai/leyoai-video-safety","new_fact":"Video Model → ✅ 已上线 → HF Space: FFZwai/leyoai-video-safety，运行状态: RUNNING, cpu-basic","section":"产品线状态（2026-04-13）"}],"remove":[]}
+- 法律文档设计偏好：蓝紫色调风格（已生成 terms.html / privacy.html）
+- 定价方案：Pro ¥65/月（约为Claude 45%），目标市场为垂直领域AI MaaS
+
+## 当前项目与关注
+
+- 网站待完成任务清单（2026-04-14）：关于我们页面、SEO内容优化、内容营销、产品演示视频、品牌Logo升级（Video/首页已上线）
+- Vercel 404 故障（2026-04-14）：新页面部署后报404，疑似路由配置问题，待诊断
+- 网站已完成优化项（2026-04-14）：OG Image转换、sitemap.xml + robots.txt添加、Vercel Analytics配置
