@@ -127,7 +127,9 @@ const PRODUCTS: Product[] = [
     badge: "✅ 已上线",
     badgeColor: "bg-rose-500",
     features: ["多因子量化评分", "实时行情监控", "技术分析引擎", "风控管理"],
-    link: "https://leyoai-quant.vercel.app",
+    models: [
+      { name: "📈 LeyoQuant 量化分析", tag: "量化投资", icon: "📈", link: "https://leyoai-quant.vercel.app" },
+    ],
   },
 ];
 
