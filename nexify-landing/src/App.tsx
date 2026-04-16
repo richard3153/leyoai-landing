@@ -194,26 +194,35 @@ const PRICING_PLANS = [
     name: "免费版",
     price: "¥0",
     period: "永久免费",
-    desc: "适合个人学习和探索",
-    features: ["基础模型访问", "100 次/日调用", "社区支持", "公开模型权重"],
+    desc: "个人学习与体验",
+    features: ["Cyber 安全助手 100次/月", "Video 安全 500分钟/月", "Flow 自动化 500次/月", "Analytics 分析 1,000次/月", "HF Spaces 在线访问"],
     cta: "免费开始",
     highlight: false,
   },
   {
-    name: "专业版",
-    price: "¥199",
+    name: "起步版",
+    price: "¥29",
     period: "/月",
-    desc: "适合开发者和小团队",
-    features: ["全部模型访问", "无限次调用", "优先推理队列", "邮件技术支持", "私有部署选项"],
+    desc: "小团队安全防护",
+    features: ["Cyber 5,000次/月 + 8K上下文", "Video 5,000分钟/月 1080p", "Flow 5,000次/月 50步工作流", "Analytics 10,000次/月 10万行", "API 接入 + 邮件告警"],
     cta: "立即订阅",
+    highlight: false,
+  },
+  {
+    name: "专业版",
+    price: "¥79",
+    period: "/月",
+    desc: "中小企业安全部门",
+    features: ["Cyber 30,000次/月 + 漏洞分析", "Video 30,000分钟/月 4K", "Flow 30,000次/月 200步", "Analytics 50,000次/月 百万行", "SLA 99.5% + 优先支持"],
+    cta: "升级专业版",
     highlight: true,
   },
   {
     name: "企业版",
-    price: "定制",
-    period: "联系我们",
-    desc: "适合大型企业和机构",
-    features: ["专业版全部功能", "专属模型定制训练", "SLA 99.9% 保障", "专属技术支持", "私有化部署"],
+    price: "¥299",
+    period: "/月起",
+    desc: "大规模定制需求",
+    features: ["四款产品均不限量", "私有化部署", "定制模型训练", "专属客户成功经理", "7×24 技术支持"],
     cta: "联系销售",
     highlight: false,
   },
@@ -634,7 +643,7 @@ function LandingPage() {
             <p className="text-slate-400 text-lg">无隐藏费用，按需选择</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {PRICING_PLANS.map(plan => (
               <div key={plan.name}
                 className={`relative rounded-3xl border p-8 ${

@@ -1,1 +1,6 @@
 memory/
+
+# Agent outputs (never commit these)
+agents/
+index.html.bak.static
+*.bak.static
