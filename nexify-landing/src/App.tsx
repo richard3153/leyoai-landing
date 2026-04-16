@@ -116,6 +116,19 @@ const PRODUCTS: Product[] = [
       { name: "📊 Analytics 分析助手", tag: "数据分析", icon: "📊", link: "https://huggingface.co/spaces/FFZwai/leyoai-analytics-assistant" },
     ],
   },
+  {
+    id: "quant",
+    name: "LeyoQuant",
+    nameCn: "量化分析系统",
+    desc: "基于价值投资理念的A股量化分析系统，7因子评分模型 + 实时行情监控 + 风控管理",
+    icon: "📈",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
+    color: "from-rose-500 to-red-600",
+    badge: "✅ 已上线",
+    badgeColor: "bg-rose-500",
+    features: ["多因子量化评分", "实时行情监控", "技术分析引擎", "风控管理"],
+    link: "https://leyoai-quant.vercel.app",
+  },
 ];
 
 // ============================================================
@@ -384,7 +397,7 @@ function LandingPage() {
 
             {/* 描述 */}
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              专注垂直领域 AI 模型研发。Cyber、Video、Flow、Analytics 四大产品线，
+              专注垂直领域 AI 模型研发。Cyber、Video、Flow、Analytics 五大产品线，
               <br className="hidden sm:block" />
               让 AI 技术真正赋能业务场景。
             </p>
@@ -416,7 +429,7 @@ function LandingPage() {
         <div className="max-w-7xl mx-auto">
           {/* 标题 */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black mb-4">四大产品矩阵</h2>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">五大产品矩阵</h2>
             <p className="text-slate-400 text-lg">深耕垂直领域，打造专业级 AI 模型</p>
           </div>
 
