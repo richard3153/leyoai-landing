@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>使用条款 - LeyoAI</title>
-
+    <title data-zh>使用条款 - LeyoAI</title>
+    <title data-en>Terms of Service - LeyoAI</title>
     <meta name="description" content="LeyoAI 垂直领域AI模型服务平台，使用条款。" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://leyoai.vercel.app/terms.html" />
@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="使用条款 - LeyoAI" />
     <meta name="twitter:description" content="LeyoAI 垂直领域AI模型服务平台。使用条款。" />
     <meta property="og:locale" content="zh_CN" />
-
+    <script src="/i18n-static.js"></script>
     <style>
         :root {
             --primary: #6366f1;
@@ -29,11 +29,7 @@
             --text-light: #64748b;
             --border: #e2e8f0;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -56,21 +52,10 @@
             padding: 50px 40px;
             text-align: center;
         }
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        .content {
-            padding: 50px 40px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
+        .header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.1rem; opacity: 0.9; }
+        .content { padding: 50px 40px; }
+        .section { margin-bottom: 40px; }
         .section h2 {
             color: var(--primary);
             font-size: 1.5rem;
@@ -90,29 +75,15 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        .section p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .section ul {
-            list-style: none;
-            margin: 15px 0;
-            padding-left: 0;
-        }
+        .section p { color: var(--text-light); margin-bottom: 15px; text-align: justify; }
+        .section ul { list-style: none; margin: 15px 0; padding-left: 0; }
         .section li {
             position: relative;
             padding-left: 25px;
             margin-bottom: 12px;
             color: var(--text-light);
         }
-        .section li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
+        .section li::before { content: '▸'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
         .highlight-box {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
             border-left: 4px solid var(--primary);
@@ -120,11 +91,7 @@
             border-radius: 0 12px 12px 0;
             margin: 20px 0;
         }
-        .highlight-box p {
-            color: var(--text);
-            margin: 0;
-            font-weight: 500;
-        }
+        .highlight-box p { color: var(--text); margin: 0; font-weight: 500; }
         .warning-box {
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
             border-left: 4px solid #ef4444;
@@ -132,130 +99,110 @@
             border-radius: 0 12px 12px 0;
             margin: 20px 0;
         }
-        .warning-box p {
-            color: #991b1b;
-            margin: 0;
-            font-weight: 500;
-        }
+        .warning-box p { color: #991b1b; margin: 0; font-weight: 500; }
         .footer {
             background: #f8fafc;
             padding: 30px 40px;
             text-align: center;
             border-top: 1px solid var(--border);
         }
-        .footer p {
-            color: var(--text-light);
-            font-size: 0.9rem;
+        .footer p { color: var(--text-light); font-size: 0.9rem; }
+        .update-date { text-align: right; color: var(--text-light); font-size: 0.9rem; margin-top: 30px; }
+        .nav-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .footer .contact {
-            margin-top: 10px;
-            color: var(--primary);
-            font-weight: 500;
-        }
-        .update-date {
-            text-align: right;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 30px;
-        }
+        .nav-bar a { color: white; text-decoration: none; font-weight: 500; }
+        .nav-bar a:hover { opacity: 0.8; }
+        [data-zh], [data-en] { display: none; }
     </style>
 </head>
 <body>
+    <div class="nav-bar">
+        <a href="/">← LeyoAI</a>
+        <div class="lang-toggle-container"></div>
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>📋 使用条款</h1>
-            <p class="subtitle">LeyoAI 服务协议</p>
+            <h1 data-zh>📋 使用条款</h1>
+            <h1 data-en>📋 Terms of Service</h1>
+            <p class="subtitle" data-zh>LeyoAI 服务协议</p>
+            <p class="subtitle" data-en>LeyoAI Service Agreement</p>
         </div>
-        
+
         <div class="content">
             <div class="section">
-                <h2>服务说明</h2>
-                <p>欢迎使用 LeyoAI！LeyoAI 是由杭州市上城区乐友信息服务工作室运营的 AI MaaS（模型即服务）平台，为您提供以下垂直领域的智能助手服务：</p>
+                <h2 data-zh>服务说明</h2>
+                <h2 data-en>Service Description</h2>
+                <p data-zh>欢迎使用 LeyoAI！LeyoAI 是由杭州市上城区乐友信息服务工作室运营的 AI MaaS（模型即服务）平台，为您提供以下垂直领域的智能助手服务：</p>
+                <p data-en>Welcome to LeyoAI! LeyoAI is an AI MaaS (Model as a Service) platform operated by Hangzhou Shangcheng Leyo Information Service Studio, providing you with intelligent assistant services in the following vertical domains:</p>
                 <ul>
-                    <li><strong>Cyber安全助手</strong>：网络安全分析与威胁检测咨询</li>
-                    <li><strong>Video安全助手</strong>：视频内容安全审核与分析</li>
-                    <li><strong>Flow自动化助手</strong>：工作流程自动化方案设计</li>
-                    <li><strong>Analytics分析助手</strong>：数据分析与可视化建议</li>
+                    <li data-zh><strong>Cyber安全助手</strong>：网络安全分析与威胁检测咨询</li>
+                    <li data-en><strong>Cyber Security Assistant</strong>: Network security analysis and threat detection consulting</li>
+                    <li data-zh><strong>Video安全助手</strong>：视频内容安全审核与分析</li>
+                    <li data-en><strong>Video Safety Assistant</strong>: Video content safety moderation and analysis</li>
+                    <li data-zh><strong>Flow自动化助手</strong>：工作流程自动化方案设计</li>
+                    <li data-en><strong>Flow Automation Assistant</strong>: Workflow automation solution design</li>
+                    <li data-zh><strong>Analytics分析助手</strong>：数据分析与可视化建议</li>
+                    <li data-en><strong>Analytics Assistant</strong>: Data analysis and visualization recommendations</li>
                 </ul>
-                <p>本平台通过人工智能技术为您提供智能化服务，您使用本平台即表示您已阅读、理解并同意接受本条款的约束。</p>
             </div>
 
             <div class="section">
-                <h2>免责声明</h2>
+                <h2 data-zh>免责声明</h2>
+                <h2 data-en>Disclaimer</h2>
                 <div class="highlight-box">
-                    <p>⚠️ 重要提示：LeyoAI 提供的所有 AI 生成内容仅供参考，不构成任何形式的专业建议。</p>
+                    <p data-zh>⚠️ 重要提示：LeyoAI 提供的所有 AI 生成内容仅供参考，不构成任何形式的专业建议。</p>
+                    <p data-en>⚠️ Important Notice: All AI-generated content provided by LeyoAI is for reference only and does not constitute any form of professional advice.</p>
                 </div>
-                <p>您理解并确认：</p>
+                <p data-zh>您理解并确认：</p>
+                <p data-en>You understand and acknowledge:</p>
                 <ul>
-                    <li>AI 生成的内容可能存在不准确、不完整或过时的信息</li>
-                    <li>AI 回复不应被视为专业领域（如医疗、法律、金融等）的正式意见</li>
-                    <li>您应独立验证 AI 提供的信息，并对基于该信息做出的决策承担全部责任</li>
-                    <li>对于因依赖 AI 生成内容而导致的任何损失或损害，LeyoAI 不承担赔偿责任</li>
+                    <li data-zh>AI 生成的内容可能存在不准确、不完整或过时的信息</li>
+                    <li data-en>AI-generated content may contain inaccurate, incomplete, or outdated information</li>
+                    <li data-zh>AI 回复不应被视为专业领域（如医疗、法律、金融等）的正式意见</li>
+                    <li data-en>AI responses should not be regarded as formal opinions in professional fields (such as medical, legal, financial, etc.)</li>
+                    <li data-zh>您应独立验证 AI 提供的信息，并对基于该信息做出的决策承担全部责任</li>
+                    <li data-en>You should independently verify information provided by AI and assume full responsibility for decisions made based on such information</li>
                 </ul>
             </div>
 
             <div class="section">
-                <h2>知识产权</h2>
-                <p>本平台所包含的所有内容，包括但不限于文字、图片、软件、音频、视频、数据、商标、标识等，均受中华人民共和国著作权法、商标法及其他相关法律法规的保护。</p>
-                <ul>
-                    <li>LeyoAI 平台的商标、标识及相关知识产权归杭州市上城区乐友信息服务工作室所有</li>
-                    <li>未经授权，您不得复制、修改、传播或用于商业目的</li>
-                    <li>您上传的内容仍归您所有，但您授予 LeyoAI 在服务范围内使用的权利</li>
-                    <li>AI 生成内容的知识产权归属，按照中华人民共和国相关法律法规执行</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>用户行为规范</h2>
-                <p>在使用 LeyoAI 服务时，您承诺遵守以下规范：</p>
-                <ul>
-                    <li>提供真实、准确的信息，不得冒充他人或实体</li>
-                    <li>不得利用本平台从事违法违规活动</li>
-                    <li>不得上传、传播含有违法、有害、欺诈性内容的信息</li>
-                    <li>不得干扰或破坏平台的正常运行</li>
-                    <li>不得尝试获取未经授权的系统访问权限</li>
-                    <li>不得将服务用于任何可能损害他人权益的目的</li>
-                    <li>遵守中华人民共和国相关法律法规及国际惯例</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>禁止用途</h2>
+                <h2 data-zh>禁止用途</h2>
+                <h2 data-en>Prohibited Uses</h2>
                 <div class="warning-box">
-                    <p>🚫 以下专业领域用途被严格禁止，LeyoAI 不对相关后果承担任何责任：</p>
+                    <p data-zh>🚫 以下专业领域用途被严格禁止，LeyoAI 不对相关后果承担任何责任：</p>
+                    <p data-en>🚫 The following professional domain uses are strictly prohibited, and LeyoAI assumes no responsibility for related consequences:</p>
                 </div>
                 <ul>
-                    <li><strong>医疗诊断与治疗</strong>：AI 回复不能替代专业医生的诊断、治疗方案或医疗建议</li>
-                    <li><strong>法律咨询服务</strong>：AI 回复不能替代执业律师的法律意见或作为法律依据</li>
-                    <li><strong>金融投资决策</strong>：AI 回复不构成任何投资建议或金融产品推荐</li>
-                    <li><strong>安全关键决策</strong>：不得将 AI 输出用于可能影响人身安全的决策</li>
-                    <li><strong>政府决策</strong>：不得将 AI 输出作为政府决策的依据</li>
+                    <li data-zh><strong>医疗诊断与治疗</strong>：AI 回复不能替代专业医生的诊断、治疗方案或医疗建议</li>
+                    <li data-en><strong>Medical Diagnosis and Treatment</strong>: AI responses cannot replace professional doctors' diagnoses, treatment plans, or medical advice</li>
+                    <li data-zh><strong>法律咨询服务</strong>：AI 回复不能替代执业律师的法律意见或作为法律依据</li>
+                    <li data-en><strong>Legal Consulting Services</strong>: AI responses cannot replace practicing lawyers' legal opinions or serve as legal basis</li>
+                    <li data-zh><strong>金融投资决策</strong>：AI 回复不构成任何投资建议或金融产品推荐</li>
+                    <li data-en><strong>Financial Investment Decisions</strong>: AI responses do not constitute any investment advice or financial product recommendations</li>
                 </ul>
-                <p>如您需要在上述领域获得专业服务，请咨询具有相应资质的专业机构或人士。</p>
             </div>
 
             <div class="section">
-                <h2>服务变更与终止</h2>
-                <p>LeyoAI 保留以下权利：</p>
-                <ul>
-                    <li>随时修改、暂停或终止服务的全部或部分功能</li>
-                    <li>在必要时修改本使用条款，修改后的条款将在平台上公布</li>
-                    <li>对违反本条款的用户，有权终止其服务资格</li>
-                </ul>
-                <p>继续使用本服务即表示您接受修改后的条款。如不同意修改内容，请停止使用本服务。</p>
+                <h2 data-zh>适用法律与争议解决</h2>
+                <h2 data-en>Governing Law & Dispute Resolution</h2>
+                <p data-zh>本使用条款受中华人民共和国法律管辖。因本条款引起的或与本条款有关的任何争议，双方应首先友好协商解决；协商不成的，任何一方均可向杭州市上城区人民法院提起诉讼。</p>
+                <p data-en>These Terms of Service are governed by the laws of the People's Republic of China. Any dispute arising from or relating to these terms shall first be resolved through friendly negotiation between the parties; if negotiation fails, either party may file a lawsuit with the Hangzhou Shangcheng District People's Court.</p>
             </div>
 
-            <div class="section">
-                <h2>适用法律与争议解决</h2>
-                <p>本使用条款受中华人民共和国法律管辖。因本条款引起的或与本条款有关的任何争议，双方应首先友好协商解决；协商不成的，任何一方均可向杭州市上城区人民法院提起诉讼。</p>
-            </div>
-
-            <p class="update-date">最后更新日期：2026年4月13日</p>
+            <p class="update-date" data-zh>最后更新日期：2026年4月13日</p>
+            <p class="update-date" data-en>Last Updated: April 13, 2026</p>
         </div>
 
         <div class="footer">
-            <p>© 2026 杭州市上城区乐友信息服务工作室 版权所有</p>
-            <p class="contact">官网：leyoai.vercel.app</p>
+            <p data-zh>© 2026 杭州市上城区乐友信息服务工作室 版权所有</p>
+            <p data-en>© 2026 Hangzhou Shangcheng Leyo Information Service Studio. All rights reserved.</p>
+            <p><a href="/">leyoai.vercel.app</a></p>
         </div>
     </div>
 </body>

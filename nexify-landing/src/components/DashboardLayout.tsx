@@ -1,17 +1,20 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from './AuthProvider'
+import { useLang } from '../contexts/LanguageContext'
+import { LanguageToggle } from './LanguageToggle'
 import { useState } from 'react'
-
-const SIDEBAR_ITEMS = [
-  { label: '概览', href: '/dashboard', icon: '📊' },
-  { label: 'API Keys', href: '/dashboard/keys', icon: '🔑' },
-  { label: '套餐', href: '/dashboard/plans', icon: '💎' },
-]
 
 export function DashboardLayout() {
   const { user, signOut } = useAuth()
+  const { t } = useLang()
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const SIDEBAR_ITEMS = [
+    { label: t('概览', 'Overview'), href: '/dashboard', icon: '📊' },
+    { label: 'API Keys', href: '/dashboard/keys', icon: '🔑' },
+    { label: t('套餐', 'Plans'), href: '/dashboard/plans', icon: '💎' },
+  ]
 
   const handleSignOut = async () => {
     await signOut()
@@ -71,12 +74,12 @@ export function DashboardLayout() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium truncate">{user?.email}</p>
-              <p className="text-xs text-slate-500">免费版</p>
+              <p className="text-xs text-slate-500">{t('免费版', 'Free Plan')}</p>
             </div>
             <button
               onClick={handleSignOut}
               className="text-slate-500 hover:text-white transition-colors"
-              title="退出登录"
+              title={t('退出登录', 'Sign Out')}
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -99,10 +102,11 @@ export function DashboardLayout() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <div className="hidden lg:block text-sm text-slate-500">Dashboard</div>
+            <div className="hidden lg:block text-sm text-slate-500">{t('控制台', 'Dashboard')}</div>
             <div className="flex items-center gap-4">
+              <LanguageToggle />
               <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-medium">
-                ● Active
+                ● {t('在线', 'Active')}
               </span>
             </div>
           </div>

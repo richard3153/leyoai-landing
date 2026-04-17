@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeyoAI 定价方案 - 垂直领域AI模型服务</title>
+  <title data-zh>LeyoAI 定价方案 - 垂直领域AI模型服务</title>
+  <title data-en>LeyoAI Pricing - Vertical Domain AI Model Service</title>
   <meta name="description" content="LeyoAI 定价方案：Cyber安全助手/Video视频安全助手/Flow流程自动化助手/Analytics数据分析助手，四大产品 Free 免费起步，专业版 ¥79/月，比大厂便宜 90%。">
   <meta name="keywords" content="LeyoAI定价, AI安全助手价格, 视频审核API费用, RPA便宜, BI工具订阅">
   <meta name="robots" content="index, follow">
@@ -13,10 +14,12 @@
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/i18n-static.js"></script>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
     .plan-popular { background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%); }
     .enterprise-bg { background: linear-gradient(135deg, #1f2937 0%, #111827 100%); }
+    [data-zh], [data-en] { display: none; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -33,10 +36,13 @@
         <span class="font-bold text-lg">LeyoAI</span>
       </a>
       <div class="flex items-center gap-4 sm:gap-6">
-        <a href="/" class="text-gray-600 hover:text-gray-900 text-sm font-medium">首页</a>
-        <a href="/about.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium">关于我们</a>
-        <a href="/pricing.html" class="text-indigo-600 font-semibold text-sm">定价</a>
-        <a href="/privacy.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium hidden sm:inline">隐私政策</a>
+        <a href="/" class="text-gray-600 hover:text-gray-900 text-sm font-medium" data-zh>首页</a>
+        <a href="/" class="text-gray-600 hover:text-gray-900 text-sm font-medium" data-en>Home</a>
+        <a href="/about.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium" data-zh>关于我们</a>
+        <a href="/about.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium" data-en>About</a>
+        <a href="/pricing.html" class="text-indigo-600 font-semibold text-sm" data-zh>定价</a>
+        <a href="/pricing.html" class="text-indigo-600 font-semibold text-sm" data-en>Pricing</a>
+        <div class="lang-toggle-container-light"></div>
       </div>
     </div>
   </div>
@@ -44,25 +50,28 @@
 
 <!-- Hero -->
 <section class="py-12 sm:py-16 bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-4">
-  <h1 class="text-3xl sm:text-4xl font-black mb-4">简单透明，按用付费</h1>
-  <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-6">四大垂直领域 AI 助手，永久免费层 + ¥29/月起。比大厂 AI 服务便宜 80-95%，专业场景精调，效果更好。</p>
+  <h1 class="text-3xl sm:text-4xl font-black mb-4" data-zh>简单透明，按用付费</h1>
+  <h1 class="text-3xl sm:text-4xl font-black mb-4" data-en>Simple & Transparent Pay-as-you-go</h1>
+  <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-6" data-zh>四大垂直领域 AI 助手，永久免费层 + ¥29/月起。比大厂 AI 服务便宜 80-95%，专业场景精调，效果更好。</p>
+  <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-6" data-en>Four vertical domain AI assistants, free tier forever + ¥29/mo. 80-95% cheaper than big tech, fine-tuned for professional scenarios.</p>
   <div class="flex flex-wrap justify-center gap-4 text-sm">
-    <span class="px-3 py-1 bg-white/20 rounded-full">🛡️ AI 安全</span>
-    <span class="px-3 py-1 bg-white/20 rounded-full">🎬 视频审核</span>
-    <span class="px-3 py-1 bg-white/20 rounded-full">⚙️ 流程自动化</span>
-    <span class="px-3 py-1 bg-white/20 rounded-full">📊 数据分析</span>
+    <span class="px-3 py-1 bg-white/20 rounded-full">🛡️ <span data-zh>AI 安全</span><span data-en>AI Security</span></span>
+    <span class="px-3 py-1 bg-white/20 rounded-full">🎬 <span data-zh>视频审核</span><span data-en>Video Moderation</span></span>
+    <span class="px-3 py-1 bg-white/20 rounded-full">⚙️ <span data-zh>流程自动化</span><span data-en>Automation</span></span>
+    <span class="px-3 py-1 bg-white/20 rounded-full">📊 <span data-zh>数据分析</span><span data-en>Analytics</span></span>
   </div>
 </section>
 
 <!-- ========== 方案 A：统一档位表 ========== -->
 <section class="py-10 px-4">
   <div class="max-w-6xl mx-auto">
-
-    <!-- Section header -->
     <div class="text-center mb-8">
-      <p class="text-indigo-600 font-semibold text-sm mb-2">💡 方案 A：统一档位</p>
-      <h2 class="text-2xl sm:text-3xl font-black mb-3">一个套餐，四款产品全可用</h2>
-      <p class="text-gray-500 text-sm max-w-lg mx-auto">选择档位，决定用量上限。四款产品平等接入，无需分别订阅。</p>
+      <p class="text-indigo-600 font-semibold text-sm mb-2" data-zh>💡 方案 A：统一档位</p>
+      <p class="text-indigo-600 font-semibold text-sm mb-2" data-en>💡 Plan A: Unified Tiers</p>
+      <h2 class="text-2xl sm:text-3xl font-black mb-3" data-zh>一个套餐，四款产品全可用</h2>
+      <h2 class="text-2xl sm:text-3xl font-black mb-3" data-en>One Plan, All Four Products</h2>
+      <p class="text-gray-500 text-sm max-w-lg mx-auto" data-zh>选择档位，决定用量上限。四款产品平等接入，无需分别订阅。</p>
+      <p class="text-gray-500 text-sm max-w-lg mx-auto" data-en>Choose tier to determine usage limits. All four products with equal access, no separate subscriptions needed.</p>
     </div>
 
     <!-- Unified pricing grid: 4 plans × 4 products -->
@@ -71,457 +80,96 @@
       <!-- Free -->
       <div class="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col">
         <span class="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold mb-3 w-fit">FREE</span>
-        <h3 class="text-lg font-black text-gray-900 mb-1">免费版</h3>
-        <p class="text-gray-400 text-xs mb-3">永久免费</p>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-zh>免费版</h3>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-en>Free</h3>
+        <p class="text-gray-400 text-xs mb-3" data-zh>永久免费</p>
+        <p class="text-gray-400 text-xs mb-3" data-en>Forever Free</p>
         <div class="mb-4">
           <span class="text-3xl font-black text-gray-900">¥0</span>
-          <span class="text-gray-400 text-sm">/永久</span>
+          <span class="text-gray-400 text-sm">/<span data-zh>永久</span><span data-en>forever</span></span>
         </div>
-        <!-- Product rows -->
         <div class="space-y-2 mb-5 flex-1 text-xs">
-          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-            <span>🛡️</span>
-            <span class="text-gray-600">Cyber</span>
-            <span class="ml-auto font-semibold text-gray-700">100次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-            <span>🎬</span>
-            <span class="text-gray-600">Video</span>
-            <span class="ml-auto font-semibold text-gray-700">500分钟/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-            <span>⚙️</span>
-            <span class="text-gray-600">Flow</span>
-            <span class="ml-auto font-semibold text-gray-700">500次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-            <span>📊</span>
-            <span class="text-gray-600">Analytics</span>
-            <span class="ml-auto font-semibold text-gray-700">1,000次/月</span>
-          </div>
+          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg"><span>🛡️</span><span class="text-gray-600">Cyber</span><span class="ml-auto font-semibold text-gray-700" data-zh>100次/月</span><span class="ml-auto font-semibold text-gray-700" data-en>100/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg"><span>🎬</span><span class="text-gray-600">Video</span><span class="ml-auto font-semibold text-gray-700" data-zh>500分钟/月</span><span class="ml-auto font-semibold text-gray-700" data-en>500min/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg"><span>⚙️</span><span class="text-gray-600">Flow</span><span class="ml-auto font-semibold text-gray-700" data-zh>500次/月</span><span class="ml-auto font-semibold text-gray-700" data-en>500/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-lg"><span>📊</span><span class="text-gray-600">Analytics</span><span class="ml-auto font-semibold text-gray-700" data-zh>1,000次/月</span><span class="ml-auto font-semibold text-gray-700" data-en>1,000/mo</span></div>
         </div>
-        <a href="/" class="block text-center py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg text-sm transition-colors">免费试用</a>
+        <a href="/" class="block text-center py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg text-sm transition-colors" data-zh>免费试用</a>
+        <a href="/" class="block text-center py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg text-sm transition-colors" data-en>Try Free</a>
       </div>
 
       <!-- Starter (¥29) -->
       <div class="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col">
         <span class="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3 w-fit">STARTER</span>
-        <h3 class="text-lg font-black text-gray-900 mb-1">起步版</h3>
-        <p class="text-gray-400 text-xs mb-3">小团队入门</p>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-zh>起步版</h3>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-en>Starter</h3>
+        <p class="text-gray-400 text-xs mb-3" data-zh>小团队入门</p>
+        <p class="text-gray-400 text-xs mb-3" data-en>Small Teams</p>
         <div class="mb-4">
           <span class="text-3xl font-black text-gray-900">¥29</span>
-          <span class="text-gray-400 text-sm">/月</span>
+          <span class="text-gray-400 text-sm">/<span data-zh>月</span><span data-en>mo</span></span>
         </div>
-        <!-- Product rows -->
         <div class="space-y-2 mb-5 flex-1 text-xs">
-          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-            <span>🛡️</span>
-            <span class="text-gray-600">Cyber</span>
-            <span class="ml-auto font-semibold text-blue-700">5,000次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-            <span>🎬</span>
-            <span class="text-gray-600">Video</span>
-            <span class="ml-auto font-semibold text-blue-700">5,000分钟/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-            <span>⚙️</span>
-            <span class="text-gray-600">Flow</span>
-            <span class="ml-auto font-semibold text-blue-700">5,000次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg">
-            <span>📊</span>
-            <span class="text-gray-600">Analytics</span>
-            <span class="ml-auto font-semibold text-blue-700">10,000次/月</span>
-          </div>
+          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg"><span>🛡️</span><span class="text-gray-600">Cyber</span><span class="ml-auto font-semibold text-blue-700" data-zh>5,000次/月</span><span class="ml-auto font-semibold text-blue-700" data-en>5,000/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg"><span>🎬</span><span class="text-gray-600">Video</span><span class="ml-auto font-semibold text-blue-700" data-zh>5,000分钟/月</span><span class="ml-auto font-semibold text-blue-700" data-en>5,000min/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg"><span>⚙️</span><span class="text-gray-600">Flow</span><span class="ml-auto font-semibold text-blue-700" data-zh>5,000次/月</span><span class="ml-auto font-semibold text-blue-700" data-en>5,000/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-blue-50 rounded-lg"><span>📊</span><span class="text-gray-600">Analytics</span><span class="ml-auto font-semibold text-blue-700" data-zh>10,000次/月</span><span class="ml-auto font-semibold text-blue-700" data-en>10,000/mo</span></div>
         </div>
-        <a href="mailto:xuanchen.wu@hotmail.com?subject=Starter%E5%90%88%E8%AE%A2" class="block text-center py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-sm transition-colors">立即订阅</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Starter" class="block text-center py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-sm transition-colors" data-zh>立即订阅</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Starter" class="block text-center py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-sm transition-colors" data-en>Subscribe</a>
       </div>
 
       <!-- Pro (¥79) — highlighted -->
       <div class="bg-white rounded-2xl border-2 border-indigo-500 p-5 flex flex-col relative shadow-xl shadow-indigo-100">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span class="inline-block px-4 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full shadow">最受欢迎</span>
+          <span class="inline-block px-4 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full shadow" data-zh>最受欢迎</span>
+          <span class="inline-block px-4 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full shadow" data-en>Most Popular</span>
         </div>
         <span class="inline-block px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold mb-3 w-fit mt-1">PRO</span>
-        <h3 class="text-lg font-black text-gray-900 mb-1">专业版</h3>
-        <p class="text-gray-400 text-xs mb-3">中小企业</p>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-zh>专业版</h3>
+        <h3 class="text-lg font-black text-gray-900 mb-1" data-en>Pro</h3>
+        <p class="text-gray-400 text-xs mb-3" data-zh>中小企业</p>
+        <p class="text-gray-400 text-xs mb-3" data-en>SMEs</p>
         <div class="mb-4">
           <span class="text-3xl font-black text-gray-900">¥79</span>
-          <span class="text-gray-400 text-sm">/月</span>
+          <span class="text-gray-400 text-sm">/<span data-zh>月</span><span data-en>mo</span></span>
         </div>
-        <!-- Product rows -->
         <div class="space-y-2 mb-5 flex-1 text-xs">
-          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg">
-            <span>🛡️</span>
-            <span class="text-gray-600">Cyber</span>
-            <span class="ml-auto font-semibold text-indigo-700">30,000次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg">
-            <span>🎬</span>
-            <span class="text-gray-600">Video</span>
-            <span class="ml-auto font-semibold text-indigo-700">30,000分钟/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg">
-            <span>⚙️</span>
-            <span class="text-gray-600">Flow</span>
-            <span class="ml-auto font-semibold text-indigo-700">30,000次/月</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg">
-            <span>📊</span>
-            <span class="text-gray-600">Analytics</span>
-            <span class="ml-auto font-semibold text-indigo-700">50,000次/月</span>
-          </div>
+          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg"><span>🛡️</span><span class="text-gray-600">Cyber</span><span class="ml-auto font-semibold text-indigo-700" data-zh>30,000次/月</span><span class="ml-auto font-semibold text-indigo-700" data-en>30,000/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg"><span>🎬</span><span class="text-gray-600">Video</span><span class="ml-auto font-semibold text-indigo-700" data-zh>30,000分钟/月</span><span class="ml-auto font-semibold text-indigo-700" data-en>30,000min/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg"><span>⚙️</span><span class="text-gray-600">Flow</span><span class="ml-auto font-semibold text-indigo-700" data-zh>30,000次/月</span><span class="ml-auto font-semibold text-indigo-700" data-en>30,000/mo</span></div>
+          <div class="flex items-center gap-2 p-2 bg-indigo-50 rounded-lg"><span>📊</span><span class="text-gray-600">Analytics</span><span class="ml-auto font-semibold text-indigo-700" data-zh>50,000次/月</span><span class="ml-auto font-semibold text-indigo-700" data-en>50,000/mo</span></div>
         </div>
-        <a href="mailto:xuanchen.wu@hotmail.com?subject=Pro%E5%90%88%E8%AE%A2" class="block text-center py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg text-sm transition-colors">升级专业版</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Pro" class="block text-center py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg text-sm transition-colors" data-zh>升级专业版</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Pro" class="block text-center py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg text-sm transition-colors" data-en>Upgrade to Pro</a>
       </div>
 
       <!-- Enterprise (¥299) -->
       <div class="enterprise-bg rounded-2xl border border-gray-700 p-5 flex flex-col text-white">
         <span class="inline-block px-2 py-0.5 rounded-full bg-gray-700 text-gray-300 text-xs font-bold mb-3 w-fit">ENTERPRISE</span>
-        <h3 class="text-lg font-black mb-1">企业版</h3>
-        <p class="text-gray-400 text-xs mb-3">大规模定制</p>
+        <h3 class="text-lg font-black mb-1" data-zh>企业版</h3>
+        <h3 class="text-lg font-black mb-1" data-en>Enterprise</h3>
+        <p class="text-gray-400 text-xs mb-3" data-zh>大规模定制</p>
+        <p class="text-gray-400 text-xs mb-3" data-en>Large Scale</p>
         <div class="mb-4">
           <span class="text-2xl font-black">¥299</span>
-          <span class="text-gray-400 text-sm">/月起</span>
+          <span class="text-gray-400 text-sm">/<span data-zh>月起</span><span data-en>mo+</span></span>
         </div>
-        <!-- Product rows -->
         <div class="space-y-2 mb-5 flex-1 text-xs">
-          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10">
-            <span>🛡️</span>
-            <span class="text-gray-300">Cyber</span>
-            <span class="ml-auto font-semibold text-green-400">不限量</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10">
-            <span>🎬</span>
-            <span class="text-gray-300">Video</span>
-            <span class="ml-auto font-semibold text-green-400">不限量</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10">
-            <span>⚙️</span>
-            <span class="text-gray-300">Flow</span>
-            <span class="ml-auto font-semibold text-green-400">不限量</span>
-          </div>
-          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10">
-            <span>📊</span>
-            <span class="text-gray-300">Analytics</span>
-            <span class="ml-auto font-semibold text-green-400">不限量</span>
-          </div>
+          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10"><span>🛡️</span><span class="text-gray-300">Cyber</span><span class="ml-auto font-semibold text-green-400" data-zh>不限量</span><span class="ml-auto font-semibold text-green-400" data-en>Unlimited</span></div>
+          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10"><span>🎬</span><span class="text-gray-300">Video</span><span class="ml-auto font-semibold text-green-400" data-zh>不限量</span><span class="ml-auto font-semibold text-green-400" data-en>Unlimited</span></div>
+          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10"><span>⚙️</span><span class="text-gray-300">Flow</span><span class="ml-auto font-semibold text-green-400" data-zh>不限量</span><span class="ml-auto font-semibold text-green-400" data-en>Unlimited</span></div>
+          <div class="flex items-center gap-2 p-2 bg-white/5 rounded-lg border border-white/10"><span>📊</span><span class="text-gray-300">Analytics</span><span class="ml-auto font-semibold text-green-400" data-zh>不限量</span><span class="ml-auto font-semibold text-green-400" data-en>Unlimited</span></div>
         </div>
         <div class="space-y-1 text-xs text-gray-400 mb-4">
-          <p>✓ 私有化部署</p>
-          <p>✓ 定制模型训练</p>
-          <p>✓ 7×24 技术支持</p>
+          <p data-zh>✓ 私有化部署</p><p data-en>✓ Private Deployment</p>
+          <p data-zh>✓ 定制模型训练</p><p data-en>✓ Custom Model Training</p>
+          <p data-zh>✓ 7×24 技术支持</p><p data-en>✓ 24/7 Support</p>
         </div>
-        <a href="mailto:xuanchen.wu@hotmail.com?subject=Enterprise%E5%90%88%E8%AE%A2" class="block text-center py-2.5 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg text-sm transition-colors">联系销售</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Enterprise" class="block text-center py-2.5 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg text-sm transition-colors" data-zh>联系销售</a>
+        <a href="mailto:xuanchen.wu@hotmail.com?subject=Enterprise" class="block text-center py-2.5 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg text-sm transition-colors" data-en>Contact Sales</a>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ========== 各产品功能详情 ========== -->
-<section class="py-10 px-4 bg-white border-t border-gray-100">
-  <div class="max-w-6xl mx-auto">
-
-    <div class="text-center mb-8">
-      <h2 class="text-2xl font-black mb-2">四款产品核心功能</h2>
-      <p class="text-gray-500 text-sm">点击标签切换查看各产品详细功能</p>
-    </div>
-
-    <!-- Tab navigation -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8">
-      <button onclick="showTab('cyber')" id="tab-cyber" class="tab-btn px-5 py-2 rounded-full text-sm font-semibold bg-indigo-50 border border-indigo-400 text-indigo-600 transition-all">🛡️ Cyber 安全助手</button>
-      <button onclick="showTab('video')" id="tab-video" class="tab-btn px-5 py-2 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:border-indigo-400 hover:text-indigo-600 transition-all">🎬 Video 视频安全</button>
-      <button onclick="showTab('flow')" id="tab-flow" class="tab-btn px-5 py-2 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:border-indigo-400 hover:text-indigo-600 transition-all">⚙️ Flow 流程自动化</button>
-      <button onclick="showTab('analytics')" id="tab-analytics" class="tab-btn px-5 py-2 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:border-indigo-400 hover:text-indigo-600 transition-all">📊 Analytics 数据分析</button>
-    </div>
-
-    <!-- ========== Cyber ========== -->
-    <div id="panel-cyber" class="tab-panel">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <!-- Free -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold mb-3">FREE</span>
-          <div class="mb-3"><span class="text-2xl font-black">¥0</span><span class="text-gray-400 text-sm">/永久</span></div>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 100次/月 调用量</li>
-            <li>✅ 4,096 上下文窗口</li>
-            <li>✅ 基础钓鱼/诈骗识别</li>
-            <li>✅ 隐私泄露检测</li>
-            <li>✅ HF Spaces 在线访问</li>
-            <li>❌ API 接入</li>
-            <li>❌ 优先响应</li>
-          </ul>
-        </div>
-        <!-- Starter -->
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3">STARTER · ¥29/月</span>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 5,000次/月 · 8K上下文</li>
-            <li>✅ 全功能威胁检测</li>
-            <li>✅ API 接入</li>
-            <li>✅ 邮件告警</li>
-            <li>✅ 高级报告</li>
-            <li>✅ 并发 3</li>
-            <li>❌ SLA保障</li>
-          </ul>
-        </div>
-        <!-- Pro -->
-        <div class="bg-white rounded-2xl border-2 border-indigo-500 p-5 relative shadow-lg shadow-indigo-100">
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2"><span class="inline-block px-3 py-0.5 bg-indigo-600 text-white text-xs font-bold rounded-full">PRO · ¥79/月</span></div>
-          <ul class="space-y-2 text-xs text-gray-600 mt-2">
-            <li>✅ 30,000次/月 · 32K上下文</li>
-            <li>✅ 漏洞深度分析</li>
-            <li>✅ API 不限速 · 并发 10</li>
-            <li>✅ 优先邮件/工单支持</li>
-            <li>✅ SLA 99.5%</li>
-            <li>✅ 月度安全报告</li>
-            <li>✅ 最大文件 100MB</li>
-          </ul>
-        </div>
-        <!-- Enterprise -->
-        <div class="bg-gray-900 rounded-2xl border border-gray-700 p-5 text-white">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-700 text-gray-300 text-xs font-bold mb-3">ENTERPRISE · ¥299/月起</span>
-          <ul class="space-y-2 text-xs text-gray-300">
-            <li>✅ <span class="text-green-400">不限量</span> · 128K上下文</li>
-            <li>✅ 私有化部署</li>
-            <li>✅ 定制安全规则</li>
-            <li>✅ 专属客户成功经理</li>
-            <li>✅ 7×24 技术支持</li>
-            <li>✅ 商务合同 &amp; 发票</li>
-            <li>✅ 定制模型训练</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========== Video ========== -->
-    <div id="panel-video" class="tab-panel hidden">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold mb-3">FREE</span>
-          <div class="mb-3"><span class="text-2xl font-black">¥0</span><span class="text-gray-400 text-sm">/永久</span></div>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 500分钟/月 审核量</li>
-            <li>✅ 4,096 上下文窗口</li>
-            <li>✅ 基础标签审核</li>
-            <li>✅ 720p 分辨率</li>
-            <li>✅ HF Spaces 在线访问</li>
-            <li>❌ 自定义词库</li>
-            <li>❌ 实时 Webhook</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3">STARTER · ¥29/月</span>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 5,000分钟/月 · 8K上下文</li>
-            <li>✅ 全标签 + 自定义词库</li>
-            <li>✅ 1,080p 分辨率</li>
-            <li>✅ API 接入 · 并发 3</li>
-            <li>✅ 报告导出</li>
-            <li>✅ 最大时长 60分钟</li>
-            <li>❌ Webhook 回调</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border-2 border-indigo-500 p-5 relative shadow-lg shadow-indigo-100">
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2"><span class="inline-block px-3 py-0.5 bg-indigo-600 text-white text-xs font-bold rounded-full">PRO · ¥79/月</span></div>
-          <ul class="space-y-2 text-xs text-gray-600 mt-2">
-            <li>✅ 30,000分钟/月 · 32K上下文</li>
-            <li>✅ 实时 Webhook 回调</li>
-            <li>✅ 4K 分辨率 · 并发 10</li>
-            <li>✅ 优先处理队列</li>
-            <li>✅ 最大时长 240分钟</li>
-            <li>✅ 7×12 小时支持</li>
-            <li>❌ 私有化部署</li>
-          </ul>
-        </div>
-        <div class="bg-gray-900 rounded-2xl border border-gray-700 p-5 text-white">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-700 text-gray-300 text-xs font-bold mb-3">ENTERPRISE · ¥299/月起</span>
-          <ul class="space-y-2 text-xs text-gray-300">
-            <li>✅ <span class="text-green-400">不限量</span> · 128K上下文</li>
-            <li>✅ 8K 分辨率</li>
-            <li>✅ 私有化部署 + 定制模型</li>
-            <li>✅ 7×24 专属支持</li>
-            <li>✅ SLA 99.9%</li>
-            <li>✅ 商务合同 &amp; 发票</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========== Flow ========== -->
-    <div id="panel-flow" class="tab-panel hidden">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold mb-3">FREE</span>
-          <div class="mb-3"><span class="text-2xl font-black">¥0</span><span class="text-gray-400 text-sm">/永久</span></div>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 500次/月 执行量</li>
-            <li>✅ 4,096 上下文窗口</li>
-            <li>✅ 5个预置工作流模板</li>
-            <li>✅ 基础调度</li>
-            <li>✅ 最大 10步/工作流</li>
-            <li>❌ API集成</li>
-            <li>❌ 并行任务</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3">STARTER · ¥29/月</span>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 5,000次/月 · 8K上下文</li>
-            <li>✅ 无限模板</li>
-            <li>✅ API + Webhook 集成</li>
-            <li>✅ 日志与重试</li>
-            <li>✅ 最大 50步/工作流</li>
-            <li>✅ 并发 3</li>
-            <li>❌ 团队协作</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border-2 border-indigo-500 p-5 relative shadow-lg shadow-indigo-100">
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2"><span class="inline-block px-3 py-0.5 bg-indigo-600 text-white text-xs font-bold rounded-full">PRO · ¥79/月</span></div>
-          <ul class="space-y-2 text-xs text-gray-600 mt-2">
-            <li>✅ 30,000次/月 · 32K上下文</li>
-            <li>✅ 并行任务 + 自定义节点</li>
-            <li>✅ 团队协作 (5人)</li>
-            <li>✅ 优先队列 · SLA 99%</li>
-            <li>✅ 最大 200步/工作流</li>
-            <li>✅ 并发 10</li>
-            <li>❌ 私有化部署</li>
-          </ul>
-        </div>
-        <div class="bg-gray-900 rounded-2xl border border-gray-700 p-5 text-white">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-700 text-gray-300 text-xs font-bold mb-3">ENTERPRISE · ¥299/月起</span>
-          <ul class="space-y-2 text-xs text-gray-300">
-            <li>✅ <span class="text-green-400">不限量</span> · 128K上下文</li>
-            <li>✅ 私有化部署 + 定制节点</li>
-            <li>✅ 团队无限制</li>
-            <li>✅ 专属流程顾问</li>
-            <li>✅ 7×24 技术支持</li>
-            <li>✅ 商务合同 &amp; 发票</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========== Analytics ========== -->
-    <div id="panel-analytics" class="tab-panel hidden">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold mb-3">FREE</span>
-          <div class="mb-3"><span class="text-2xl font-black">¥0</span><span class="text-gray-400 text-sm">/永久</span></div>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 1,000次/月 查询量</li>
-            <li>✅ 8,192 上下文窗口</li>
-            <li>✅ 基础图表 (5种)</li>
-            <li>✅ 5个数据源连接</li>
-            <li>✅ HF Spaces 在线访问</li>
-            <li>❌ SQL 辅助</li>
-            <li>❌ 数据预警</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border border-gray-200 p-5">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3">STARTER · ¥29/月</span>
-          <ul class="space-y-2 text-xs text-gray-600">
-            <li>✅ 10,000次/月 · 16K上下文</li>
-            <li>✅ 全图表类型</li>
-            <li>✅ 无限数据源</li>
-            <li>✅ CSV/Excel 导出</li>
-            <li>✅ 并发 3 · 10万行</li>
-            <li>❌ SQL 辅助</li>
-            <li>❌ 数据预警</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border-2 border-indigo-500 p-5 relative shadow-lg shadow-indigo-100">
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2"><span class="inline-block px-3 py-0.5 bg-indigo-600 text-white text-xs font-bold rounded-full">PRO · ¥79/月</span></div>
-          <ul class="space-y-2 text-xs text-gray-600 mt-2">
-            <li>✅ 50,000次/月 · 64K上下文</li>
-            <li>✅ SQL 辅助 + 自然语言查询</li>
-            <li>✅ 数据预警 &amp; 订阅</li>
-            <li>✅ 团队协作 (5人)</li>
-            <li>✅ 并发 10 · 百万行</li>
-            <li>✅ SLA 99.5%</li>
-            <li>❌ 私有化部署</li>
-          </ul>
-        </div>
-        <div class="bg-gray-900 rounded-2xl border border-gray-700 p-5 text-white">
-          <span class="inline-block px-2 py-0.5 rounded-full bg-gray-700 text-gray-300 text-xs font-bold mb-3">ENTERPRISE · ¥299/月起</span>
-          <ul class="space-y-2 text-xs text-gray-300">
-            <li>✅ <span class="text-green-400">不限量</span> · 128K上下文</li>
-            <li>✅ 私有化部署 + 定制看板</li>
-            <li>✅ 团队无限制</li>
-            <li>✅ 专属 BI 顾问</li>
-            <li>✅ 7×24 技术支持</li>
-            <li>✅ 商务合同 &amp; 发票</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- 竞品对比 -->
-<section class="py-10 px-4 bg-gray-50 border-t border-gray-100">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-xl font-black text-center mb-2">为什么选 LeyoAI？</h2>
-    <p class="text-center text-gray-500 text-sm mb-6">同类功能对比大厂，省 80-97%</p>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm text-center">
-        <thead>
-          <tr class="border-b border-gray-200">
-            <th class="text-left py-3 px-4 font-bold text-gray-700">对比项</th>
-            <th class="py-3 px-4 font-bold text-indigo-600">LeyoAI Pro</th>
-            <th class="py-3 px-4 text-gray-400">阿里云安全</th>
-            <th class="py-3 px-4 text-gray-400">腾讯云内容审核</th>
-            <th class="py-3 px-4 text-gray-400">某 RPA 工具</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">
-          <tr>
-            <td class="text-left py-3 px-4 font-medium text-gray-700">价格</td>
-            <td class="py-3 px-4 font-black text-indigo-600">¥79/月<br><span class="text-xs font-normal text-gray-500">四款产品全含</span></td>
-            <td class="py-3 px-4 text-gray-500 line-through">¥980/月</td>
-            <td class="py-3 px-4 text-gray-500 line-through">¥3,000/月</td>
-            <td class="py-3 px-4 text-gray-500 line-through">¥833/月</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="text-left py-3 px-4 font-medium text-gray-700">节省比例</td>
-            <td class="py-3 px-4 text-green-600 font-bold">基准</td>
-            <td class="py-3 px-4 text-red-400">贵 12倍</td>
-            <td class="py-3 px-4 text-red-400">贵 38倍</td>
-            <td class="py-3 px-4 text-red-400">贵 11倍</td>
-          </tr>
-          <tr>
-            <td class="text-left py-3 px-4 font-medium text-gray-700">基座模型</td>
-            <td class="py-3 px-4 text-indigo-600 font-medium">Qwen2.5-1.5B<br><span class="text-xs text-gray-400">垂直领域精调</span></td>
-            <td class="py-3 px-4 text-gray-400 text-xs">通义千问2.5</td>
-            <td class="py-3 px-4 text-gray-400 text-xs">混元大模型</td>
-            <td class="py-3 px-4 text-gray-400 text-xs">规则引擎</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="text-left py-3 px-4 font-medium text-gray-700">使用门槛</td>
-            <td class="py-3 px-4 text-green-600 font-medium">极低 · HF Spaces<br><span class="text-xs text-gray-400">零部署开箱即用</span></td>
-            <td class="py-3 px-4 text-red-400 text-xs">需 API 配置</td>
-            <td class="py-3 px-4 text-red-400 text-xs">需 API 配置</td>
-            <td class="py-3 px-4 text-red-400 text-xs">学习成本高</td>
-          </tr>
-          <tr>
-            <td class="text-left py-3 px-4 font-medium text-gray-700">私有部署</td>
-            <td class="py-3 px-4 text-green-600">✅ 企业版支持</td>
-            <td class="py-3 px-4 text-gray-400">✅ 高端版</td>
-            <td class="py-3 px-4 text-gray-400">❌ 不支持</td>
-            <td class="py-3 px-4 text-gray-400">✅ 支持</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="text-left py-3 px-4 font-medium text-gray-700">中小企业适用性</td>
-            <td class="py-3 px-4 text-green-600 font-bold">⭐⭐⭐⭐⭐</td>
-            <td class="py-3 px-4 text-gray-400">⭐⭐</td>
-            <td class="py-3 px-4 text-gray-400">⭐</td>
-            <td class="py-3 px-4 text-gray-400">⭐⭐⭐</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
@@ -529,43 +177,24 @@
 <!-- FAQ -->
 <section class="py-10 px-4">
   <div class="max-w-3xl mx-auto">
-    <h2 class="text-2xl font-black text-center mb-8">常见问题</h2>
+    <h2 class="text-2xl font-black text-center mb-8" data-zh>常见问题</h2>
+    <h2 class="text-2xl font-black text-center mb-8" data-en>FAQ</h2>
     <div class="space-y-3">
       <details class="bg-white rounded-xl border border-gray-100 p-5 group">
         <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          免费层会过期吗？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
+          <span data-zh>免费层会过期吗？</span><span data-en>Does the free tier expire?</span>
+          <span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
         </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">不会。Free 层永久有效，仅有每月用量限制。无需绑定信用卡，随时可升级。</p>
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed" data-zh>不会。Free 层永久有效，仅有每月用量限制。无需绑定信用卡，随时可升级。</p>
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed" data-en>No. The Free tier is valid forever with only monthly usage limits. No credit card required, upgrade anytime.</p>
       </details>
       <details class="bg-white rounded-xl border border-gray-100 p-5 group">
         <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          超出用量怎么办？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
+          <span data-zh>可以退款吗？</span><span data-en>Can I get a refund?</span>
+          <span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
         </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">接近额度时我们会发邮件提醒。您可以：① 等待下月重置；② 升级套餐；③ 联系购买额外额度。</p>
-      </details>
-      <details class="bg-white rounded-xl border border-gray-100 p-5 group">
-        <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          可以退款吗？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">7天内无理由退款。联系 <a href="mailto:xuanchen.wu@hotmail.com" class="text-indigo-600 hover:underline">xuanchen.wu@hotmail.com</a> 处理。</p>
-      </details>
-      <details class="bg-white rounded-xl border border-gray-100 p-5 group">
-        <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          年付有优惠吗？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">有！年付享 8 折优惠。Pro 专业版年付仅 ¥758（原价 ¥948），相当于省了两个月费用。</p>
-      </details>
-      <details class="bg-white rounded-xl border border-gray-100 p-5 group">
-        <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          企业发票和合同支持吗？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">支持。月付/年付均可开具发票，企业版提供正规合同。发送企业信息到邮箱即可。</p>
-      </details>
-      <details class="bg-white rounded-xl border border-gray-100 p-5 group">
-        <summary class="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-          数据安全和隐私如何保障？<span class="text-indigo-500 group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <p class="text-gray-600 text-sm mt-3 leading-relaxed">所有推理数据仅用于处理，不持久化存储。企业版支持私有化部署，数据完全在您自己的服务器上。</p>
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed" data-zh>7天内无理由退款。联系 xuanchen.wu@hotmail.com 处理。</p>
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed" data-en>7-day no-questions-asked refund. Contact xuanchen.wu@hotmail.com to process.</p>
       </details>
     </div>
   </div>
@@ -573,8 +202,10 @@
 
 <!-- CTA -->
 <section class="py-12 bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-4">
-  <h2 class="text-2xl font-black mb-3">还有疑问？</h2>
-  <p class="text-white/80 mb-6 text-sm">发送邮件，我们 24 小时内回复，无任何推销话术</p>
+  <h2 class="text-2xl font-black mb-3" data-zh>还有疑问？</h2>
+  <h2 class="text-2xl font-black mb-3" data-en>Still have questions?</h2>
+  <p class="text-white/80 mb-6 text-sm" data-zh>发送邮件，我们 24 小时内回复</p>
+  <p class="text-white/80 mb-6 text-sm" data-en>Send an email, we'll reply within 24 hours</p>
   <a href="mailto:xuanchen.wu@hotmail.com" class="inline-block px-8 py-3 bg-white text-indigo-600 font-bold rounded-lg hover:bg-gray-100 transition-colors">xuanchen.wu@hotmail.com</a>
 </section>
 
@@ -585,28 +216,16 @@
       <img src="/logo.svg" alt="LeyoAI" class="w-6 h-6" onerror="this.style.display='none'">
       <span class="font-bold">LeyoAI</span>
     </a>
-    <p class="text-gray-400 text-sm">© 2024 杭州市上城区乐友信息服务工作室</p>
+    <p class="text-gray-400 text-sm" data-zh>© 2024 杭州市上城区乐友信息服务工作室</p>
+    <p class="text-gray-400 text-sm" data-en>© 2024 Hangzhou Shangcheng Leyo Information Service Studio</p>
     <div class="flex gap-4 text-sm text-gray-400">
-      <a href="/terms.html" class="hover:text-white transition-colors">使用条款</a>
-      <a href="/privacy.html" class="hover:text-white transition-colors">隐私政策</a>
+      <a href="/terms.html" class="hover:text-white transition-colors" data-zh>使用条款</a>
+      <a href="/terms.html" class="hover:text-white transition-colors" data-en>Terms</a>
+      <a href="/privacy.html" class="hover:text-white transition-colors" data-zh>隐私政策</a>
+      <a href="/privacy.html" class="hover:text-white transition-colors" data-en>Privacy</a>
     </div>
   </div>
 </footer>
-
-<script>
-// Product tab switching
-function showTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
-  document.querySelectorAll('.tab-btn').forEach(t => {
-    t.classList.remove('bg-indigo-50', 'border-indigo-400', 'text-indigo-600');
-    t.classList.add('bg-white', 'border-gray-200', 'text-gray-600');
-  });
-  document.getElementById('panel-' + name).classList.remove('hidden');
-  const btn = document.getElementById('tab-' + name);
-  btn.classList.remove('bg-white', 'border-gray-200', 'text-gray-600');
-  btn.classList.add('bg-indigo-50', 'border-indigo-400', 'text-indigo-600');
-}
-</script>
 
 </body>
 </html>

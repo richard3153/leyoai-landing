@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>隐私政策 - LeyoAI</title>
-
+    <title data-zh>隐私政策 - LeyoAI</title>
+    <title data-en>Privacy Policy - LeyoAI</title>
     <meta name="description" content="LeyoAI 垂直领域AI模型服务平台，隐私政策。" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://leyoai.vercel.app/privacy.html" />
@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="隐私政策 - LeyoAI" />
     <meta name="twitter:description" content="LeyoAI 垂直领域AI模型服务平台。隐私政策。" />
     <meta property="og:locale" content="zh_CN" />
-
+    <script src="/i18n-static.js"></script>
     <style>
         :root {
             --primary: #6366f1;
@@ -29,11 +29,7 @@
             --text-light: #64748b;
             --border: #e2e8f0;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -56,21 +52,10 @@
             padding: 50px 40px;
             text-align: center;
         }
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        .content {
-            padding: 50px 40px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
+        .header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.1rem; opacity: 0.9; }
+        .content { padding: 50px 40px; }
+        .section { margin-bottom: 40px; }
         .section h2 {
             color: var(--primary);
             font-size: 1.5rem;
@@ -90,29 +75,15 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        .section p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .section ul {
-            list-style: none;
-            margin: 15px 0;
-            padding-left: 0;
-        }
+        .section p { color: var(--text-light); margin-bottom: 15px; text-align: justify; }
+        .section ul { list-style: none; margin: 15px 0; padding-left: 0; }
         .section li {
             position: relative;
             padding-left: 25px;
             margin-bottom: 12px;
             color: var(--text-light);
         }
-        .section li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
+        .section li::before { content: '▸'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
         .highlight-box {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
             border-left: 4px solid var(--primary);
@@ -120,11 +91,7 @@
             border-radius: 0 12px 12px 0;
             margin: 20px 0;
         }
-        .highlight-box p {
-            color: var(--text);
-            margin: 0;
-            font-weight: 500;
-        }
+        .highlight-box p { color: var(--text); margin: 0; font-weight: 500; }
         .info-box {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
             border-left: 4px solid #10b981;
@@ -132,44 +99,22 @@
             border-radius: 0 12px 12px 0;
             margin: 20px 0;
         }
-        .info-box p {
-            color: #065f46;
-            margin: 0;
-            font-weight: 500;
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .data-table th, .data-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
+        .info-box p { color: #065f46; margin: 0; font-weight: 500; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
         .data-table th {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
             color: var(--primary);
             font-weight: 600;
         }
-        .data-table td {
-            color: var(--text-light);
-        }
+        .data-table td { color: var(--text-light); }
         .footer {
             background: #f8fafc;
             padding: 30px 40px;
             text-align: center;
             border-top: 1px solid var(--border);
         }
-        .footer p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        .footer .contact {
-            margin-top: 10px;
-            color: var(--primary);
-            font-weight: 500;
-        }
+        .footer p { color: var(--text-light); font-size: 0.9rem; }
         .contact-card {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -177,175 +122,152 @@
             border-radius: 15px;
             margin-top: 20px;
         }
-        .contact-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+        .contact-card h3 { font-size: 1.2rem; margin-bottom: 15px; }
+        .contact-card p { color: rgba(255, 255, 255, 0.9); margin: 8px 0; }
+        .contact-card a { color: white; text-decoration: underline; }
+        .update-date { text-align: right; color: var(--text-light); font-size: 0.9rem; margin-top: 30px; }
+        .icon { display: inline-block; margin-right: 8px; }
+        .nav-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .contact-card p {
-            color: rgba(255, 255, 255, 0.9);
-            margin: 8px 0;
-        }
-        .contact-card a {
-            color: white;
-            text-decoration: underline;
-        }
-        .update-date {
-            text-align: right;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 30px;
-        }
-        .icon {
-            display: inline-block;
-            margin-right: 8px;
-        }
+        .nav-bar a { color: white; text-decoration: none; font-weight: 500; }
+        .nav-bar a:hover { opacity: 0.8; }
+        [data-zh], [data-en] { display: none; }
     </style>
 </head>
 <body>
+    <div class="nav-bar">
+        <a href="/">← LeyoAI</a>
+        <div class="lang-toggle-container"></div>
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>🔒 隐私政策</h1>
-            <p class="subtitle">LeyoAI 数据保护承诺</p>
+            <h1 data-zh>🔒 隐私政策</h1>
+            <h1 data-en>🔒 Privacy Policy</h1>
+            <p class="subtitle" data-zh>LeyoAI 数据保护承诺</p>
+            <p class="subtitle" data-en>LeyoAI Data Protection Commitment</p>
         </div>
-        
+
         <div class="content">
             <div class="highlight-box">
-                <p>🛡️ 我们高度重视您的隐私。本政策说明我们如何收集、使用和保护您的信息。</p>
+                <p data-zh>🛡️ 我们高度重视您的隐私。本政策说明我们如何收集、使用和保护您的信息。</p>
+                <p data-en>🛡️ We take your privacy seriously. This policy explains how we collect, use, and protect your information.</p>
             </div>
 
             <div class="section">
-                <h2>信息收集</h2>
-                <p>为提供 AI 助手服务，我们可能收集以下类型的信息：</p>
-                
+                <h2 data-zh>信息收集</h2>
+                <h2 data-en>Information Collection</h2>
+                <p data-zh>为提供 AI 助手服务，我们可能收集以下类型的信息：</p>
+                <p data-en>To provide AI assistant services, we may collect the following types of information:</p>
+
                 <table class="data-table">
                     <tr>
-                        <th>信息类型</th>
-                        <th>用途说明</th>
-                        <th>收集方式</th>
+                        <th data-zh>信息类型</th><th data-en>Information Type</th>
+                        <th data-zh>用途说明</th><th data-en>Purpose</th>
+                        <th data-zh>收集方式</th><th data-en>Collection Method</th>
                     </tr>
                     <tr>
-                        <td>对话内容</td>
-                        <td>用于 AI 模型推理，生成回复</td>
-                        <td>您主动输入</td>
+                        <td data-zh>对话内容</td><td data-en>Conversation Content</td>
+                        <td data-zh>用于 AI 模型推理，生成回复</td><td data-en>For AI model inference and generating responses</td>
+                        <td data-zh>您主动输入</td><td data-en>Your active input</td>
                     </tr>
                     <tr>
-                        <td>账户信息</td>
-                        <td>身份验证、服务提供</td>
-                        <td>注册时提供</td>
+                        <td data-zh>账户信息</td><td data-en>Account Information</td>
+                        <td data-zh>身份验证、服务提供</td><td data-en>Identity verification and service provision</td>
+                        <td data-zh>注册时提供</td><td data-en>Provided during registration</td>
                     </tr>
                     <tr>
-                        <td>使用日志</td>
-                        <td>服务优化、问题排查</td>
-                        <td>自动收集</td>
+                        <td data-zh>使用日志</td><td data-en>Usage Logs</td>
+                        <td data-zh>服务优化、问题排查</td><td data-en>Service optimization and troubleshooting</td>
+                        <td data-zh>自动收集</td><td data-en>Automatically collected</td>
                     </tr>
                     <tr>
-                        <td>设备信息</td>
-                        <td>安全防护、服务适配</td>
-                        <td>自动收集</td>
+                        <td data-zh>设备信息</td><td data-en>Device Information</td>
+                        <td data-zh>安全防护、服务适配</td><td data-en>Security protection and service adaptation</td>
+                        <td data-zh>自动收集</td><td data-en>Automatically collected</td>
                     </tr>
                 </table>
 
                 <div class="info-box">
-                    <p>✅ 核心承诺：您的对话内容仅用于 AI 推理生成回复，我们不会将您的数据用于其他任何目的，不会出售或分享给第三方用于营销。</p>
+                    <p data-zh>✅ 核心承诺：您的对话内容仅用于 AI 推理生成回复，我们不会将您的数据用于其他任何目的，不会出售或分享给第三方用于营销。</p>
+                    <p data-en>✅ Core Commitment: Your conversation content is only used for AI inference to generate responses. We will not use your data for any other purpose, nor sell or share it with third parties for marketing.</p>
                 </div>
             </div>
 
             <div class="section">
-                <h2>数据存储与安全</h2>
-                <p>我们采取严格的安全措施保护您的数据：</p>
+                <h2 data-zh>数据存储与安全</h2>
+                <h2 data-en>Data Storage & Security</h2>
+                <p data-zh>我们采取严格的安全措施保护您的数据：</p>
+                <p data-en>We implement strict security measures to protect your data:</p>
                 <ul>
-                    <li><strong>传输加密</strong>：所有数据传输均采用 HTTPS/TLS 加密协议</li>
-                    <li><strong>存储安全</strong>：敏感数据采用加密存储，访问严格控制</li>
-                    <li><strong>访问控制</strong>：仅授权人员可在必要时访问用户数据</li>
-                    <li><strong>安全审计</strong>：定期进行安全评估和漏洞检测</li>
-                    <li><strong>数据保留</strong>：对话记录在服务完成后按策略定期清理</li>
+                    <li data-zh><strong>传输加密</strong>：所有数据传输均采用 HTTPS/TLS 加密协议</li>
+                    <li data-en><strong>Transmission Encryption</strong>: All data transmission uses HTTPS/TLS encryption protocols</li>
+                    <li data-zh><strong>存储安全</strong>：敏感数据采用加密存储，访问严格控制</li>
+                    <li data-en><strong>Secure Storage</strong>: Sensitive data is encrypted with strict access controls</li>
+                    <li data-zh><strong>访问控制</strong>：仅授权人员可在必要时访问用户数据</li>
+                    <li data-en><strong>Access Control</strong>: Only authorized personnel can access user data when necessary</li>
+                    <li data-zh><strong>安全审计</strong>：定期进行安全评估和漏洞检测</li>
+                    <li data-en><strong>Security Audits</strong>: Regular security assessments and vulnerability detection</li>
+                    <li data-zh><strong>数据保留</strong>：对话记录在服务完成后按策略定期清理</li>
+                    <li data-en><strong>Data Retention</strong>: Conversation records are regularly cleaned according to policy after service completion</li>
                 </ul>
-                <p>我们的服务部署在安全的云基础设施上，符合业界安全标准。但请注意，互联网传输不存在绝对安全，我们建议您不要在对话中分享敏感个人信息。</p>
             </div>
 
             <div class="section">
-                <h2>第三方服务</h2>
-                <p>为提供高质量的 AI 服务，我们使用以下第三方服务提供商：</p>
+                <h2 data-zh>第三方服务</h2>
+                <h2 data-en>Third-Party Services</h2>
+                <p data-zh>为提供高质量的 AI 服务，我们使用以下第三方服务提供商：</p>
+                <p data-en>To provide high-quality AI services, we use the following third-party service providers:</p>
                 <ul>
-                    <li><strong>HuggingFace</strong>：用于 AI 模型托管与推理服务</li>
+                    <li data-zh><strong>HuggingFace</strong>：用于 AI 模型托管与推理服务</li>
+                    <li data-en><strong>HuggingFace</strong>: For AI model hosting and inference services</li>
                 </ul>
-                <p>这些第三方服务商均已签署数据处理协议，承诺按照我们的指示处理数据，并遵守适用的数据保护法规。</p>
-                <p>我们可能会根据业务发展需要引入其他第三方服务，届时将及时更新本隐私政策。</p>
             </div>
 
             <div class="section">
-                <h2>Cookie 与本地存储</h2>
-                <p>我们使用 Cookie 和类似的本地存储技术以提供更好的服务体验：</p>
-                
-                <table class="data-table">
-                    <tr>
-                        <th>Cookie 类型</th>
-                        <th>用途</th>
-                        <th>有效期</th>
-                    </tr>
-                    <tr>
-                        <td>必要性 Cookie</td>
-                        <td>身份验证、安全防护、服务运行</td>
-                        <td>会话期或更长</td>
-                    </tr>
-                    <tr>
-                        <td>功能性 Cookie</td>
-                        <td>记住您的偏好设置</td>
-                        <td>最长 1 年</td>
-                    </tr>
-                    <tr>
-                        <td>分析性 Cookie</td>
-                        <td>了解用户如何使用服务（匿名化）</td>
-                        <td>最长 2 年</td>
-                    </tr>
-                </table>
-                
-                <p>您可以通过浏览器设置管理 Cookie 偏好。但请注意，禁用某些 Cookie 可能影响服务功能。</p>
-            </div>
-
-            <div class="section">
-                <h2>您的权利</h2>
-                <p>根据适用的数据保护法规，您享有以下权利：</p>
+                <h2 data-zh>您的权利</h2>
+                <h2 data-en>Your Rights</h2>
+                <p data-zh>根据适用的数据保护法规，您享有以下权利：</p>
+                <p data-en>Under applicable data protection regulations, you have the following rights:</p>
                 <ul>
-                    <li><strong>知情权</strong>：了解我们如何处理您的个人信息</li>
-                    <li><strong>访问权</strong>：请求获取我们持有的您的个人信息副本</li>
-                    <li><strong>更正权</strong>：请求更正不准确或不完整的信息</li>
-                    <li><strong>删除权</strong>：在特定情况下请求删除您的个人信息</li>
-                    <li><strong>撤回同意权</strong>：撤回之前给予的数据处理同意</li>
+                    <li data-zh><strong>知情权</strong>：了解我们如何处理您的个人信息</li>
+                    <li data-en><strong>Right to Know</strong>: Understand how we process your personal information</li>
+                    <li data-zh><strong>访问权</strong>：请求获取我们持有的您的个人信息副本</li>
+                    <li data-en><strong>Right to Access</strong>: Request a copy of your personal information we hold</li>
+                    <li data-zh><strong>更正权</strong>：请求更正不准确或不完整的信息</li>
+                    <li data-en><strong>Right to Rectification</strong>: Request correction of inaccurate or incomplete information</li>
+                    <li data-zh><strong>删除权</strong>：在特定情况下请求删除您的个人信息</li>
+                    <li data-en><strong>Right to Erasure</strong>: Request deletion of your personal information in specific circumstances</li>
+                    <li data-zh><strong>撤回同意权</strong>：撤回之前给予的数据处理同意</li>
+                    <li data-en><strong>Right to Withdraw Consent</strong>: Withdraw previously given consent for data processing</li>
                 </ul>
-                <p>如需行使上述权利，请通过本政策末尾的联系方式与我们取得联系。</p>
             </div>
 
             <div class="section">
-                <h2>未成年人保护</h2>
-                <p>我们的服务面向成年用户。如果您是 18 周岁以下的未成年人，请在监护人同意和指导下使用本服务。我们不会故意收集未成年人的个人信息。如果您发现我们可能在未获监护人同意的情况下收集了未成年人的信息，请立即联系我们。</p>
-            </div>
-
-            <div class="section">
-                <h2>隐私政策更新</h2>
-                <p>我们可能会不时更新本隐私政策。更新后的政策将在本页面发布，重大变更将通过站内通知或其他适当方式告知您。建议您定期查阅本政策以了解最新的隐私保护措施。</p>
-            </div>
-
-            <div class="section">
-                <h2>联系我们</h2>
-                <p>如果您对本隐私政策有任何疑问、意见或建议，或需要行使您的数据权利，请通过以下方式联系我们：</p>
-                
+                <h2 data-zh>联系我们</h2>
+                <h2 data-en>Contact Us</h2>
                 <div class="contact-card">
-                    <h3>📧 联系方式</h3>
-                    <p><span class="icon">🏢</span><strong>运营主体：</strong>杭州市上城区乐友信息服务工作室</p>
-                    <p><span class="icon">🌐</span><strong>官网：</strong><a href="https://leyoai.vercel.app" target="_blank">leyoai.vercel.app</a></p>
-                    <p><span class="icon">📍</span><strong>地址：</strong>浙江省杭州市上城区</p>
+                    <h3 data-zh>📧 联系方式</h3>
+                    <h3 data-en>📧 Contact Information</h3>
+                    <p data-zh><span class="icon">🏢</span><strong>运营主体：</strong>杭州市上城区乐友信息服务工作室</p>
+                    <p data-en><span class="icon">🏢</span><strong>Operator:</strong> Hangzhou Shangcheng Leyo Information Service Studio</p>
+                    <p><span class="icon">🌐</span><strong data-zh>官网：</strong><strong data-en>Website:</strong> <a href="https://leyoai.vercel.app" target="_blank">leyoai.vercel.app</a></p>
                 </div>
-                
-                <p style="margin-top: 20px;">我们将在收到请求后的合理时间内予以回复。</p>
             </div>
 
-            <p class="update-date">最后更新日期：2026年4月13日</p>
+            <p class="update-date" data-zh>最后更新日期：2026年4月13日</p>
+            <p class="update-date" data-en>Last Updated: April 13, 2026</p>
         </div>
 
         <div class="footer">
-            <p>© 2026 杭州市上城区乐友信息服务工作室 版权所有</p>
-            <p class="contact">官网：leyoai.vercel.app</p>
+            <p data-zh>© 2026 杭州市上城区乐友信息服务工作室 版权所有</p>
+            <p data-en>© 2026 Hangzhou Shangcheng Leyo Information Service Studio. All rights reserved.</p>
+            <p><a href="/">leyoai.vercel.app</a></p>
         </div>
     </div>
 </body>

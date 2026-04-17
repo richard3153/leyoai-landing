@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我们 - LeyoAI | 垂直领域AI模型服务</title>
-    <meta name="description" content="了解 LeyoAI 背后的团队。杭州市上城区乐友信息服务工作室，专注垂直领域 AI 模型研发。基于 Qwen2.5-1.5B + LoRA 微调，让企业 AI 应用更专业、更精准。" />
-    <meta name="keywords" content="LeyoAI关于我们, 垂直领域AI, AI创业团队, Qwen微调" />
+    <title data-zh>关于我们 - LeyoAI | 垂直领域AI模型服务</title>
+    <title data-en>About Us - LeyoAI | Vertical Domain AI Model Service</title>
+    <meta name="description" content="了解 LeyoAI 背后的团队。杭州市上城区乐友信息服务工作室，专注垂直领域 AI 模型研发。" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://leyoai.vercel.app/about.html" />
     <meta property="og:title" content="关于我们 - LeyoAI | 垂直领域AI模型服务" />
@@ -17,6 +17,7 @@
     <meta name="twitter:title" content="关于我们 - LeyoAI" />
     <meta name="twitter:description" content="了解 LeyoAI 背后的团队。专注垂直领域 AI 模型研发。" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/i18n-static.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -49,6 +50,7 @@
         .gradient-bg {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         }
+        [data-zh], [data-en] { display: none; }
     </style>
 </head>
 <body class="bg-brand-50 min-h-screen">
@@ -59,9 +61,13 @@
                 <span class="text-2xl">🤖</span>
                 <span>LeyoAI</span>
             </a>
-            <a href="/" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm">
-                ← 返回首页
-            </a>
+            <div class="flex items-center gap-4">
+                <div class="lang-toggle-container"></div>
+                <a href="/" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm">
+                    <span data-zh>← 返回首页</span>
+                    <span data-en>← Home</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -69,10 +75,14 @@
     <section class="py-16 px-6">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="gradient-text">关于 LeyoAI</span>
+                <span class="gradient-text" data-zh>关于 LeyoAI</span>
+                <span class="gradient-text" data-en>About LeyoAI</span>
             </h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-zh>
                 杭州市上城区乐友信息服务工作室旗下品牌，专注垂直领域 AI 模型服务
+            </p>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-en>
+                A brand under Hangzhou Shangcheng Leyo Information Service Studio, focused on vertical domain AI model services
             </p>
         </div>
     </section>
@@ -80,16 +90,23 @@
     <!-- Brand Story -->
     <section class="py-12 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center">品牌故事</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-zh>品牌故事</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-en>Brand Story</h2>
             <div class="bg-gradient-to-r from-brand-50 to-purple-50 rounded-2xl p-8 border border-brand-100">
                 <p class="text-gray-700 text-lg leading-relaxed mb-6">
                     <strong class="text-brand-600">LeyoAI</strong> = <strong>LE</strong> + <strong>YO</strong> + <strong>AI</strong>
                 </p>
-                <p class="text-gray-600 leading-relaxed mb-4">
+                <p class="text-gray-600 leading-relaxed mb-4" data-zh>
                     LE 代表 <strong>乐友</strong>（杭州市上城区乐友信息服务工作室），YO 代表 <strong>你</strong>（You），AI 代表 <strong>人工智能</strong>。
                 </p>
-                <p class="text-gray-600 leading-relaxed">
+                <p class="text-gray-600 leading-relaxed mb-4" data-en>
+                    LE stands for <strong>Leyo</strong> (Hangzhou Shangcheng Leyo Information Service Studio), YO stands for <strong>You</strong>, AI stands for <strong>Artificial Intelligence</strong>.
+                </p>
+                <p class="text-gray-600 leading-relaxed" data-zh>
                     我们的使命是：<strong class="text-brand-600">让 AI 模型服务每个人</strong>。我们相信 AI 不应该是少数人的专利，而应该成为每个人都能使用的工具。
+                </p>
+                <p class="text-gray-600 leading-relaxed" data-en>
+                    Our mission: <strong class="text-brand-600">AI Models for Everyone</strong>. We believe AI should not be a privilege for the few, but a tool accessible to everyone.
                 </p>
             </div>
         </div>
@@ -98,35 +115,44 @@
     <!-- Technical Capabilities -->
     <section class="py-12 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center">技术能力</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-zh>技术能力</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-en>Technical Capabilities</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-xl p-6 shadow-md border border-brand-100">
                     <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
                         <span class="text-white text-xl">🧠</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-brand-800 mb-2">Qwen2.5-1.5B 基础模型</h3>
-                    <p class="text-gray-600">基于阿里云 Qwen2.5 系列 1.5B 参数模型，在保证性能的同时实现轻量化部署，响应速度快，适合各类应用场景。</p>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-zh>Qwen2.5-1.5B 基础模型</h3>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-en>Qwen2.5-1.5B Base Model</h3>
+                    <p class="text-gray-600" data-zh>基于阿里云 Qwen2.5 系列 1.5B 参数模型，在保证性能的同时实现轻量化部署，响应速度快，适合各类应用场景。</p>
+                    <p class="text-gray-600" data-en>Based on Alibaba Cloud Qwen2.5 series 1.5B parameter model, achieving lightweight deployment while maintaining performance, with fast response times suitable for various scenarios.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md border border-brand-100">
                     <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
                         <span class="text-white text-xl">🎯</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-brand-800 mb-2">LoRA 本地训练</h3>
-                    <p class="text-gray-600">采用 LoRA 低秩适配技术，支持本地化微调训练，数据无需上传云端，保障隐私安全，同时实现模型定制化。</p>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-zh>LoRA 本地训练</h3>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-en>LoRA Local Training</h3>
+                    <p class="text-gray-600" data-zh>采用 LoRA 低秩适配技术，支持本地化微调训练，数据无需上传云端，保障隐私安全，同时实现模型定制化。</p>
+                    <p class="text-gray-600" data-en>Using LoRA low-rank adaptation technology, supporting local fine-tuning without uploading data to the cloud, ensuring privacy while enabling model customization.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md border border-brand-100">
                     <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
                         <span class="text-white text-xl">☁️</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-brand-800 mb-2">Vercel 部署</h3>
-                    <p class="text-gray-600">前端采用 Vercel 托管，全球 CDN 加速，边缘计算低延迟，保证用户访问体验流畅。</p>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-zh>Vercel 部署</h3>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-en>Vercel Deployment</h3>
+                    <p class="text-gray-600" data-zh>前端采用 Vercel 托管，全球 CDN 加速，边缘计算低延迟，保证用户访问体验流畅。</p>
+                    <p class="text-gray-600" data-en>Frontend hosted on Vercel with global CDN acceleration and edge computing for low latency, ensuring smooth user experience.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md border border-brand-100">
                     <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
                         <span class="text-white text-xl">🚀</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-brand-800 mb-2">HuggingFace Spaces</h3>
-                    <p class="text-gray-600">模型托管于 HuggingFace Spaces，无服务器推理，按需扩容，随时随地访问您的 AI 应用。</p>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-zh>HuggingFace Spaces</h3>
+                    <h3 class="text-xl font-semibold text-brand-800 mb-2" data-en>HuggingFace Spaces</h3>
+                    <p class="text-gray-600" data-zh>模型托管于 HuggingFace Spaces，无服务器推理，按需扩容，随时随地访问您的 AI 应用。</p>
+                    <p class="text-gray-600" data-en>Models hosted on HuggingFace Spaces with serverless inference, auto-scaling, and on-demand access to your AI applications.</p>
                 </div>
             </div>
         </div>
@@ -135,31 +161,40 @@
     <!-- Products -->
     <section class="py-12 px-6 bg-white">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center">四大产品</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-zh>四大产品</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-en>Four Products</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Product 1 -->
                 <div class="bg-gradient-to-b from-brand-50 to-white rounded-xl p-6 shadow-md border border-brand-100 hover:shadow-lg transition">
                     <div class="text-3xl mb-3">📚</div>
-                    <h3 class="font-semibold text-brand-800 mb-2">知识问答</h3>
-                    <p class="text-sm text-gray-600">基于垂直领域数据微调的智能问答系统，准确理解问题，提供专业答案。</p>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-zh>知识问答</h3>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-en>Knowledge Q&A</h3>
+                    <p class="text-sm text-gray-600" data-zh>基于垂直领域数据微调的智能问答系统，准确理解问题，提供专业答案。</p>
+                    <p class="text-sm text-gray-600" data-en>Intelligent Q&A system fine-tuned on vertical domain data, accurately understanding questions and providing professional answers.</p>
                 </div>
                 <!-- Product 2 -->
                 <div class="bg-gradient-to-b from-purple-50 to-white rounded-xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition">
                     <div class="text-3xl mb-3">✍️</div>
-                    <h3 class="font-semibold text-brand-800 mb-2">内容创作</h3>
-                    <p class="text-sm text-gray-600">AI 辅助写作，自动生成文章、文案、摘要等多种内容形式。</p>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-zh>内容创作</h3>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-en>Content Creation</h3>
+                    <p class="text-sm text-gray-600" data-zh>AI 辅助写作，自动生成文章、文案、摘要等多种内容形式。</p>
+                    <p class="text-sm text-gray-600" data-en>AI-assisted writing, automatically generating articles, copy, summaries, and more.</p>
                 </div>
                 <!-- Product 3 -->
                 <div class="bg-gradient-to-b from-brand-50 to-white rounded-xl p-6 shadow-md border border-brand-100 hover:shadow-lg transition">
                     <div class="text-3xl mb-3">💬</div>
-                    <h3 class="font-semibold text-brand-800 mb-2">智能对话</h3>
-                    <p class="text-sm text-gray-600">自然语言交互，支持多轮对话，适配各类场景的对话机器人。</p>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-zh>智能对话</h3>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-en>Smart Dialogue</h3>
+                    <p class="text-sm text-gray-600" data-zh>自然语言交互，支持多轮对话，适配各类场景的对话机器人。</p>
+                    <p class="text-sm text-gray-600" data-en>Natural language interaction with multi-turn dialogue support, adapting to various scenarios.</p>
                 </div>
                 <!-- Product 4 -->
                 <div class="bg-gradient-to-b from-purple-50 to-white rounded-xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition">
                     <div class="text-3xl mb-3">🔧</div>
-                    <h3 class="font-semibold text-brand-800 mb-2">定制微调</h3>
-                    <p class="text-sm text-gray-600">支持 LoRA 本地微调，为企业或个人定制专属 AI 模型。</p>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-zh>定制微调</h3>
+                    <h3 class="font-semibold text-brand-800 mb-2" data-en>Custom Fine-tuning</h3>
+                    <p class="text-sm text-gray-600" data-zh>支持 LoRA 本地微调，为企业或个人定制专属 AI 模型。</p>
+                    <p class="text-sm text-gray-600" data-en>Support for LoRA local fine-tuning, customizing exclusive AI models for enterprises or individuals.</p>
                 </div>
             </div>
         </div>
@@ -168,7 +203,8 @@
     <!-- Contact -->
     <section class="py-12 px-6">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center">联系我们</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-zh>联系我们</h2>
+            <h2 class="text-2xl font-bold text-brand-800 mb-8 text-center" data-en>Contact Us</h2>
             <div class="bg-white rounded-2xl p-8 shadow-md">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="flex items-start gap-4">
@@ -176,7 +212,8 @@
                             <span class="text-white">📧</span>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">邮箱</h3>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-zh>邮箱</h3>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-en>Email</h3>
                             <a href="mailto:xuanchen.wu@hotmail.com" class="text-brand-600 hover:underline">xuanchen.wu@hotmail.com</a>
                         </div>
                     </div>
@@ -185,7 +222,8 @@
                             <span class="text-white">🌐</span>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">官网</h3>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-zh>官网</h3>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-en>Website</h3>
                             <a href="https://leyoai.vercel.app" target="_blank" class="text-brand-600 hover:underline">leyoai.vercel.app</a>
                         </div>
                     </div>
@@ -194,8 +232,10 @@
                             <span class="text-white">🏢</span>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">公司</h3>
-                            <p class="text-gray-600">杭州市上城区乐友信息服务工作室</p>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-zh>公司</h3>
+                            <h3 class="font-semibold text-gray-800 mb-1" data-en>Company</h3>
+                            <p class="text-gray-600" data-zh>杭州市上城区乐友信息服务工作室</p>
+                            <p class="text-gray-600" data-en>Hangzhou Shangcheng Leyo Information Service Studio</p>
                         </div>
                     </div>
                 </div>
@@ -210,12 +250,14 @@
                 <span class="text-2xl">🤖</span>
                 <span class="text-xl font-bold">LeyoAI</span>
             </div>
-            <p class="text-brand-200 text-sm mb-4">让 AI 模型服务每个人</p>
+            <p class="text-brand-200 text-sm mb-4" data-zh>让 AI 模型服务每个人</p>
+            <p class="text-brand-200 text-sm mb-4" data-en>AI Models for Everyone</p>
             <a href="/" class="inline-block bg-brand-700 hover:bg-brand-600 px-6 py-2 rounded-lg transition text-sm">
-                ← 返回首页
+                <span data-zh>← 返回首页</span>
+                <span data-en>← Home</span>
             </a>
             <p class="text-brand-400 text-xs mt-6">
-                © 2024 杭州市上城区乐友信息服务工作室. All rights reserved.
+                © 2026 <span data-zh>杭州市上城区乐友信息服务工作室</span><span data-en>Hangzhou Shangcheng Leyo Information Service Studio</span>
             </p>
         </div>
     </footer>
