@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "./lib/supabase";
 import { useAuth } from "./components/AuthProvider";
+import { useLang } from "./contexts/LanguageContext";
+import { LanguageToggle } from "./components/LanguageToggle";
 
 // ============================================================
 // 类型定义
@@ -313,10 +315,10 @@ const PRICING_PLANS = [
 // 导航项
 // ============================================================
 const NAV_ITEMS = [
-  { label: "产品", href: "#products" },
-  { label: "案例", href: "#cases" },
-  { label: "教程", href: "#tutorials" },
-  { label: "定价", href: "#pricing" },
+  { labelZh: "产品", labelEn: "Products", href: "#products" },
+  { labelZh: "案例", labelEn: "Cases", href: "#cases" },
+  { labelZh: "教程", labelEn: "Tutorials", href: "#tutorials" },
+  { labelZh: "定价", labelEn: "Pricing", href: "#pricing" },
 ];
 
 // ============================================================
@@ -374,6 +376,7 @@ function LandingPage() {
   const [activeCase, setActiveCase] = useState(0);
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const { user, session } = useAuth();
+  const { lang, t } = useLang();
 
   // HF Space 链接自动附加 JWT（已登录时）
   const openHF = (baseUrl: string) => {
@@ -410,32 +413,36 @@ function LandingPage() {
             {NAV_ITEMS.map(item => (
               <a key={item.href} href={item.href}
                 className="text-sm text-slate-400 hover:text-white transition-colors">
-                {item.label}
+                {lang === 'zh' ? item.labelZh : item.labelEn}
               </a>
             ))}
           </nav>
 
-          {/* CTA - 根据登录状态显示 */}
-          {user ? (
-            <Link to="/dashboard"
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-indigo-400/30 flex items-center justify-center text-xs font-bold">
-                {user.email?.[0]?.toUpperCase() ?? 'U'}
-              </div>
-              控制台
-            </Link>
-          ) : (
-            <div className="flex items-center gap-3">
-              <Link to="/login"
-                className="px-4 py-2.5 text-slate-400 hover:text-white text-sm font-medium transition-colors">
-                登录
+          {/* 语言切换 + CTA */}
+          <div className="flex items-center gap-3">
+            <LanguageToggle />
+            
+            {user ? (
+              <Link to="/dashboard"
+                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-indigo-400/30 flex items-center justify-center text-xs font-bold">
+                  {user.email?.[0]?.toUpperCase() ?? 'U'}
+                </div>
+                {t("控制台", "Dashboard")}
               </Link>
-              <Link to="/signup"
-                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">
-                免费注册
-              </Link>
-            </div>
-          )}
+            ) : (
+              <>
+                <Link to="/login"
+                  className="px-4 py-2.5 text-slate-400 hover:text-white text-sm font-medium transition-colors">
+                  {t("登录", "Login")}
+                </Link>
+                <Link to="/signup"
+                  className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-indigo-500/25">
+                  {t("免费注册", "Sign Up")}
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
@@ -469,30 +476,31 @@ function LandingPage() {
             {/* 标题 */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6">
               <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                AI 模型
+                {t("AI 模型", "AI Models")}
               </span>
               <br />
               <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
-                即服务平台
+                {t("即服务平台", "as a Service")}
               </span>
             </h1>
 
             {/* 描述 */}
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              专注垂直领域 AI 模型与应用系统研发，覆盖模型训练、智能技能与行业解决方案
-              <br className="hidden sm:block" />
-              让 AI 技术真正赋能业务场景。
+              {t(
+                "专注垂直领域 AI 模型与应用系统研发，覆盖模型训练、智能技能与行业解决方案，让 AI 技术真正赋能业务场景。",
+                "Focus on vertical AI models and application systems, covering model training, intelligent skills, and industry solutions to truly empower business scenarios."
+              )}
             </p>
 
             {/* 按钮 */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#products"
                 className="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors shadow-xl">
-                探索模型
+                {t("探索模型", "Explore Models")}
               </a>
               <a href="#tutorials"
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
-                查看教程
+                {t("查看教程", "View Tutorials")}
               </a>
             </div>
           </div>
@@ -511,8 +519,8 @@ function LandingPage() {
         <div className="max-w-7xl mx-auto">
           {/* 标题 */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black mb-4">AI 能力矩阵</h2>
-            <p className="text-slate-400 text-lg">三大领域，深度垂直，构建专业级 AI 生态</p>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">{t("AI 能力矩阵", "AI Capability Matrix")}</h2>
+            <p className="text-slate-400 text-lg">{t("三大领域，深度垂直，构建专业级 AI 生态", "Three major domains, deeply vertical, building professional AI ecosystem")}</p>
           </div>
 
           {/* 三大领域分组 */}
@@ -846,17 +854,20 @@ function LandingPage() {
                 <span className="font-bold text-lg">{BRAND_NAME}</span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
-                {COMPANY_NAME} 旗下品牌。专注垂直领域 AI 模型研发与商业化，让 AI 技术真正赋能千行百业。
+                {t(
+                  `${COMPANY_NAME} 旗下品牌。专注垂直领域 AI 模型研发与商业化，让 AI 技术真正赋能千行百业。`,
+                  `A brand under ${COMPANY_NAME}. Focus on vertical AI model development and commercialization, empowering industries with AI technology.`
+                )}
               </p>
             </div>
 
             {/* 产品 */}
             <div>
-              <h4 className="font-bold text-white text-sm mb-4">产品</h4>
+              <h4 className="font-bold text-white text-sm mb-4">{t("产品", "Products")}</h4>
               <ul className="space-y-3 text-sm text-slate-500">
                 {[...PRODUCTS, ...SKILL_PRODUCTS].map(p => (
                   <li key={p.id} className="hover:text-white transition-colors cursor-pointer">
-                    {p.icon} {p.nameCn}
+                    {p.icon} {lang === 'zh' ? p.nameCn : p.name}
                   </li>
                 ))}
               </ul>
@@ -864,13 +875,13 @@ function LandingPage() {
 
             {/* 公司 */}
             <div>
-              <h4 className="font-bold text-white text-sm mb-4">公司</h4>
+              <h4 className="font-bold text-white text-sm mb-4">{t("公司", "Company")}</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li><a href="/about.html" className="hover:text-white transition-colors">关于我们</a></li>
-                <li><a href="/about.html#join" className="hover:text-white transition-colors">加入团队</a></li>
-                <li><a href="mailto:xuanchen.wu@hotmail.com" className="hover:text-white transition-colors">联系我们</a></li>
-                <li><a href="/privacy.html" className="hover:text-white transition-colors">隐私政策</a></li>
-                <li><a href="/terms.html" className="hover:text-white transition-colors">使用条款</a></li>
+                <li><a href="/about.html" className="hover:text-white transition-colors">{t("关于我们", "About Us")}</a></li>
+                <li><a href="/about.html#join" className="hover:text-white transition-colors">{t("加入团队", "Join Us")}</a></li>
+                <li><a href="mailto:xuanchen.wu@hotmail.com" className="hover:text-white transition-colors">{t("联系我们", "Contact")}</a></li>
+                <li><a href="/privacy.html" className="hover:text-white transition-colors">{t("隐私政策", "Privacy Policy")}</a></li>
+                <li><a href="/terms.html" className="hover:text-white transition-colors">{t("使用条款", "Terms of Service")}</a></li>
               </ul>
             </div>
           </div>
@@ -878,7 +889,7 @@ function LandingPage() {
           {/* 底部 */}
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
             <span>© 2026 {COMPANY_NAME}</span>
-            <span>{BRAND_NAME} — 让 AI 模型服务每个人</span>
+            <span>{BRAND_NAME} — {t("让 AI 模型服务每个人", "AI Models for Everyone")}</span>
           </div>
         </div>
       </footer>
