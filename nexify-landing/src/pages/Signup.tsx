@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../components/AuthProvider'
+import { useLang } from '../contexts/LanguageContext'
 
 export default function Signup() {
   const [email, setEmail] = useState('')
@@ -10,11 +11,12 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const { signUp, signIn } = useAuth()
   const navigate = useNavigate()
+  const { t } = useLang()
 
   const validatePassword = (pwd: string): string | null => {
-    if (pwd.length < 8) return '密码至少需要8个字符'
-    if (!/[a-zA-Z]/.test(pwd)) return '密码需要包含字母'
-    if (!/[0-9]/.test(pwd)) return '密码需要包含数字'
+    if (pwd.length < 8) return t('密码至少需要8个字符', 'Password must be at least 8 characters')
+    if (!/[a-zA-Z]/.test(pwd)) return t('密码需要包含字母', 'Password must contain letters')
+    if (!/[0-9]/.test(pwd)) return t('密码需要包含数字', 'Password must contain numbers')
     return null
   }
 
@@ -23,7 +25,7 @@ export default function Signup() {
     setError('')
 
     if (password !== confirmPassword) {
-      setError('两次输入的密码不一致')
+      setError(t('两次输入的密码不一致', 'Passwords do not match'))
       return
     }
 
@@ -37,7 +39,7 @@ export default function Signup() {
 
     const { error: signUpError } = await signUp(email, password)
     if (signUpError) {
-      setError(signUpError === 'User already registered' ? '该邮箱已被注册' : signUpError)
+      setError(signUpError === 'User already registered' ? t('该邮箱已被注册', 'Email already registered') : signUpError)
       setLoading(false)
       return
     }
@@ -70,8 +72,8 @@ export default function Signup() {
             </div>
             <span className="font-bold text-xl text-white">LeyoAI</span>
           </Link>
-          <h1 className="text-2xl font-bold mt-6 mb-2">创建账号</h1>
-          <p className="text-slate-400 text-sm">注册以开始使用 LeyoAI</p>
+          <h1 className="text-2xl font-bold mt-6 mb-2">{t('创建账号', 'Create Account')}</h1>
+          <p className="text-slate-400 text-sm">{t('注册以开始使用 LeyoAI', 'Sign up to get started with LeyoAI')}</p>
         </div>
 
         {/* Form */}
@@ -83,7 +85,7 @@ export default function Signup() {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">邮箱</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">{t('邮箱', 'Email')}</label>
             <input
               type="email"
               value={email}
@@ -95,25 +97,25 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">密码</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">{t('密码', 'Password')}</label>
             <input
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
-              placeholder="至少8位，包含字母和数字"
+              placeholder={t('至少8位，包含字母和数字', 'At least 8 chars, letters and numbers')}
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/25 transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">确认密码</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">{t('确认密码', 'Confirm Password')}</label>
             <input
               type="password"
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
               required
-              placeholder="再次输入密码"
+              placeholder={t('再次输入密码', 'Re-enter password')}
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/25 transition-all"
             />
           </div>
@@ -123,14 +125,14 @@ export default function Signup() {
             disabled={loading}
             className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? '注册中...' : '免费注册'}
+            {loading ? t('注册中...', 'Signing up...') : t('免费注册', 'Sign Up')}
           </button>
         </form>
 
         <p className="text-center text-slate-500 text-sm mt-6">
-          已有账号？{' '}
+          {t('已有账号？', 'Already have an account?')}{' '}
           <Link to="/login" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
-            登录
+            {t('登录', 'Sign In')}
           </Link>
         </p>
       </div>

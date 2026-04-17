@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../components/AuthProvider'
+import { useLang } from '../contexts/LanguageContext'
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('')
@@ -8,6 +9,7 @@ export default function ForgotPassword() {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const { resetPassword } = useAuth()
+  const { t } = useLang()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -16,7 +18,7 @@ export default function ForgotPassword() {
 
     const { error } = await resetPassword(email)
     if (error) {
-      setError(error === 'User not found' ? '未找到该邮箱对应的账号' : error)
+      setError(error === 'User not found' ? t('未找到该邮箱对应的账号', 'No account found with this email') : error)
       setLoading(false)
       return
     }
@@ -42,20 +44,20 @@ export default function ForgotPassword() {
             </div>
             <span className="font-bold text-xl text-white">LeyoAI</span>
           </Link>
-          <h1 className="text-2xl font-bold mt-6 mb-2">忘记密码</h1>
-          <p className="text-slate-400 text-sm">输入邮箱，我们将发送重置链接</p>
+          <h1 className="text-2xl font-bold mt-6 mb-2">{t('忘记密码', 'Forgot Password')}</h1>
+          <p className="text-slate-400 text-sm">{t('输入邮箱，我们将发送重置链接', 'Enter your email and we\'ll send you a reset link')}</p>
         </div>
 
         {sent ? (
           <div className="bg-slate-900/50 border border-white/5 rounded-2xl p-8 text-center">
             <div className="text-5xl mb-4">📧</div>
-            <h2 className="text-xl font-bold text-white mb-2">重置链接已发送到您的邮箱</h2>
-            <p className="text-slate-400 text-sm mb-6">请检查您的收件箱并按照提示重置密码</p>
+            <h2 className="text-xl font-bold text-white mb-2">{t('重置链接已发送到您的邮箱', 'Reset link sent to your email')}</h2>
+            <p className="text-slate-400 text-sm mb-6">{t('请检查您的收件箱并按照提示重置密码', 'Check your inbox and follow the instructions to reset your password')}</p>
             <Link
               to="/login"
               className="inline-block w-full py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-500/25"
             >
-              返回登录
+              {t('返回登录', 'Back to Login')}
             </Link>
           </div>
         ) : (
@@ -67,7 +69,7 @@ export default function ForgotPassword() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">邮箱</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">{t('邮箱', 'Email')}</label>
               <input
                 type="email"
                 value={email}
@@ -83,15 +85,15 @@ export default function ForgotPassword() {
               disabled={loading}
               className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? '发送中...' : '发送重置链接'}
+              {loading ? t('发送中...', 'Sending...') : t('发送重置链接', 'Send Reset Link')}
             </button>
           </form>
         )}
 
         <p className="text-center text-slate-500 text-sm mt-6">
-          记起密码了？{' '}
+          {t('记起密码了？', 'Remember your password?')}{' '}
           <Link to="/login" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
-            返回登录
+            {t('返回登录', 'Back to Login')}
           </Link>
         </p>
       </div>

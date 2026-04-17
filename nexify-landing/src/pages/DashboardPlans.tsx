@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../components/AuthProvider'
 import { supabase } from '../lib/supabase'
+import { useLang } from '../contexts/LanguageContext'
 
 interface PlanQuota {
   plan: string
@@ -13,77 +14,77 @@ interface PlanQuota {
 
 const PLAN_ORDER = ['free', 'starter', 'pro', 'enterprise']
 
-const PLAN_LABELS: Record<string, string> = {
-  free: '免费版',
-  starter: '起步版',
-  pro: '专业版',
-  enterprise: '企业版',
-}
-
-const PLAN_PRICES: Record<string, string> = {
-  free: '¥0',
-  starter: '¥29',
-  pro: '¥79',
-  enterprise: '¥299',
-}
-
-const PLAN_PERIODS: Record<string, string> = {
-  free: '永久免费',
-  starter: '/月',
-  pro: '/月',
-  enterprise: '/月起',
-}
-
-const PLAN_DESCS: Record<string, string> = {
-  free: '个人学习与体验',
-  starter: '小团队安全防护',
-  pro: '中小企业安全部门',
-  enterprise: '大规模定制需求',
-}
-
-// 从 plan_quotas 表提取某套餐四产品的月度限额，生成 feature 列表
-function buildFeatures(quotas: PlanQuota[]): string[] {
-  const cyber = quotas.find(q => q.product === 'cyber')
-  const video = quotas.find(q => q.product === 'video')
-  const flow  = quotas.find(q => q.product === 'flow')
-  const anly  = quotas.find(q => q.product === 'analytics')
-
-  const fmt = (q: PlanQuota | undefined, unit: string) => {
-    if (!q) return null
-    if (q.monthly_limit < 0) return `✦ 不限${unit}/月`
-    return `${q.monthly_limit.toLocaleString()}${unit}/月`
-  }
-
-  const feats: string[] = []
-  if (cyber) feats.push(`Cyber ${fmt(cyber, '次')}`)
-  if (video) feats.push(`Video ${fmt(video, '分钟')}`)
-  if (flow)   feats.push(`Flow  ${fmt(flow, '次')}`)
-  if (anly)   feats.push(`Analytics ${fmt(anly, '次')}`)
-
-  if (cyber) {
-    const f = cyber.features as Record<string, unknown>
-    if (f?.['api_access'] || f?.['api_access'] === 1) feats.push('API 接入')
-    if (f?.['sla']) feats.push(`SLA ${f['sla']}`)
-    if (f?.['dedicated_support']) feats.push('7×24 技术支持')
-    if (f?.['private_deploy']) feats.push('私有化部署')
-    if (f?.['custom_model']) feats.push('定制模型训练')
-  }
-
-  feats.push('HF Spaces 在线访问')
-  return feats
-}
-
 export default function DashboardPlans() {
   const { user } = useAuth()
+  const { t } = useLang()
   const [userPlan, setUserPlan] = useState('free')
   const [allQuotas, setAllQuotas] = useState<PlanQuota[]>([])
   const [loading, setLoading] = useState(true)
+
+  const PLAN_LABELS: Record<string, string> = {
+    free: t('免费版', 'Free'),
+    starter: t('起步版', 'Starter'),
+    pro: t('专业版', 'Pro'),
+    enterprise: t('企业版', 'Enterprise'),
+  }
+
+  const PLAN_PRICES: Record<string, string> = {
+    free: '¥0',
+    starter: '¥29',
+    pro: '¥79',
+    enterprise: '¥299',
+  }
+
+  const PLAN_PERIODS: Record<string, string> = {
+    free: t('永久免费', 'Forever Free'),
+    starter: '/月',
+    pro: '/月',
+    enterprise: t('/月起', '/mo+'),
+  }
+
+  const PLAN_DESCS: Record<string, string> = {
+    free: t('个人学习与体验', 'For personal learning'),
+    starter: t('小团队安全防护', 'Small team security'),
+    pro: t('中小企业安全部门', 'SME security team'),
+    enterprise: t('大规模定制需求', 'Large scale custom needs'),
+  }
+
+  // 从 plan_quotas 表提取某套餐四产品的月度限额，生成 feature 列表
+  function buildFeatures(quotas: PlanQuota[]): string[] {
+    const cyber = quotas.find(q => q.product === 'cyber')
+    const video = quotas.find(q => q.product === 'video')
+    const flow  = quotas.find(q => q.product === 'flow')
+    const anly  = quotas.find(q => q.product === 'analytics')
+
+    const fmt = (q: PlanQuota | undefined, unit: string) => {
+      if (!q) return null
+      if (q.monthly_limit < 0) return t(`✦ 不限${unit}/月`, `✦ Unlimited ${unit}/mo`)
+      return `${q.monthly_limit.toLocaleString()}${unit}/${t('月', 'mo')}`
+    }
+
+    const feats: string[] = []
+    if (cyber) feats.push(`Cyber ${fmt(cyber, t('次', 'calls'))}`)
+    if (video) feats.push(`Video ${fmt(video, t('分钟', 'mins'))}`)
+    if (flow)   feats.push(`Flow  ${fmt(flow, t('次', 'calls'))}`)
+    if (anly)   feats.push(`Analytics ${fmt(anly, t('次', 'calls'))}`)
+
+    if (cyber) {
+      const f = cyber.features as Record<string, unknown>
+      if (f?.['api_access'] || f?.['api_access'] === 1) feats.push(t('API 接入', 'API Access'))
+      if (f?.['sla']) feats.push(`SLA ${f['sla']}`)
+      if (f?.['dedicated_support']) feats.push(t('7×24 技术支持', '24/7 Support'))
+      if (f?.['private_deploy']) feats.push(t('私有化部署', 'Private Deploy'))
+      if (f?.['custom_model']) feats.push(t('定制模型训练', 'Custom Model'))
+    }
+
+    feats.push(t('HF Spaces 在线访问', 'HF Spaces Access'))
+    return feats
+  }
 
   useEffect(() => {
     async function load() {
       if (!user) return
 
-      // 1. 查用户套餐
       const { data: profile } = await supabase
         .from('profiles')
         .select('plan')
@@ -91,7 +92,6 @@ export default function DashboardPlans() {
         .single()
       if (profile?.plan) setUserPlan(profile.plan)
 
-      // 2. 查所有配额（供四套餐展示用）
       const { data: quotas } = await supabase
         .from('plan_quotas')
         .select('plan, product, monthly_limit, context_window, priority, features')
@@ -114,8 +114,8 @@ export default function DashboardPlans() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold">套餐</h1>
-        <p className="text-slate-400 text-sm mt-1">管理你的订阅和套餐信息</p>
+        <h1 className="text-2xl font-bold">{t('套餐', 'Plans')}</h1>
+        <p className="text-slate-400 text-sm mt-1">{t('管理你的订阅和套餐信息', 'Manage your subscription and plan')}</p>
       </div>
 
       {/* Current plan banner */}
@@ -124,13 +124,13 @@ export default function DashboardPlans() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl">💎</span>
-              <h2 className="text-xl font-bold">当前套餐：{currentLabel}</h2>
+              <h2 className="text-xl font-bold">{t('当前套餐', 'Current Plan')}: {currentLabel}</h2>
             </div>
             <p className="text-slate-400 text-sm">
               {user?.email}
               {currentQuota[0] && currentQuota[0].monthly_limit > 0
-                ? ` · 每月 ${currentQuota[0].monthly_limit.toLocaleString()} 次调用`
-                : ' · 不限用量'}
+                ? t(` · 每月 ${currentQuota[0].monthly_limit.toLocaleString()} 次调用`, ` · ${currentQuota[0].monthly_limit.toLocaleString()} calls/mo`)
+                : ` · ${t('不限用量', 'Unlimited')}`}
             </p>
           </div>
           <div className="text-right">
@@ -142,7 +142,7 @@ export default function DashboardPlans() {
 
       {/* Plan comparison */}
       <div>
-        <h2 className="text-lg font-bold mb-4">套餐对比</h2>
+        <h2 className="text-lg font-bold mb-4">{t('套餐对比', 'Compare Plans')}</h2>
         {loading ? (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1,2,3,4].map(i => (
@@ -168,12 +168,12 @@ export default function DashboardPlans() {
                 >
                   {isCurrent && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full">当前方案</span>
+                      <span className="bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full">{t('当前方案', 'Current')}</span>
                     </div>
                   )}
                   {isDisabled && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-slate-700 text-slate-300 text-xs font-bold px-4 py-1 rounded-full">即将开放</span>
+                      <span className="bg-slate-700 text-slate-300 text-xs font-bold px-4 py-1 rounded-full">{t('即将开放', 'Coming Soon')}</span>
                     </div>
                   )}
 
@@ -194,7 +194,7 @@ export default function DashboardPlans() {
                       </li>
                     ))}
                     {features.length > 5 && (
-                      <li className="text-slate-600 text-xs">+{features.length - 5} 更多权益</li>
+                      <li className="text-slate-600 text-xs">+{features.length - 5} {t('更多权益', 'more features')}</li>
                     )}
                   </ul>
 
@@ -208,7 +208,7 @@ export default function DashboardPlans() {
                         : 'bg-indigo-600 hover:bg-indigo-500 text-white'
                     }`}
                   >
-                    {isCurrent ? '当前方案' : isDisabled ? '即将开放' : '升级'}
+                    {isCurrent ? t('当前方案', 'Current') : isDisabled ? t('即将开放', 'Coming Soon') : t('升级', 'Upgrade')}
                   </button>
                 </div>
               )
