@@ -5,30 +5,5 @@ const supabaseAnonKey = (import.meta as any).env.VITE_SUPABASE_ANON_KEY || 'eyJh
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-export type ApiKey = {
-  id: string
-  name: string
-  key: string
-  created_at: string
-}
-
-export type UsageRecord = {
-  date: string
-  cyber: number
-  video: number
-  flow: number
-  analytics: number
-}
-
-export type PlanInfo = {
-  name: string
-  price: string
-  period: string
-  quota: {
-    cyber: number
-    video: number
-    flow: number
-    analytics: number
-  }
-  features: string[]
-}
+// Re-export types used by pages
+export type { User, Session } from '@supabase/supabase-js'

@@ -2,103 +2,87 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../components/AuthProvider'
 import { supabase } from '../lib/supabase'
 
-interface UsageData {
-  cyber: number
-  video: number
-  flow: number
-  analytics: number
-}
-
-interface QuotaData {
-  cyber: number
-  video: number
-  flow: number
-  analytics: number
-}
 
 const PRODUCTS = [
-  { key: 'cyber' as const, name: 'Cyber Model', icon: '🛡️', color: 'from-emerald-500 to-teal-600', barColor: 'bg-emerald-500' },
-  { key: 'video' as const, name: 'Video Model', icon: '🎬', color: 'from-violet-500 to-purple-600', barColor: 'bg-violet-500' },
-  { key: 'flow' as const, name: 'Flow Model', icon: '⚙️', color: 'from-blue-500 to-cyan-600', barColor: 'bg-blue-500' },
-  { key: 'analytics' as const, name: 'Analytics Model', icon: '📊', color: 'from-orange-500 to-amber-600', barColor: 'bg-orange-500' },
+  { key: 'cyber',     name: 'Cyber Model',     icon: '🛡️', color: 'from-emerald-500 to-teal-600',   barColor: 'bg-emerald-500' },
+  { key: 'video',     name: 'Video Model',      icon: '🎬', color: 'from-violet-500 to-purple-600',  barColor: 'bg-violet-500' },
+  { key: 'flow',      name: 'Flow Model',        icon: '⚙️', color: 'from-blue-500 to-cyan-600',      barColor: 'bg-blue-500' },
+  { key: 'analytics', name: 'Analytics Model',   icon: '📊', color: 'from-orange-500 to-amber-600',    barColor: 'bg-orange-500' },
 ]
+
+const PLAN_LABELS: Record<string, string> = {
+  free: '免费版',
+  starter: '起步版',
+  pro: '专业版',
+  enterprise: '企业版',
+}
 
 export default function Dashboard() {
   const { user } = useAuth()
-  const [usage, setUsage] = useState<UsageData>({ cyber: 0, video: 0, flow: 0, analytics: 0 })
-  const [quotas, setQuotas] = useState<QuotaData>({ cyber: 100, video: 100, flow: 100, analytics: 100 })
+  const [usage, setUsage] = useState<Record<string, number>>({})
+  const [quotas, setQuotas] = useState<Record<string, number>>({})
+  const [userPlan, setUserPlan] = useState('free')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
       if (!user) return
 
-      try {
-        // Get current month range
-        const now = new Date()
-        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
+      const now = new Date()
+      const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
+      const plan = userPlan
 
-        // Fetch usage logs for current month
-        const { data: usageData, error: usageError } = await supabase
-          .from('usage_logs')
-          .select('product, count')
-          .eq('user_id', user.id)
-          .gte('created_at', startOfMonth)
+      // 1. 查询用户套餐
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('plan')
+        .eq('id', user.id)
+        .single()
+      if (profileData?.plan) setUserPlan(profileData.plan)
 
-        if (!usageError && usageData) {
-          const aggregated: UsageData = { cyber: 0, video: 0, flow: 0, analytics: 0 }
-          usageData.forEach((row: any) => {
-            const product = row.product as keyof UsageData
-            if (product in aggregated) {
-              aggregated[product] += row.count || 1
-            }
-          })
-          setUsage(aggregated)
-        }
+      // 2. 查询当月用量（按产品计数）
+      const { data: usageRows } = await supabase
+        .from('usage_logs')
+        .select('product')
+        .eq('user_id', user.id)
+        .gte('created_at', monthStart)
 
-        // Fetch plan quotas
-        const { data: quotaData, error: quotaError } = await supabase
-          .from('plan_quotas')
-          .select('cyber, video, flow, analytics')
-          .eq('plan_name', 'free')
-          .single()
+      const usageMap: Record<string, number> = { cyber: 0, video: 0, flow: 0, analytics: 0 }
+      ;(usageRows ?? []).forEach((row: { product: string }) => {
+        if (row.product in usageMap) usageMap[row.product]++
+      })
+      setUsage(usageMap)
 
-        if (!quotaError && quotaData) {
-          setQuotas({
-            cyber: quotaData.cyber || 100,
-            video: quotaData.video || 100,
-            flow: quotaData.flow || 100,
-            analytics: quotaData.analytics || 100,
-          })
-        }
-      } catch {
-        // Silently fail - will show placeholder data
-      } finally {
-        setLoading(false)
-      }
+      // 3. 查询配额（该套餐所有产品）
+      const { data: quotaRows } = await supabase
+        .from('plan_quotas')
+        .select('product, monthly_limit')
+        .eq('plan', plan)
+
+      const quotaMap: Record<string, number> = { cyber: 100, video: 100, flow: 100, analytics: 100 }
+      ;(quotaRows ?? []).forEach(row => {
+        if (row.product in quotaMap) quotaMap[row.product] = row.monthly_limit
+      })
+      setQuotas(quotaMap)
+      setLoading(false)
     }
 
     fetchData()
-  }, [user])
+  }, [user, userPlan])
 
   const formatDate = (dateStr: string | undefined) => {
     if (!dateStr) return '—'
-    return new Date(dateStr).toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
+    return new Date(dateStr).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
   }
 
   return (
     <div className="space-y-8">
-      {/* Page title */}
       <div>
         <h1 className="text-2xl font-bold">概览</h1>
         <p className="text-slate-400 text-sm mt-1">查看你的账号信息和模型用量</p>
       </div>
 
-      {/* Account info cards */}
+      {/* Account cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-slate-900/50 border border-white/5 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
@@ -121,7 +105,7 @@ export default function Dashboard() {
             <div className="w-10 h-10 rounded-xl bg-emerald-600/20 flex items-center justify-center text-lg">💎</div>
             <span className="text-sm text-slate-400">当前套餐</span>
           </div>
-          <p className="text-white font-medium">免费版</p>
+          <p className="text-white font-medium">{PLAN_LABELS[userPlan] ?? userPlan}</p>
         </div>
       </div>
 
@@ -130,9 +114,10 @@ export default function Dashboard() {
         <h2 className="text-lg font-bold mb-4">本月用量</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {PRODUCTS.map(product => {
-            const used = usage[product.key]
-            const quota = quotas[product.key]
-            const percentage = quota > 0 ? Math.min((used / quota) * 100, 100) : 0
+            const used = usage[product.key] ?? 0
+            const quota = quotas[product.key] ?? 100
+            const unlimited = quota < 0
+            const percentage = unlimited ? 0 : Math.min((used / quota) * 100, 100)
 
             return (
               <div key={product.key} className="bg-slate-900/50 border border-white/5 rounded-2xl p-6">
@@ -151,12 +136,13 @@ export default function Dashboard() {
                   ) : (
                     <>
                       <span className="text-2xl font-bold">{used}</span>
-                      <span className="text-slate-500 text-sm">/ {quota} 次</span>
+                      <span className="text-slate-500 text-sm">
+                        {unlimited ? ' / ∞' : ` / ${quota}`}
+                      </span>
                     </>
                   )}
                 </div>
 
-                {/* Progress bar */}
                 <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                   <div
                     className={`h-full ${product.barColor} rounded-full transition-all duration-500`}
@@ -164,7 +150,11 @@ export default function Dashboard() {
                   />
                 </div>
                 <p className="text-xs text-slate-500 mt-2">
-                  {percentage >= 100 ? '已达到配额上限' : `已使用 ${percentage.toFixed(1)}%`}
+                  {unlimited
+                    ? '✦ 不限用量'
+                    : percentage >= 100
+                    ? '已达到配额上限'
+                    : `已使用 ${percentage.toFixed(1)}%`}
                 </p>
               </div>
             )
