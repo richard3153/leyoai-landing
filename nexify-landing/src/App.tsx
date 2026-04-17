@@ -134,6 +134,72 @@ const PRODUCTS: Product[] = [
 ];
 
 // ============================================================
+// Skill Hub 产品（OpenClaw 技能包）
+// ============================================================
+const SKILL_PRODUCTS: Product[] = [
+  {
+    id: "successor-skill",
+    name: "successor-skill",
+    nameCn: "AI 技能传承",
+    desc: "智能体技能跨平台迁移与复制，保留工作流记忆与配置，一键部署到新环境",
+    icon: "🔄",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    color: "from-indigo-500 to-blue-600",
+    badge: "✅ 开源",
+    badgeColor: "bg-indigo-500",
+    features: ["技能导出/导入", "工作流记忆迁移", "配置模板化", "一键部署"],
+    models: [
+      { name: "🔄 successor-skill", tag: "OpenClaw Skill", icon: "🔄", link: "https://github.com/richard3153/successor-skill" },
+    ],
+  },
+  {
+    id: "persona-mimic",
+    name: "persona-mimic",
+    nameCn: "人格镜像",
+    desc: "捕捉并复现特定人格特质与对话风格，生成风格一致的 AI 角色助手",
+    icon: "🎭",
+    image: "https://images.unsplash.com/photo-1518715308788-3005759c61d4?w=800&q=80",
+    color: "from-pink-500 to-rose-600",
+    badge: "✅ 开源",
+    badgeColor: "bg-pink-500",
+    features: ["人格特质捕捉", "对话风格学习", "角色一致性保持", "多场景适配"],
+    models: [
+      { name: "🎭 persona-mimic", tag: "OpenClaw Skill", icon: "🎭", link: "https://github.com/richard3153/persona-mimic" },
+    ],
+  },
+];
+
+// ============================================================
+// 三大 AI 领域分类
+// ============================================================
+const CATEGORIES = [
+  {
+    id: "application",
+    label: "应用系统 Application",
+    icon: "💼",
+    desc: "开箱即用的完整解决方案",
+    color: "from-rose-500 to-red-600",
+    items: PRODUCTS.filter(p => p.id === "quant"),
+  },
+  {
+    id: "model",
+    label: "模型 Model",
+    icon: "🧠",
+    desc: "垂直领域 LoRA 微调模型",
+    color: "from-indigo-500 to-violet-600",
+    items: PRODUCTS.filter(p => ["cyber", "video", "flow", "analytics"].includes(p.id)),
+  },
+  {
+    id: "skill",
+    label: "技能 Skillhub",
+    icon: "🛠️",
+    desc: "OpenClaw 智能体技能包",
+    color: "from-emerald-500 to-teal-600",
+    items: SKILL_PRODUCTS,
+  },
+];
+
+// ============================================================
 // 案例展示
 // ============================================================
 const CASES = [
@@ -399,7 +465,7 @@ function LandingPage() {
 
             {/* 描述 */}
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              专注垂直领域 AI 模型研发。Cyber、Video、Flow、Analytics 五大产品线，
+              专注垂直领域 AI 模型与应用系统研发，覆盖模型训练、智能技能与行业解决方案
               <br className="hidden sm:block" />
               让 AI 技术真正赋能业务场景。
             </p>
@@ -431,86 +497,102 @@ function LandingPage() {
         <div className="max-w-7xl mx-auto">
           {/* 标题 */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black mb-4">五大产品矩阵</h2>
-            <p className="text-slate-400 text-lg">深耕垂直领域，打造专业级 AI 模型</p>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">AI 能力矩阵</h2>
+            <p className="text-slate-400 text-lg">三大领域，深度垂直，构建专业级 AI 生态</p>
           </div>
 
-          {/* 产品网格 - 2x2 布局 + 图片 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {PRODUCTS.map((p) => (
-              <div key={p.id}
-                className="group relative bg-slate-900/50 rounded-3xl border border-white/5 overflow-hidden hover:border-white/20 transition-all duration-500"
-                onMouseEnter={() => setActiveProduct(p.id)}
-                onMouseLeave={() => setActiveProduct(null)}>
-                
-                {/* 产品图片背景 */}
-                <div className="absolute inset-0">
-                  <img 
-                    src={p.image} 
-                    alt={p.name}
-                    className={`w-full h-full object-cover transition-all duration-700 ${activeProduct === p.id ? 'opacity-40 scale-105' : 'opacity-20'}`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/40" />
+          {/* 三大领域分组 */}
+          {CATEGORIES.map((cat) => (
+            <div key={cat.id} className="mb-16 last:mb-0">
+              {/* 领域标题 */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-2xl shadow-lg`}>
+                  {cat.icon}
                 </div>
-                
-                {/* 顶部渐变条 */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.color}`} />
-                
-                {/* 内容 */}
-                <div className="relative p-8">
-                  {/* 图标和状态 */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-3xl">
-                      {p.icon}
-                    </div>
-                    <span className={`${p.badgeColor}/20 text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${p.badgeColor.replace('bg-', 'text-')}`}>
-                      {p.badge}
-                    </span>
-                  </div>
-
-                  {/* 标题 */}
-                  <h3 className="text-2xl font-bold mb-1">{p.name}</h3>
-                  <p className="text-slate-500 text-sm mb-4">{p.nameCn}</p>
-                  <p className="text-slate-400 leading-relaxed mb-6">{p.desc}</p>
-
-                  {/* 特性标签 */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {p.features.map(f => (
-                      <span key={f} className="text-xs bg-white/10 backdrop-blur-sm text-slate-300 px-3 py-1.5 rounded-lg">
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* 模型入口 */}
-                  {p.models && p.models.length > 0 && (
-                    <div className="space-y-2">
-                      {p.models.map(m => (
-                        <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
-                          className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all group/item">
-                          <span className="text-xl">{m.icon}</span>
-                          <div className="flex-1">
-                            <p className="font-semibold text-sm group-hover/item:text-indigo-400 transition-colors">{m.name}</p>
-                            <p className="text-xs text-slate-500">{m.tag}</p>
-                          </div>
-                          <span className="text-indigo-400 text-sm font-medium opacity-0 group-hover/item:opacity-100 transition-opacity">
-                            体验 →
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* 未上线提示 */}
-                  {!p.models && !p.link && (
-                    <div className="text-slate-500 text-sm flex items-center gap-2">
-                      <span>🔒</span> 敬请期待
-                    </div>
-                  )}
+                <div>
+                  <h3 className="text-2xl font-bold">{cat.label}</h3>
+                  <p className="text-slate-500 text-sm">{cat.desc}</p>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* 该领域产品网格 */}
+              <div className={`grid gap-6 ${cat.id === 'model' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4' : 'grid-cols-1 md:grid-cols-2'}`}>
+                {cat.items.map((p) => (
+                  <div key={p.id}
+                    className="group relative bg-slate-900/50 rounded-3xl border border-white/5 overflow-hidden hover:border-white/20 transition-all duration-500"
+                    onMouseEnter={() => setActiveProduct(p.id)}
+                    onMouseLeave={() => setActiveProduct(null)}>
+
+                    {/* 产品图片背景 */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        className={`w-full h-full object-cover transition-all duration-700 ${activeProduct === p.id ? 'opacity-40 scale-105' : 'opacity-20'}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/40" />
+                    </div>
+
+                    {/* 顶部渐变条 */}
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.color}`} />
+
+                    {/* 内容 */}
+                    <div className="relative p-8">
+                      {/* 图标和状态 */}
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-3xl">
+                          {p.icon}
+                        </div>
+                        <span className={`${p.badgeColor}/20 text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${p.badgeColor.replace('bg-', 'text-')}`}>
+                          {p.badge}
+                        </span>
+                      </div>
+
+                      {/* 标题 */}
+                      <h3 className="text-2xl font-bold mb-1">{p.name}</h3>
+                      <p className="text-slate-500 text-sm mb-4">{p.nameCn}</p>
+                      <p className="text-slate-400 leading-relaxed mb-6">{p.desc}</p>
+
+                      {/* 特性标签 */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {p.features.map(f => (
+                          <span key={f} className="text-xs bg-white/10 backdrop-blur-sm text-slate-300 px-3 py-1.5 rounded-lg">
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* 模型入口 */}
+                      {p.models && p.models.length > 0 && (
+                        <div className="space-y-2">
+                          {p.models.map(m => (
+                            <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
+                              className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all group/item">
+                              <span className="text-xl">{m.icon}</span>
+                              <div className="flex-1">
+                                <p className="font-semibold text-sm group-hover/item:text-indigo-400 transition-colors">{m.name}</p>
+                                <p className="text-xs text-slate-500">{m.tag}</p>
+                              </div>
+                              <span className="text-indigo-400 text-sm font-medium opacity-0 group-hover/item:opacity-100 transition-opacity">
+                                体验 →
+                              </span>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* 未上线提示 */}
+                      {!p.models && !p.link && (
+                        <div className="text-slate-500 text-sm flex items-center gap-2">
+                          <span>🔒</span> 敬请期待
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -518,10 +600,10 @@ function LandingPage() {
       <section className="py-16 px-6 border-y border-white/5 bg-slate-900/50">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { label: "模型数量", value: "4+", icon: "🤖" },
+            { label: "垂直模型", value: "4", icon: "🧠" },
+            { label: "智能技能", value: "2", icon: "🛠️" },
+            { label: "应用系统", value: "1", icon: "💼" },
             { label: "服务领域", value: "9+", icon: "🎯" },
-            { label: "训练数据", value: "5K+", icon: "📊" },
-            { label: "日均调用", value: "10K+", icon: "⚡" },
           ].map(s => (
             <div key={s.label} className="group">
               <div className="text-3xl mb-2">{s.icon}</div>
@@ -758,7 +840,7 @@ function LandingPage() {
             <div>
               <h4 className="font-bold text-white text-sm mb-4">产品</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                {PRODUCTS.map(p => (
+                {[...PRODUCTS, ...SKILL_PRODUCTS].map(p => (
                   <li key={p.id} className="hover:text-white transition-colors cursor-pointer">
                     {p.icon} {p.nameCn}
                   </li>
