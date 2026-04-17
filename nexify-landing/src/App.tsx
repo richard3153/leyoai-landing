@@ -373,7 +373,21 @@ function LandingPage() {
   const [mounted, setMounted] = useState(false);
   const [activeCase, setActiveCase] = useState(0);
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
-  const { user } = useAuth();
+  const { user, session } = useAuth();
+
+  // HF Space 链接自动附加 JWT（已登录时）
+  const openHF = (baseUrl: string) => {
+    if (session?.access_token) {
+      // HF Space URL 格式: https://huggingface.co/spaces/Owner/Repo → https://Owner-Repo.hf.space
+      const match = baseUrl.match(/spaces\/([^/]+)\/([^/]+)/);
+      if (match) {
+        const hfUrl = `https://${match[1]}-${match[2]}.hf.space/?token=${encodeURIComponent(session.access_token)}`;
+        window.open(hfUrl, '_blank', 'noreferrer');
+        return;
+      }
+    }
+    window.open(baseUrl, '_blank', 'noreferrer');
+  };
   
   useEffect(() => { setMounted(true); }, []);
 
@@ -566,12 +580,12 @@ function LandingPage() {
                       {p.models && p.models.length > 0 && (
                         <div className="space-y-2">
                           {p.models.map(m => (
-                            <a key={m.name} href={m.link} target="_blank" rel="noreferrer"
+                            <a key={m.name} href="#" onClick={e => { e.preventDefault(); openHF(m.link); }}
                               className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all group/item">
                               <span className="text-xl">{m.icon}</span>
                               <div className="flex-1">
                                 <p className="font-semibold text-sm group-hover/item:text-indigo-400 transition-colors">{m.name}</p>
-                                <p className="text-xs text-slate-500">{m.tag}</p>
+                                <p className="text-xs text-slate-500">{m.tag}{session?.access_token && m.link.includes('/spaces/') ? ' · 🔐 自动认证' : ''}</p>
                               </div>
                               <span className="text-indigo-400 text-sm font-medium opacity-0 group-hover/item:opacity-100 transition-opacity">
                                 体验 →

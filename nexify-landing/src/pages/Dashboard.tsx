@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../components/AuthProvider'
 import { supabase } from '../lib/supabase'
 
+const HF_SPACE_MAP: Record<string, string> = {
+  cyber:     'https://FFZwai-leyoai-cyber-assistant.hf.space',
+  video:     'https://FFZwai-leyoai-video-safety.hf.space',
+  flow:      'https://FFZwai-leyoai-flow-assistant.hf.space',
+  analytics: 'https://FFZwai-leyoai-analytics-assistant.hf.space',
+}
+
 
 const PRODUCTS = [
   { key: 'cyber',     name: 'Cyber Model',     icon: '🛡️', color: 'from-emerald-500 to-teal-600',   barColor: 'bg-emerald-500' },
@@ -18,11 +25,20 @@ const PLAN_LABELS: Record<string, string> = {
 }
 
 export default function Dashboard() {
-  const { user } = useAuth()
+  const { user, session } = useAuth()
   const [usage, setUsage] = useState<Record<string, number>>({})
   const [quotas, setQuotas] = useState<Record<string, number>>({})
   const [userPlan, setUserPlan] = useState('free')
   const [loading, setLoading] = useState(true)
+
+  const openAssistant = (productKey: string) => {
+    const baseUrl = HF_SPACE_MAP[productKey]
+    if (!baseUrl) return
+    const url = session?.access_token
+      ? `${baseUrl}/?token=${encodeURIComponent(session.access_token)}`
+      : baseUrl
+    window.open(url, '_blank', 'noreferrer')
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -156,6 +172,12 @@ export default function Dashboard() {
                     ? '已达到配额上限'
                     : `已使用 ${percentage.toFixed(1)}%`}
                 </p>
+                <button
+                  onClick={() => openAssistant(product.key)}
+                  className="mt-3 w-full py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-indigo-600/20 to-violet-600/20 border border-indigo-500/20 text-indigo-400 hover:from-indigo-600/30 hover:to-violet-600/30 hover:border-indigo-500/40 transition-all"
+                >
+                  🚀 打开助手
+                </button>
               </div>
             )
           })}
