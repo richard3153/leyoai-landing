@@ -60,3 +60,17 @@ __pycache__/
 memory/
 MEMORY.md
 
+
+# Non-web-project files
+models/
+training/
+docs/
+hf_space/
+hf_video_space/
+local_train.py
+COMPANY.md
+.gitignore_global
+.github/
+*.bak
+agents/output/
+.venv/

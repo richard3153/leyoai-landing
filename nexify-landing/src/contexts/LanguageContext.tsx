@@ -20,6 +20,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('leyoai-lang', lang);
     document.documentElement.lang = lang;
+    // Notify static HTML pages (i18n-static.js) immediately
+    window.dispatchEvent(new CustomEvent('leyoai-lang-change', { detail: { lang } }));
   }, [lang]);
 
   const t = (zh: string, en: string) => (lang === 'zh' ? zh : en);

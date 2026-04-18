@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="使用条款 - LeyoAI" />
     <meta name="twitter:description" content="LeyoAI 垂直领域AI模型服务平台。使用条款。" />
     <meta property="og:locale" content="zh_CN" />
-    <script src="/i18n-static.js"></script>
+    
     <style>
         :root {
             --primary: #6366f1;
@@ -117,14 +117,41 @@
         }
         .nav-bar a { color: white; text-decoration: none; font-weight: 500; }
         .nav-bar a:hover { opacity: 0.8; }
-        [data-zh], [data-en] { display: none; }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {50:'#f0f4ff',100:'#e0e8ff',200:'#c7d4ff',300:'#a5b8ff',400:'#8093ff',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'}
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     </style>
 </head>
-<body>
-    <div class="nav-bar">
-        <a href="/">← LeyoAI</a>
-        <div class="lang-toggle-container"></div>
-    </div>
+<body class="bg-brand-50 min-h-screen pt-20">
+    <header class="gradient-bg text-white py-4 px-6 shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold flex items-center gap-2">
+                <span class="text-2xl">🤖</span>
+                <span>LeyoAI</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <div class="lang-toggle-container"></div>
+                <a href="/" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm">
+                    <span data-zh>← 返回首页</span>
+                    <span data-en>← Home</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
         <div class="header">
@@ -199,11 +226,26 @@
             <p class="update-date" data-en>Last Updated: April 13, 2026</p>
         </div>
 
-        <div class="footer">
-            <p data-zh>© 2026 杭州市上城区乐友信息服务工作室 版权所有</p>
-            <p data-en>© 2026 Hangzhou Shangcheng Leyo Information Service Studio. All rights reserved.</p>
-            <p><a href="/">leyoai.vercel.app</a></p>
         </div>
-    </div>
-</body>
+
+        </div>
+
+    <footer class="bg-brand-900 text-white py-8 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="text-2xl">🤖</span>
+                <span class="text-xl font-bold">LeyoAI</span>
+            </div>
+            <p class="text-brand-200 text-sm mb-4" data-zh>让 AI 模型服务每个人</p>
+            <p class="text-brand-200 text-sm mb-4" data-en>AI Models for Everyone</p>
+            <a href="/" class="inline-block bg-brand-700 hover:bg-brand-600 px-6 py-2 rounded-lg transition text-sm">
+                <span data-zh>← 返回首页</span>
+                <span data-en>← Home</span>
+            </a>
+            <p class="text-brand-400 text-xs mt-6">
+                © 2026 <span data-zh>杭州市上城区乐友信息服务工作室</span><span data-en>Hangzhou Shangcheng Leyo Information Service Studio</span>
+            </p>
+        </div>
+    </footer>
+<script src="/i18n-static.js" defer></script></body>
 </html>

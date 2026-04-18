@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="关于我们 - LeyoAI" />
     <meta name="twitter:description" content="了解 LeyoAI 背后的团队。专注垂直领域 AI 模型研发。" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/i18n-static.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -50,12 +50,11 @@
         .gradient-bg {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         }
-        [data-zh], [data-en] { display: none; }
     </style>
 </head>
-<body class="bg-brand-50 min-h-screen">
+<body class="bg-brand-50 min-h-screen pt-20">
     <!-- Header -->
-    <header class="gradient-bg text-white py-4 px-6 shadow-lg">
+    <header class="gradient-bg text-white py-4 px-6 shadow-lg fixed top-0 left-0 right-0 z-50">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <a href="/" class="text-xl font-bold flex items-center gap-2">
                 <span class="text-2xl">🤖</span>
@@ -261,5 +260,5 @@
             </p>
         </div>
     </footer>
-</body>
+<script src="/i18n-static.js" defer></script></body>
 </html>
