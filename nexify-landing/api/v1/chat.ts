@@ -24,7 +24,6 @@
  *     "usage": { "prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0 }
  *   }
  */
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { verifyApiKey, extractApiKey } from '../_lib/auth';
 import { checkQuota, logUsage, checkAndAlert } from '../_lib/quota';
 import { callHFSpace } from '../_lib/hf-client';
@@ -36,16 +35,19 @@ function genId(): string {
 }
 
 // CORS headers
-const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Authorization, Content-Type',
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+// 最小化函数签名，避免类型问题
+export default async function handler(req: any, res: any) {
   // CORS preflight
   if (req.method === 'OPTIONS') {
-    return res.status(204).set(CORS_HEADERS).send('');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+    return res.status(204).send('');
   }
 
   // 只接受 POST
