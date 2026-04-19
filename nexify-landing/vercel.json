@@ -2,5 +2,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/((?!assets/|favicon\\.ico|sitemap\\.xml|robots\\.txt|about\\.html|privacy\\.html|terms\\.html|pricing\\.html|i18n-static\\.js).*)", "destination": "/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/v1/chat.ts": {
+      "maxDuration": 55
+    }
+  }
 }

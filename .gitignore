@@ -4,3 +4,4 @@ memory/
 agents/
 index.html.bak.static
 *.bak.static
+.vercel/

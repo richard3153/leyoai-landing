@@ -22,6 +22,15 @@ function generateApiKey(): string {
   return key
 }
 
+/** SHA-256 哈希 API Key（浏览器端） */
+async function hashApiKey(key: string): Promise<string> {
+  const encoder = new TextEncoder()
+  const data = encoder.encode(key)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
+}
+
 export default function DashboardKeys() {
   const { user } = useAuth()
   const { t } = useLang()
@@ -51,11 +60,12 @@ export default function DashboardKeys() {
     setCreating(true)
     const fullKey = generateApiKey()
     const prefix = fullKey.slice(0, 8)
+    const hashed = await hashApiKey(fullKey)
     const { error } = await supabase.from('api_keys').insert([{
       user_id: user.id,
       name: newKeyName.trim(),
       key_prefix: prefix,
-      key_hash: fullKey,
+      key_hash: hashed,
       is_active: true,
     }])
     if (!error) {
@@ -64,6 +74,8 @@ export default function DashboardKeys() {
       setShowForm(false)
       setCopied(false)
       await fetchKeys()
+    } else {
+      console.error('Failed to create API key:', error)
     }
     setCreating(false)
   }

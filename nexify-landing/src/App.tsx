@@ -904,6 +904,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import DashboardKeys from "./pages/DashboardKeys";
 import DashboardPlans from "./pages/DashboardPlans";
+import DashboardApiDocs from "./pages/DashboardApiDocs";
 
 export default function App() {
   return (
@@ -915,6 +916,7 @@ export default function App() {
       <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
         <Route index element={<Dashboard />} />
         <Route path="keys" element={<DashboardKeys />} />
+        <Route path="api-docs" element={<DashboardApiDocs />} />
         <Route path="plans" element={<DashboardPlans />} />
       </Route>
     </Routes>

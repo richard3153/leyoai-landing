@@ -13,6 +13,7 @@ export function DashboardLayout() {
   const SIDEBAR_ITEMS = [
     { label: t('概览', 'Overview'), href: '/dashboard', icon: '📊' },
     { label: 'API Keys', href: '/dashboard/keys', icon: '🔑' },
+    { label: t('API 文档', 'API Docs'), href: '/dashboard/api-docs', icon: '📖' },
     { label: t('套餐', 'Plans'), href: '/dashboard/plans', icon: '💎' },
   ]
 
