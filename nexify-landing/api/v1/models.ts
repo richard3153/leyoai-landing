@@ -3,7 +3,9 @@
  *
  * OpenAI 兼容格式，方便开发者发现可用模型
  */
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { IncomingMessage, ServerResponse } from 'http';
+type VercelRequest = IncomingMessage & { query: Record<string,string>; body: unknown; method: string };
+type VercelResponse = ServerResponse & { status(code:number): VercelResponse; json(body:unknown): VercelResponse; setHeader(k:string,v:string): VercelResponse; send(body?:string|object): VercelResponse };
 import { VALID_PRODUCTS } from '../_lib/supabase';
 
 const CORS_HEADERS = {

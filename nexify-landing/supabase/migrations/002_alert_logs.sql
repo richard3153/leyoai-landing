@@ -6,10 +6,7 @@ CREATE TABLE IF NOT EXISTS public.alert_logs (
   user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
   product TEXT NOT NULL,           -- cyber | video | flow | analytics
   alert_type TEXT NOT NULL,        -- quota_80 | quota_100 | monthly_report
-  sent_at TIMESTAMPTZ DEFAULT NOW(),
-
-  -- 同月同产品同类型唯一约束
-  UNIQUE (user_id, product, alert_type, DATE_TRUNC('month', sent_at))
+  sent_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- RLS: 用户只能看自己的告警记录
@@ -21,6 +18,10 @@ CREATE POLICY "Users can view own alerts" ON public.alert_logs
 -- 索引
 CREATE INDEX IF NOT EXISTS idx_alert_logs_user_product ON public.alert_logs (user_id, product);
 CREATE INDEX IF NOT EXISTS idx_alert_logs_sent_at ON public.alert_logs (sent_at);
+
+-- 同月同产品同类型唯一约束（用唯一索引，因为约束列不支持表达式）
+CREATE UNIQUE INDEX idx_alert_logs_unique
+  ON public.alert_logs (user_id, product, alert_type, DATE_TRUNC('month', sent_at));
 
 -- 给 service_role 完整访问权限（API Gateway 用）
 GRANT ALL ON public.alert_logs TO service_role;
