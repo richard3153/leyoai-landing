@@ -8,15 +8,8 @@
  * 4. 记录用量
  * 5. 触发告警
  */
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
-// 动态导入避免构建问题
-const createClient = async () => {
-  const { createClient } = await import('@supabase/supabase-js');
-  return createClient;
-};
-
-const crypto = require('crypto');
+import { createClient } from '@supabase/supabase-js';
+import crypto from 'crypto';
 
 // HF Space 配置
 const SPACE_URLS: Record<string, string> = {
@@ -33,7 +26,7 @@ const SPACE_FN: Record<string, string> = {
   analytics: 'answer',
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
@@ -54,7 +47,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 2. 初始化 Supabase
-    const { createClient: createSupabaseClient } = await createClient();
     const supabaseUrl = process.env.SUPABASE_URL || 'https://drbeynfabvbydukjajrz.supabase.co';
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     
@@ -62,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       throw new Error('SUPABASE_SERVICE_ROLE_KEY not configured');
     }
     
-    const supabase = createSupabaseClient(supabaseUrl, serviceKey, {
+    const supabase = createClient(supabaseUrl, serviceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
 
@@ -151,7 +143,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const userMessage = lastUserMsg?.content || 'Hello';
     
     const spaceUrl = SPACE_URLS[model];
-    const fnName = SPACE_FN[model];
     
     let assistantMessage: string;
     let promptTokens = 0;
