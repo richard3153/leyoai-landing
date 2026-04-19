@@ -24,22 +24,7 @@
  *     "usage": { "prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0 }
  *   }
  */
-import type { IncomingMessage, ServerResponse } from 'http';
-
-// Vercel Serverless Function 入口
-type VercelRequest = IncomingMessage & {
-  query: Record<string, string>;
-  cookies: Record<string, string>;
-  body: unknown;
-  headers: Record<string, string | string[] | undefined>;
-  method: string;
-};
-type VercelResponse = ServerResponse & {
-  status(code: number): VercelResponse;
-  json(body: unknown): VercelResponse;
-  setHeader(key: string, value: string): VercelResponse;
-  send(body?: string | Buffer | object): VercelResponse;
-};
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { verifyApiKey, extractApiKey } from '../_lib/auth';
 import { checkQuota, logUsage, checkAndAlert } from '../_lib/quota';
 import { callHFSpace } from '../_lib/hf-client';
