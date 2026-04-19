@@ -6,7 +6,6 @@
  */
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
-import jwt from 'jsonwebtoken';
 
 const SPACE_URLS: Record<string, string> = {
   cyber: 'https://ffzwai-leyoai-cyber-assistant.hf.space',
@@ -130,21 +129,9 @@ export default async function handler(req: any, res: any) {
     const lastUserMsg = [...(messages || [])].reverse().find((m: any) => m.role === 'user');
     const userMessage = lastUserMsg?.content || 'Hello';
     
-    // 8. 生成 JWT token 传给 HF Space
-    const jwtSecret = process.env.LEYOAI_JWT_SECRET;
-    let hfToken = '';
-    if (jwtSecret) {
-      try {
-        hfToken = jwt.sign(
-          { sub: profile.id, email: profile.email, role: 'authenticated', aud: 'authenticated', exp: Math.floor(Date.now() / 1000) + 300 },
-          jwtSecret,
-          { algorithm: 'HS256' }
-        );
-      } catch (e) {}
-    }
-
-    // 9. 调用 HF Space FastAPI 端点
+    // 8. 调用 HF Space FastAPI 端点
     const spaceUrl = SPACE_URLS[model];
+    const internalKey = process.env.LEYOAI_INTERNAL_KEY || 'leyoai-internal-2026';
     let assistantMessage = '';
     let usedFallback = false;
 
@@ -154,7 +141,9 @@ export default async function handler(req: any, res: any) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userMessage,
-          token: hfToken,
+          api_key: internalKey,
+          user_id: profile.id,
+          user_email: profile.email,
           temperature,
           max_tokens,
         }),
