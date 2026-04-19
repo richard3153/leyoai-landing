@@ -124,12 +124,16 @@ export default async function handler(req: any, res: any) {
     const totalTokens = promptTokens + completionTokens;
 
     // 8. 记录用量（异步，不阻塞响应）
-    supabase.from('usage_logs').insert({
-      user_id: profile.id,
-      product: model,
-      tokens_used: totalTokens,
-      request_id: `req_${Date.now()}`,
-    }).catch(err => console.error('[chat] Failed to log usage:', err));
+    try {
+      await supabase.from('usage_logs').insert({
+        user_id: profile.id,
+        product: model,
+        tokens_used: totalTokens,
+        request_id: `req_${Date.now()}`,
+      });
+    } catch (logErr: any) {
+      console.error('[chat] Failed to log usage:', logErr.message);
+    }
 
     // 9. 返回 OpenAI 兼容格式
     return res.status(200).json({
