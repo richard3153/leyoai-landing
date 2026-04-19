@@ -1,7 +1,8 @@
 /**
- * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点（完整版）
+ * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点
  * 
- * 实现 Gradio SSE API 调用获取完整响应
+ * 当前状态：HF Space Gradio API 有技术问题，返回错误
+ * 临时方案：返回友好提示，引导用户使用网页界面
  */
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
@@ -14,12 +15,12 @@ const SPACE_URLS: Record<string, string> = {
   analytics: 'https://ffzwai-leyoai-analytics-assistant.hf.space',
 };
 
-// 系统提示词配置
-const SYSTEM_PROMPTS: Record<string, string> = {
-  cyber: "你是一位专业的AI安全专家。你的职责是帮助用户识别和预防网络安全威胁、诈骗行为、个人信息泄露、恶意软件等安全风险。回答要求：专业、实用、简洁，用中文回复。",
-  video: "你是一位专业的视频内容安全审核专家。你的职责是帮助用户识别视频中的违规内容、版权问题、敏感信息等。回答要求：专业、准确、简洁，用中文回复。",
-  flow: "你是一位专业的业务流程自动化专家。你的职责是帮助用户优化工作流程、设计自动化方案、提高效率。回答要求：专业、实用、简洁，用中文回复。",
-  analytics: "你是一位专业的数据分析专家。你的职责是帮助用户理解数据、发现洞察、做出数据驱动的决策。回答要求：专业、清晰、简洁，用中文回复。",
+// 模型显示名称
+const MODEL_NAMES: Record<string, string> = {
+  cyber: 'Cyber Assistant',
+  video: 'Video Safety',
+  flow: 'Flow Assistant',
+  analytics: 'Analytics Assistant',
 };
 
 export default async function handler(req: any, res: any) {
@@ -99,50 +100,86 @@ export default async function handler(req: any, res: any) {
     const lastUserMsg = [...messages].reverse().find((m: any) => m.role === 'user');
     const userMessage = lastUserMsg?.content || 'Hello';
     
-    // 7. 调用 HF Space（Gradio SSE API）
+    // 7. 尝试调用 HF Space
     const spaceUrl = SPACE_URLS[model];
     let assistantMessage: string;
     let promptTokens = Math.ceil(userMessage.length * 1.5);
     let completionTokens = 0;
+    let hfError = null;
 
     try {
-      // 调用 Gradio API 获取 event_id
+      // 调用 Gradio API
       const gradioResponse = await fetch(`${spaceUrl}/gradio_api/call/respond`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           data: [
-            userMessage,           // 1. 用户输入 (textbox)
-            [],                    // 2. 聊天历史 (chatbot)
-            SYSTEM_PROMPTS[model], // 3. System Prompt
+            userMessage,           // 1. 用户输入
+            [],                    // 2. 聊天历史
+            "你是一位专业的AI助手。", // 3. System Prompt
             0.7,                   // 4. Temperature
             0.9,                   // 5. Top-P
             512,                   // 6. Max Tokens
-            ""                     // 7. JWT Token (API模式为空)
+            ""                     // 7. JWT Token
           ],
         }),
       });
 
       if (!gradioResponse.ok) {
-        const errorText = await gradioResponse.text();
-        throw new Error(`HF Space returned ${gradioResponse.status}: ${errorText}`);
+        throw new Error(`HTTP ${gradioResponse.status}`);
       }
 
       const { event_id } = await gradioResponse.json();
       
       // 等待并获取 SSE 结果
-      assistantMessage = await fetchGradioResult(spaceUrl, event_id);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+      
+      const sseResponse = await fetch(`${spaceUrl}/gradio_api/call/respond/${event_id}`, {
+        headers: { 'Accept': 'text/event-stream' },
+      });
+
+      const sseText = await sseResponse.text();
+      
+      // 检查是否是错误
+      if (sseText.includes('event: error')) {
+        throw new Error('HF Space returned error event');
+      }
+      
+      // 解析结果
+      assistantMessage = parseGradioResponse(sseText);
+      
+      if (!assistantMessage || assistantMessage === 'AI 未能生成回复') {
+        throw new Error('Empty response from HF Space');
+      }
+      
       completionTokens = Math.ceil(assistantMessage.length * 1.5);
 
-    } catch (hfError: any) {
-      console.error('[chat] HF Space error:', hfError.message);
-      assistantMessage = `[AI服务暂时不可用] ${hfError.message}`;
+    } catch (error: any) {
+      hfError = error.message;
+      console.error(`[chat] HF Space error (${model}):`, error.message);
+      
+      // 返回临时提示信息
+      assistantMessage = `您好！我是 LeyoAI ${MODEL_NAMES[model]}。
+
+您的问题："${userMessage}"
+
+⚠️ 当前 API 服务正在维护中，暂时无法通过 API 直接调用 AI 模型。
+
+💡 替代方案：
+请访问网页版使用完整功能：
+${spaceUrl}
+
+或访问 LeyoAI 官网：
+https://leyoai.vercel.app
+
+我们正在修复此问题，感谢您的耐心！`;
+      
       completionTokens = Math.ceil(assistantMessage.length * 1.5);
     }
 
     const totalTokens = promptTokens + completionTokens;
 
-    // 8. 记录用量
+    // 8. 记录用量和错误日志
     try {
       await supabase.from('usage_logs').insert({
         user_id: profile.id,
@@ -150,8 +187,17 @@ export default async function handler(req: any, res: any) {
         tokens_used: totalTokens,
         request_id: `req_${Date.now()}`,
       });
+      
+      // 如果有错误，记录到 alert_logs
+      if (hfError) {
+        await supabase.from('alert_logs').insert({
+          user_id: profile.id,
+          alert_type: 'api_error',
+          message: `HF Space ${model} error: ${hfError}`,
+        }).catch(() => {}); // 忽略 alert_logs 错误
+      }
     } catch (logErr: any) {
-      console.error('[chat] Failed to log usage:', logErr.message);
+      console.error('[chat] Failed to log:', logErr.message);
     }
 
     // 9. 返回 OpenAI 兼容格式
@@ -180,45 +226,28 @@ export default async function handler(req: any, res: any) {
   }
 }
 
-// 获取 Gradio SSE 结果
-async function fetchGradioResult(spaceUrl: string, eventId: string): Promise<string> {
-  const sseUrl = `${spaceUrl}/gradio_api/call/respond/${eventId}`;
-  
-  // 等待一段时间让模型生成响应
-  await new Promise(resolve => setTimeout(resolve, 3000));
-  
-  // 获取结果
-  const response = await fetch(sseUrl, {
-    headers: {
-      'Accept': 'text/event-stream',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`SSE request failed: ${response.status}`);
-  }
-
-  const text = await response.text();
-  
-  // 解析 SSE 数据
-  const lines = text.split('\n');
-  let result = '';
+// 解析 Gradio SSE 响应
+function parseGradioResponse(sseText: string): string {
+  const lines = sseText.split('\n');
   
   for (const line of lines) {
     if (line.startsWith('data: ')) {
       try {
         const data = JSON.parse(line.slice(6));
-        // Gradio 返回的数据格式: { "output": { "data": [...] } }
-        if (data && typeof data === 'object') {
-          if (data.output && data.output.data) {
-            // 找到聊天机器人的输出（通常是第二个返回值）
-            const chatData = data.output.data[1]; // chatbot 是第二个输出
-            if (chatData && Array.isArray(chatData) && chatData.length > 0) {
-              const lastMessage = chatData[chatData.length - 1];
-              if (lastMessage && lastMessage.content) {
-                result = lastMessage.content;
-              } else if (typeof lastMessage === 'string') {
-                result = lastMessage;
+        
+        // 处理完成事件
+        if (data && data.output && data.output.data) {
+          const outputData = data.output.data;
+          
+          // 查找聊天历史（第二个输出通常是 chatbot）
+          for (const item of outputData) {
+            if (Array.isArray(item) && item.length > 0) {
+              const lastMsg = item[item.length - 1];
+              if (lastMsg && typeof lastMsg === 'object') {
+                // Gradio Chatbot 格式
+                if (lastMsg.content) {
+                  return lastMsg.content;
+                }
               }
             }
           }
@@ -229,10 +258,5 @@ async function fetchGradioResult(spaceUrl: string, eventId: string): Promise<str
     }
   }
   
-  if (!result) {
-    // 如果无法解析，返回原始响应的一部分
-    result = text.slice(0, 500);
-  }
-  
-  return result || 'AI 未能生成回复';
+  return 'AI 未能生成回复';
 }
