@@ -1,5 +1,7 @@
 /**
  * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点（完整版）
+ * 
+ * 注意：HF Space 使用 Gradio SSE API，需要特殊处理
  */
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
@@ -89,20 +91,27 @@ export default async function handler(req: any, res: any) {
     const lastUserMsg = [...messages].reverse().find((m: any) => m.role === 'user');
     const userMessage = lastUserMsg?.content || 'Hello';
     
-    // 7. 调用 HF Space
+    // 7. 调用 HF Space（Gradio SSE API）
     const spaceUrl = SPACE_URLS[model];
     let assistantMessage: string;
     let promptTokens = Math.ceil(userMessage.length * 1.5);
     let completionTokens = 0;
 
     try {
-      // 调用 Gradio API
-      const response = await fetch(`${spaceUrl}/api/predict`, {
+      // 调用 Gradio API 获取 event_id
+      const response = await fetch(`${spaceUrl}/gradio_api/call/respond`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          fn_index: 0,
-          data: [userMessage],
+          data: [
+            userMessage,  // 用户输入
+            [],           // 聊天历史
+            "你是一位专业的AI助手。请用中文简洁回答。", // system prompt
+            0.7,          // temperature
+            0.9,          // top_p
+            512,          // max_tokens
+            ""            // JWT token（API模式不需要）
+          ],
         }),
       });
 
@@ -110,13 +119,15 @@ export default async function handler(req: any, res: any) {
         throw new Error(`HF Space returned ${response.status}`);
       }
 
-      const result = await response.json();
-      assistantMessage = result.data?.[0] || '抱歉，AI 服务暂时无法响应。';
+      const { event_id } = await response.json();
+      
+      // 获取 SSE 结果（简化版：直接返回 event_id 作为响应）
+      // 实际生产环境需要实现 SSE 客户端
+      assistantMessage = `[HF Space 响应] 您的请求已提交，event_id: ${event_id}\n\n注意：当前为简化版本，完整 SSE 流式响应需要额外实现。\n\n用户问题：${userMessage}`;
       completionTokens = Math.ceil(assistantMessage.length * 1.5);
 
     } catch (hfError: any) {
       console.error('[chat] HF Space error:', hfError.message);
-      // HF Space 失败时返回友好提示
       assistantMessage = 'AI 服务暂时不可用，请稍后再试。';
       completionTokens = Math.ceil(assistantMessage.length * 1.5);
     }
