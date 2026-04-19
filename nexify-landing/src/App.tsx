@@ -185,6 +185,23 @@ const SKILL_PRODUCTS: Product[] = [
       { name: "🎭 persona-mimic", tag: "OpenClaw Skill", icon: "🎭", link: "https://github.com/richard3153/persona-mimic" },
     ],
   },
+  {
+    id: "code-restore-point",
+    name: "code-restore-point",
+    nameCn: "代码还原点",
+    desc: "代码修改前一键创建 Git 快照还原点，出问题即时回滚，自动清理过期记录",
+    descEn: "One-command Git snapshot before code changes, instant rollback on failure, automatic cleanup",
+    icon: "🛡️",
+    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80",
+    color: "from-emerald-500 to-teal-600",
+    badge: "✅ Open Source",
+    badgeColor: "bg-emerald-500",
+    features: ["一键快照", "即时回滚", "命名还原点", "自动清理"],
+    featuresEn: ["One-Command Snapshot", "Instant Rollback", "Named Restore Points", "Auto Cleanup"],
+    models: [
+      { name: "🛡️ code-restore-point", tag: "OpenClaw Skill", icon: "🛡️", link: "https://github.com/richard3153/code-restore-point" },
+    ],
+  },
 ];
 
 // ============================================================
