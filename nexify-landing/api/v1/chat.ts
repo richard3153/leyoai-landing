@@ -1,8 +1,8 @@
 /**
  * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点
  * 
- * 当前状态：HF Space 有技术问题，使用模拟响应
- * 功能完整：配额检查、用量记录、流式响应、JWT 生成
+ * 调用 HF Space FastAPI 端点（/api/v1/chat）进行推理
+ * 功能完整：API Key 验证、配额检查、用量记录、流式响应、JWT 传递
  */
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
@@ -130,7 +130,7 @@ export default async function handler(req: any, res: any) {
     const lastUserMsg = [...(messages || [])].reverse().find((m: any) => m.role === 'user');
     const userMessage = lastUserMsg?.content || 'Hello';
     
-    // 8. 生成 JWT token（为将来 HF Space 修复做准备）
+    // 8. 生成 JWT token 传给 HF Space
     const jwtSecret = process.env.LEYOAI_JWT_SECRET;
     let hfToken = '';
     if (jwtSecret) {
@@ -143,24 +143,43 @@ export default async function handler(req: any, res: any) {
       } catch (e) {}
     }
 
-    // 9. 【临时方案】使用模拟响应
-    // HF Space 目前返回 error，等待修复
-    const assistantMessage = `您好！我是 LeyoAI ${MODEL_NAMES[model]}。
+    // 9. 调用 HF Space FastAPI 端点
+    const spaceUrl = SPACE_URLS[model];
+    let assistantMessage = '';
+    let usedFallback = false;
 
-您的问题："${userMessage}"
+    try {
+      const hfResponse = await fetch(`${spaceUrl}/api/v1/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          token: hfToken,
+          temperature,
+          max_tokens,
+        }),
+        signal: AbortSignal.timeout(100000), // 100s 超时（CPU 推理慢）
+      });
 
-✅ API Gateway 运行正常！
-- 用户认证: ✓ (${profile.email})
-- 配额检查: ✓ (${currentUsage}/${planQuota} 已使用)
-- JWT 生成: ✓ (${hfToken ? '已生成' : '未配置'})
+      if (hfResponse.ok) {
+        const hfData = await hfResponse.json();
+        assistantMessage = hfData.response || hfData.message || '';
+      } else {
+        const errBody = await hfResponse.text().catch(() => '');
+        console.error(`[chat] HF Space ${model} returned ${hfResponse.status}: ${errBody}`);
+        usedFallback = true;
+      }
+    } catch (err: any) {
+      console.error(`[chat] HF Space ${model} error: ${err.message}`);
+      usedFallback = true;
+    }
 
-⚠️ HF Space 暂时不可用
-HF Space 返回错误，正在排查中。请稍后再试或使用网页版：
-${SPACE_URLS[model]}
-
----
-请求ID: ${Date.now().toString(36)}
-时间: ${new Date().toISOString()}`;
+    // 降级处理：HF Space 不可用时返回友好提示
+    if (usedFallback || !assistantMessage) {
+      assistantMessage = `⚠️ AI 模型暂时不可用，请稍后再试。\n\n` +
+        `您可以访问网页版直接使用：${spaceUrl}\n` +
+        `状态：用户 ${profile.email} 已验证，配额 ${currentUsage}/${planQuota}`;
+    }
 
     const promptTokens = Math.ceil(userMessage.length * 1.5);
     const completionTokens = Math.ceil(assistantMessage.length * 1.5);
@@ -202,7 +221,6 @@ ${SPACE_URLS[model]}
 
     res.write(`data: ${JSON.stringify({ id: `chatcmpl-${Date.now()}`, object: 'chat.completion.chunk', created: Math.floor(Date.now()/1000), model, choices: [{ index: 0, delta: { role: 'assistant' }, finish_reason: null }] })}\n\n`);
     
-    // 分段发送
     const chunks = assistantMessage.match(/.{1,20}/g) || [assistantMessage];
     for (const chunk of chunks) {
       res.write(`data: ${JSON.stringify({ id: `chatcmpl-${Date.now()}`, object: 'chat.completion.chunk', created: Math.floor(Date.now()/1000), model, choices: [{ index: 0, delta: { content: chunk }, finish_reason: null }] })}\n\n`);
