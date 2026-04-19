@@ -439,7 +439,7 @@ function LandingPage() {
 
   const STATS = [
     { label: t("垂直模型", "Vertical Models"), value: "4", icon: "🧠" },
-    { label: t("智能技能", "Smart Skills"), value: "2", icon: "🛠️" },
+    { label: t("智能技能", "Smart Skills"), value: "3", icon: "🛠️" },
     { label: t("应用系统", "Applications"), value: "1", icon: "💼" },
     { label: t("服务领域", "Industries"), value: "9+", icon: "🎯" },
   ];
