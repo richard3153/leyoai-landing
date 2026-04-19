@@ -1,19 +1,12 @@
 /**
- * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点（完整版）
+ * POST /api/v1/chat — OpenAI 兼容的 Chat Completions 端点
  * 
- * 功能：
- * 1. API Key 验证
- * 2. 配额检查（返回 429 如果超限）
- * 3. JWT 生成（用于 HF Space 鉴权）
- * 4. HF Space 调用
- * 5. 流式响应支持（stream: true）
- * 6. 用量记录
+ * 修复版：添加详细日志调试 HF Space 调用
  */
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
-// HF Space 配置
 const SPACE_URLS: Record<string, string> = {
   cyber: 'https://ffzwai-leyoai-cyber-assistant.hf.space',
   video: 'https://ffzwai-leyoai-video-safety.hf.space',
@@ -21,7 +14,6 @@ const SPACE_URLS: Record<string, string> = {
   analytics: 'https://ffzwai-leyoai-analytics-assistant.hf.space',
 };
 
-// 配额配置（与数据库 plan_quotas 表保持一致）
 const QUOTAS: Record<string, Record<string, number>> = {
   free: { cyber: 100, video: 500, flow: 500, analytics: 1000 },
   starter: { cyber: 5000, video: 5000, flow: 5000, analytics: 10000 },
@@ -29,7 +21,6 @@ const QUOTAS: Record<string, Record<string, number>> = {
 };
 
 export default async function handler(req: any, res: any) {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
@@ -38,8 +29,11 @@ export default async function handler(req: any, res: any) {
     return res.status(204).send('');
   }
 
-  const startTime = Date.now();
-  const requestId = `req_${startTime.toString(36)}`;
+  const logs: string[] = [];
+  const log = (msg: string) => {
+    console.log(`[chat] ${msg}`);
+    logs.push(msg);
+  };
 
   try {
     // 1. 解析 API Key
@@ -48,7 +42,7 @@ export default async function handler(req: any, res: any) {
     
     if (!apiKey) {
       return res.status(401).json({
-        error: { message: 'Missing API key. Use: Authorization: Bearer lya_xxx', type: 'authentication_error' }
+        error: { message: 'Missing API key', type: 'authentication_error' }
       });
     }
 
@@ -110,7 +104,7 @@ export default async function handler(req: any, res: any) {
     monthStart.setDate(1);
     monthStart.setHours(0, 0, 0, 0);
     
-    const { count: usageCount, error: usageError } = await supabase
+    const { count: usageCount } = await supabase
       .from('usage_logs')
       .select('*', { count: 'exact', head: true })
       .eq('user_id', profile.id)
@@ -123,9 +117,8 @@ export default async function handler(req: any, res: any) {
     if (currentUsage >= planQuota) {
       return res.status(429).json({
         error: {
-          message: `Quota exceeded. Used ${currentUsage}/${planQuota} requests this month. Upgrade at https://leyoai.vercel.app/pricing`,
+          message: `Quota exceeded. Used ${currentUsage}/${planQuota} requests this month.`,
           type: 'rate_limit_error',
-          param: null,
           code: 'quota_exceeded'
         }
       });
@@ -135,104 +128,94 @@ export default async function handler(req: any, res: any) {
     const lastUserMsg = [...(messages || [])].reverse().find((m: any) => m.role === 'user');
     const userMessage = lastUserMsg?.content || 'Hello';
     
-    // 8. 生成 JWT token 给 HF Space
+    // 8. 生成 JWT token
     const jwtSecret = process.env.LEYOAI_JWT_SECRET;
-    let hfToken = '';
+    log(`JWT_SECRET exists: ${!!jwtSecret}`);
     
+    let hfToken = '';
     if (jwtSecret) {
-      hfToken = jwt.sign(
-        {
-          sub: profile.id,
-          email: profile.email,
-          role: 'authenticated',
-          aud: 'authenticated',
-          iat: Math.floor(Date.now() / 1000),
-          exp: Math.floor(Date.now() / 1000) + 300, // 5分钟有效
-        },
-        jwtSecret,
-        { algorithm: 'HS256' }
-      );
+      try {
+        hfToken = jwt.sign(
+          {
+            sub: profile.id,
+            email: profile.email,
+            role: 'authenticated',
+            aud: 'authenticated',
+            iat: Math.floor(Date.now() / 1000),
+            exp: Math.floor(Date.now() / 1000) + 300,
+          },
+          jwtSecret,
+          { algorithm: 'HS256' }
+        );
+        log(`JWT generated successfully, length: ${hfToken.length}`);
+      } catch (jwtErr: any) {
+        log(`JWT generation failed: ${jwtErr.message}`);
+      }
     }
 
     // 9. 调用 HF Space
     const spaceUrl = SPACE_URLS[model];
     let assistantMessage: string;
-    let promptTokens = Math.ceil(userMessage.length * 1.5);
-    let completionTokens = 0;
+    let hfCallSuccess = false;
 
     try {
-      // 调用 Gradio API
+      log(`Calling HF Space: ${spaceUrl}/gradio_api/call/respond`);
+      
       const gradioResponse = await fetch(`${spaceUrl}/gradio_api/call/respond`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          data: [
-            userMessage,
-            [],
-            "你是一位专业的AI助手。请用中文简洁回答。",
-            temperature,
-            0.9,
-            max_tokens,
-            hfToken
-          ],
+          data: [userMessage, [], "你是一位专业的AI助手。", temperature, 0.9, max_tokens, hfToken],
         }),
       });
+
+      log(`Gradio response status: ${gradioResponse.status}`);
 
       if (!gradioResponse.ok) {
         throw new Error(`HTTP ${gradioResponse.status}`);
       }
 
       const { event_id } = await gradioResponse.json();
+      log(`Got event_id: ${event_id}`);
       
       // 等待并获取结果
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise(resolve => setTimeout(resolve, 5000));
       
       const sseResponse = await fetch(`${spaceUrl}/gradio_api/call/respond/${event_id}`);
       const sseText = await sseResponse.text();
       
+      log(`SSE response length: ${sseText.length}`);
+      log(`SSE first 200 chars: ${sseText.substring(0, 200)}`);
+      
       // 解析结果
       assistantMessage = parseGradioResponse(sseText);
+      log(`Parsed message: ${assistantMessage.substring(0, 100)}`);
       
-      // 检查是否是 token 错误
-      if (assistantMessage.includes('Token 无效') || assistantMessage.includes('请先登录')) {
-        throw new Error('HF Space JWT verification failed');
+      if (assistantMessage && assistantMessage !== 'AI 未能生成回复') {
+        hfCallSuccess = true;
       }
-      
-      completionTokens = Math.ceil(assistantMessage.length * 1.5);
 
     } catch (error: any) {
-      console.error(`[chat] HF Space error:`, error.message);
-      
-      // 返回模拟响应（开发阶段）
-      assistantMessage = `【模拟响应】收到您的问题："${userMessage}"
-
-这是一个测试回复。实际生产环境中，这里将返回 AI 模型的真实回复。
-
-当前时间：${new Date().toLocaleString('zh-CN')}
-模型：${model}
-用户：${profile.email}`;
-      
-      completionTokens = Math.ceil(assistantMessage.length * 1.5);
+      log(`HF Space error: ${error.message}`);
+      assistantMessage = `[调试信息]\n\n用户: ${profile.email}\n问题: "${userMessage}"\n模型: ${model}\nJWT: ${hfToken ? '已生成' : '未生成'}\n\n日志:\n${logs.join('\n')}`;
     }
-
-    const totalTokens = promptTokens + completionTokens;
 
     // 10. 记录用量
     try {
       await supabase.from('usage_logs').insert({
         user_id: profile.id,
         product: model,
-        tokens_used: totalTokens,
-        request_id: requestId,
+        tokens_used: Math.ceil(assistantMessage.length * 1.5),
+        request_id: `req_${Date.now()}`,
       });
     } catch (logErr: any) {
-      console.error('[chat] Failed to log usage:', logErr.message);
+      log(`Failed to log: ${logErr.message}`);
     }
 
-    // 11. 返回响应（非流式）
+    // 返回响应
     if (!stream) {
       return res.status(200).json({
-        id: `chatcmpl-${requestId}`,
+        id: `chatcmpl-${Date.now().toString(36)}`,
         object: 'chat.completion',
         created: Math.floor(Date.now() / 1000),
         model,
@@ -242,62 +225,33 @@ export default async function handler(req: any, res: any) {
           finish_reason: 'stop'
         }],
         usage: {
-          prompt_tokens: promptTokens,
-          completion_tokens: completionTokens,
-          total_tokens: totalTokens
-        }
+          prompt_tokens: Math.ceil(userMessage.length * 1.5),
+          completion_tokens: Math.ceil(assistantMessage.length * 1.5),
+          total_tokens: Math.ceil((userMessage.length + assistantMessage.length) * 1.5)
+        },
+        _debug: { logs, hfCallSuccess }
       });
     }
 
-    // 12. 流式响应
+    // 流式响应
     res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-
-    // 发送开始事件
-    res.write(`data: ${JSON.stringify({
-      id: `chatcmpl-${requestId}`,
-      object: 'chat.completion.chunk',
-      created: Math.floor(Date.now() / 1000),
-      model,
-      choices: [{ index: 0, delta: { role: 'assistant' }, finish_reason: null }]
-    })}\n\n`);
-
-    // 模拟流式发送（实际应该逐字发送）
-    const words = assistantMessage.split('');
-    for (let i = 0; i < words.length; i += 10) {
-      const chunk = words.slice(i, i + 10).join('');
-      res.write(`data: ${JSON.stringify({
-        id: `chatcmpl-${requestId}`,
-        object: 'chat.completion.chunk',
-        created: Math.floor(Date.now() / 1000),
-        model,
-        choices: [{ index: 0, delta: { content: chunk }, finish_reason: null }]
-      })}\n\n`);
-      await new Promise(r => setTimeout(r, 50));
-    }
-
-    // 发送结束事件
-    res.write(`data: ${JSON.stringify({
-      id: `chatcmpl-${requestId}`,
-      object: 'chat.completion.chunk',
-      created: Math.floor(Date.now() / 1000),
-      model,
-      choices: [{ index: 0, delta: {}, finish_reason: 'stop' }]
-    })}\n\n`);
-
+    res.write(`data: ${JSON.stringify({ id: `chatcmpl-${Date.now()}`, object: 'chat.completion.chunk', created: Math.floor(Date.now()/1000), model, choices: [{ index: 0, delta: { role: 'assistant' }, finish_reason: null }] })}\n\n`);
+    
+    res.write(`data: ${JSON.stringify({ id: `chatcmpl-${Date.now()}`, object: 'chat.completion.chunk', created: Math.floor(Date.now()/1000), model, choices: [{ index: 0, delta: { content: assistantMessage }, finish_reason: null }] })}\n\n`);
+    
+    res.write(`data: ${JSON.stringify({ id: `chatcmpl-${Date.now()}`, object: 'chat.completion.chunk', created: Math.floor(Date.now()/1000), model, choices: [{ index: 0, delta: {}, finish_reason: 'stop' }] })}\n\n`);
     res.write('data: [DONE]\n\n');
     res.end();
 
   } catch (err: any) {
     console.error('[chat] Error:', err.message);
     return res.status(500).json({
-      error: { message: err.message || 'Internal server error', type: 'server_error' }
+      error: { message: err.message || 'Internal server error', type: 'server_error' },
+      _debug: { logs }
     });
   }
 }
 
-// 解析 Gradio SSE 响应
 function parseGradioResponse(sseText: string): string {
   const lines = sseText.split('\n');
   
@@ -305,26 +259,16 @@ function parseGradioResponse(sseText: string): string {
     if (line.startsWith('data: ')) {
       try {
         const data = JSON.parse(line.slice(6));
-        
-        if (data && data.output && data.output.data) {
-          const outputData = data.output.data;
-          
-          // 查找第一个字符串输出（通常是回复内容）
-          for (const item of outputData) {
-            if (typeof item === 'string') {
-              return item;
-            }
+        if (data?.output?.data) {
+          for (const item of data.output.data) {
+            if (typeof item === 'string') return item;
             if (Array.isArray(item) && item.length > 0) {
-              const lastMsg = item[item.length - 1];
-              if (lastMsg && typeof lastMsg === 'object' && lastMsg.content) {
-                return lastMsg.content;
-              }
+              const last = item[item.length - 1];
+              if (last?.content) return last.content;
             }
           }
         }
-      } catch (e) {
-        // 忽略解析错误
-      }
+      } catch (e) {}
     }
   }
   
