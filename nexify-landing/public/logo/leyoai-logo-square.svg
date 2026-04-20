@@ -1,27 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 90">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
-    </linearGradient>
-    <linearGradient id="lGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#e0e7ff"/>
+    <linearGradient id="gradC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
     </linearGradient>
   </defs>
-  <!-- Rounded square background -->
-  <rect fill="url(#bgGrad)" rx="44" width="200" height="200"/>
-  <!-- Stylized L: geometric, modern -->
-  <path d="M55 42 L55 148 Q55 158 65 158 L140 158" stroke="url(#lGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- AI neural network dots: 4 nodes representing intelligence -->
-  <circle cx="140" cy="58" r="12" fill="rgba(255,255,255,0.5)"/>
-  <circle cx="162" cy="88" r="9" fill="rgba(255,255,255,0.65)"/>
-  <circle cx="135" cy="95" r="7" fill="rgba(255,255,255,0.75)"/>
-  <circle cx="155" cy="120" r="5" fill="rgba(255,255,255,0.55)"/>
-  <!-- Neural connection lines -->
-  <line x1="140" y1="58" x2="162" y2="88" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
-  <line x1="140" y1="58" x2="135" y2="95" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
-  <line x1="135" y1="95" x2="162" y2="88" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
-  <line x1="162" y1="88" x2="155" y2="120" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
-  <line x1="135" y1="95" x2="155" y2="120" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+  
+  <!-- 背景 -->
+  <rect width="80" height="90" rx="16" fill="#f5f3ff"/>
+  
+  <!-- L 字母艺术化 -->
+  <path d="M20 15 L20 70 L55 70 L55 60 L30 60 L30 15 Z" fill="url(#gradC)"/>
+  
+  <!-- AI 装饰点 -->
+  <circle cx="45" cy="25" r="5" fill="#7c3aed"/>
+  <circle cx="60" cy="35" r="4" fill="#a78bfa"/>
+  <circle cx="60" cy="50" r="4" fill="#a78bfa"/>
+  
+  <!-- 连接线 -->
+  <line x1="45" y1="25" x2="60" y2="35" stroke="#c4b5fd" stroke-width="2"/>
+  <line x1="60" y1="35" x2="60" y2="50" stroke="#c4b5fd" stroke-width="2"/>
 </svg>
