@@ -202,6 +202,23 @@ const SKILL_PRODUCTS: Product[] = [
       { name: "🛡️ code-restore-point", tag: "OpenClaw Skill", icon: "🛡️", link: "https://github.com/richard3153/code-restore-point" },
     ],
   },
+  {
+    id: "task-resumer",
+    name: "task-resumer",
+    nameCn: "任务续行",
+    desc: "长任务自动拆分为子任务，中断后从检查点恢复，防止 Agent 步骤过多自动中止",
+    descEn: "Auto-split long tasks into subtasks, resume from checkpoint after interruption, prevent Agent auto-abort",
+    icon: "🚀",
+    image: "https://images.unsplash.com/photo-1517976487492-5750f3195933?w=800&q=80",
+    color: "from-amber-500 to-orange-600",
+    badge: "✅ Open Source",
+    badgeColor: "bg-amber-500",
+    features: ["任务复杂度分析", "智能拆分子任务", "子Agent委派", "检查点恢复"],
+    featuresEn: ["Complexity Analysis", "Smart Task Splitting", "Sub-agent Delegation", "Checkpoint Resume"],
+    models: [
+      { name: "🚀 task-resumer", tag: "OpenClaw Skill", icon: "🚀", link: "https://github.com/richard3153/task-resumer" },
+    ],
+  },
 ];
 
 // ============================================================
@@ -439,7 +456,7 @@ function LandingPage() {
 
   const STATS = [
     { label: t("垂直模型", "Vertical Models"), value: "4", icon: "🧠" },
-    { label: t("智能技能", "Smart Skills"), value: "3", icon: "🛠️" },
+    { label: t("智能技能", "Smart Skills"), value: "4", icon: "🛠️" },
     { label: t("应用系统", "Applications"), value: "1", icon: "💼" },
     { label: t("服务领域", "Industries"), value: "9+", icon: "🎯" },
   ];
