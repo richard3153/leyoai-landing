@@ -142,7 +142,7 @@ const PRODUCTS: Product[] = [
     features: ["多因子量化评分", "实时行情监控", "技术分析引擎", "风控管理"],
     featuresEn: ["Multi-Factor Scoring", "Real-time Quotes", "Technical Analysis", "Risk Management"],
     models: [
-      { name: "📈 LeyoQuant Analysis", tag: "Quant Investment", icon: "📈", link: "https://leyoai-quant.vercel.app" },
+      { name: "📈 LeyoQuant Analysis", tag: "Quant Investment", icon: "📈", link: "https://leyo-quant.vercel.app" },
     ],
   },
 ];
