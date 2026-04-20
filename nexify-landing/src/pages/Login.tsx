@@ -38,10 +38,7 @@ export default function Login() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center font-black text-sm shadow-lg shadow-indigo-500/25">
-              L
-            </div>
-            <span className="font-bold text-xl text-white">LeyoAI</span>
+            <img src="/logo/leyoai-logo-horizontal-light.svg" alt="LeyoAI" className="h-10" />
           </Link>
           <h1 className="text-2xl font-bold mt-6 mb-2">{t('欢迎回来', 'Welcome Back')}</h1>
           <p className="text-slate-400 text-sm">{t('登录你的账号以继续', 'Sign in to your account to continue')}</p>

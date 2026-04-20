@@ -39,12 +39,9 @@ export function DashboardLayout() {
         }`}
       >
         <div className="p-6 border-b border-white/5">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center font-black text-sm shadow-lg shadow-indigo-500/25">
-              L
-            </div>
-            <span className="font-bold text-lg">LeyoAI</span>
-          </div>
+          <a href="/" className="flex items-center gap-3">
+            <img src="/logo/leyoai-logo-horizontal-light.svg" alt="LeyoAI" className="h-9" />
+          </a>
         </div>
 
         <nav className="p-4 space-y-1">

@@ -67,10 +67,7 @@ export default function Signup() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center font-black text-sm shadow-lg shadow-indigo-500/25">
-              L
-            </div>
-            <span className="font-bold text-xl text-white">LeyoAI</span>
+            <img src="/logo/leyoai-logo-horizontal-light.svg" alt="LeyoAI" className="h-10" />
           </Link>
           <h1 className="text-2xl font-bold mt-6 mb-2">{t('创建账号', 'Create Account')}</h1>
           <p className="text-slate-400 text-sm">{t('注册以开始使用 LeyoAI', 'Sign up to get started with LeyoAI')}</p>
