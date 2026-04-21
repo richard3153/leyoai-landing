@@ -294,6 +294,12 @@ function LandingPage() {
   
   useEffect(() => { setMounted(true); }, []);
 
+  // 动态更新页面标题
+  useEffect(() => {
+    const baseTitle = language === 'zh' ? 'LeyoAI - AI 模型即服务平台' : 'LeyoAI - AI Model as a Service';
+    document.title = baseTitle + ' | 垂直领域 AI 助手';
+  }, [language]);
+
   // 动态翻译数据
   const NAV_ITEMS = [
     { label: t("产品", "Products"), href: "#products" },
